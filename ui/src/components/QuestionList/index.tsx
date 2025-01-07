@@ -53,18 +53,11 @@ interface Props {
   isLoading: boolean;
 }
 
-const QuestionList: FC<Props> = ({
-  source,
-  order,
-  data,
-  orderList,
-  isLoading = false,
-}) => {
+const QuestionList: FC<Props> = ({ source, order, data, orderList, isLoading = false }) => {
   const { t } = useTranslation('translation', { keyPrefix: 'question' });
   const [urlSearchParams] = useSearchParams();
   const { isSkeletonShow } = useSkeletonControl(isLoading);
-  const curOrder =
-    order || urlSearchParams.get('order') || QUESTION_ORDER_KEYS[0];
+  const curOrder = order || urlSearchParams.get('order') || QUESTION_ORDER_KEYS[0];
   const curPage = Number(urlSearchParams.get('page')) || 1;
   const pageSize = 20;
   const count = data?.count || 0;
@@ -74,9 +67,7 @@ const QuestionList: FC<Props> = ({
     <div>
       <div className="mb-3 d-flex flex-wrap justify-content-between">
         <h5 className="fs-5 text-nowrap mb-3 mb-md-0">
-          {source === 'questions'
-            ? t('all_questions')
-            : t('x_questions', { count })}
+          {source === 'questions' ? t('all_questions') : t('x_questions', { count })}
         </h5>
         <QueryGroup
           data={orderKeys}
@@ -111,11 +102,7 @@ const QuestionList: FC<Props> = ({
                 </h5>
                 <div className="d-flex flex-wrap flex-column flex-md-row align-items-md-center small mb-2 text-secondary">
                   <div className="d-flex flex-wrap me-0 me-md-3">
-                    <BaseUserCard
-                      data={li.operator}
-                      showAvatar={false}
-                      className="me-1"
-                    />
+                    <BaseUserCard data={li.operator} showAvatar={false} className="me-1" />
                     •
                     <FormatTime
                       time={li.operated_at}
@@ -136,9 +123,7 @@ const QuestionList: FC<Props> = ({
                 <div className="question-tags m-n1">
                   {Array.isArray(li.tags)
                     ? li.tags.map((tag) => {
-                        return (
-                          <Tag key={tag.slug_name} className="m-1" data={tag} />
-                        );
+                        return <Tag key={tag.slug_name} className="m-1" data={tag} />;
                       })
                     : null}
                 </div>

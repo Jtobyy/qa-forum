@@ -34,9 +34,7 @@ interface Props {
 }
 const Index: FC<Props> = ({ visible, introduction, data, username }) => {
   const { t } = useTranslation('translation', { keyPrefix: 'personal' });
-  const { data: recentBadges } = useGetRecentAwardBadges(
-    visible ? username : null,
-  );
+  const { data: recentBadges } = useGetRecentAwardBadges(visible ? username : null);
   if (!visible) {
     return null;
   }
@@ -44,10 +42,7 @@ const Index: FC<Props> = ({ visible, introduction, data, username }) => {
     <div>
       <h5 className="mb-3">{t('about_me')}</h5>
       {introduction ? (
-        <div
-          className="mb-5 text-break fmt"
-          dangerouslySetInnerHTML={{ __html: introduction }}
-        />
+        <div className="mb-5 text-break fmt" dangerouslySetInnerHTML={{ __html: introduction }} />
       ) : (
         <div className="text-center py-5 mb-5">{t('about_me_empty')}</div>
       )}

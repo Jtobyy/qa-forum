@@ -49,11 +49,7 @@ const RouteGuard: FC<{
     });
 
     setKeeper(gr);
-    if (
-      gr.ok === false &&
-      gr.error?.code &&
-      /403|404|50X/i.test(gr.error.code.toString())
-    ) {
+    if (gr.ok === false && gr.error?.code && /403|404|50X/i.test(gr.error.code.toString())) {
       setGkError(gr.error);
       return;
     }

@@ -40,25 +40,19 @@
               <a class="link-dark" href="{{$.baseURL}}/questions/{{.ID}}">{{.Title}}</a>
               {{end}}
             </h5>
-            <div
-              class="d-flex flex-column flex-md-row align-items-md-center small text-secondary"
-            >
+            <div class="d-flex flex-column flex-md-row align-items-md-center small text-secondary">
               <div class="d-flex">
                 <div class="text-secondary me-1">
                   <a href="{{$.baseURL}}/users/{{.Operator.Username}}"
-                    ><span class="me-1 text-break"
-                      >{{.Operator.DisplayName}}</span
-                    ></a
-                  ><span class="fw-bold" title="Reputation"
-                    >{{.Operator.Rank}}</span
-                  >
+                    ><span class="me-1 text-break">{{.Operator.DisplayName}}</span></a
+                  ><span class="fw-bold" title="Reputation">{{.Operator.Rank}}</span>
                 </div>
                 <time
                   class="text-secondary ms-1"
                   datetime="{{timeFormatISO $.timezone .OperatedAt}}"
                   title="{{translatorTimeFormatLongDate $.language $.timezone .OperatedAt}}"
-                  >{{translator $.language "ui.question.asked"}}
-                  {{translatorTimeFormat $.language $.timezone .OperatedAt}}
+                  >{{translator $.language "ui.question.asked"}} {{translatorTimeFormat $.language
+                  $.timezone .OperatedAt}}
                 </time>
               </div>
               <div class="ms-0 ms-md-3 mt-2 mt-md-0">
@@ -80,8 +74,7 @@
               {{range .Tags }}
               <a
                 href="{{$.baseURL}}/tags/{{.SlugName}}"
-                class="badge-tag rounded-1 {{if .Reserved}}badge-tag-reserved{{end}} {{if .Recommend}}badge-tag-required{{end}} m-1"
-              >
+                class="badge-tag rounded-1 {{if .Reserved}}badge-tag-reserved{{end}} {{if .Recommend}}badge-tag-required{{end}} m-1">
                 <span class="">{{.SlugName}}</span>
               </a>
               {{end}}
@@ -89,9 +82,7 @@
           </div>
           {{end}}
         </div>
-        <div class="mt-4 mb-2 d-flex justify-content-center">
-          {{template "page" .}}
-        </div>
+        <div class="mt-4 mb-2 d-flex justify-content-center">{{template "page" .}}</div>
       </div>
     </div>
     <div class="mt-5 mt-lg-0 col-xxl-3 col-lg-4 col-sm-12"></div>

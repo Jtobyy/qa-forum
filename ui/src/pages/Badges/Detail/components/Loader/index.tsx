@@ -38,10 +38,7 @@ const Index: FC<Props> = ({ count = 12 }) => {
             />
             <div className="small ms-2">
               <div className="placeholder lh-1" style={{ width: '80px' }} />
-              <div
-                className="text-secondary placeholder"
-                style={{ width: '150px' }}
-              />
+              <div className="text-secondary placeholder" style={{ width: '150px' }} />
             </div>
           </div>
           <div className="mt-1 d-block placeholder" />

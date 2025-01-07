@@ -23,28 +23,12 @@ import { useTranslation, Trans } from 'react-i18next';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import type { FormDataType } from '@/common/interface';
-import {
-  dbCheck,
-  installInit,
-  installBaseInfo,
-  checkConfigFileExists,
-} from '@/services';
-import {
-  Storage,
-  handleFormError,
-  scrollToDocTop,
-  scrollToElementTop,
-} from '@/utils';
+import { dbCheck, installInit, installBaseInfo, checkConfigFileExists } from '@/services';
+import { Storage, handleFormError, scrollToDocTop, scrollToElementTop } from '@/utils';
 import { CURRENT_LANG_STORAGE_KEY } from '@/common/constants';
 import { BASE_ORIGIN } from '@/router/alias';
 
-import {
-  FirstStep,
-  SecondStep,
-  ThirdStep,
-  FourthStep,
-  Fifth,
-} from './components';
+import { FirstStep, SecondStep, ThirdStep, FourthStep, Fifth } from './components';
 
 const Index: FC = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'install' });
@@ -311,9 +295,7 @@ const Index: FC = () => {
               <h2 className="mb-4 text-center">{t('title')}</h2>
               <Card>
                 <Card.Body>
-                  {errorData?.msg && (
-                    <Alert variant="danger">{errorData?.msg}</Alert>
-                  )}
+                  {errorData?.msg && <Alert variant="danger">{errorData?.msg}</Alert>}
 
                   <FirstStep
                     visible={step === 1}
@@ -329,11 +311,7 @@ const Index: FC = () => {
                     nextCallback={handleStep}
                   />
 
-                  <ThirdStep
-                    visible={step === 3}
-                    nextCallback={handleStep}
-                    errorMsg={errorData}
-                  />
+                  <ThirdStep visible={step === 3} nextCallback={handleStep} errorMsg={errorData} />
 
                   <FourthStep
                     visible={step === 4}
@@ -342,18 +320,12 @@ const Index: FC = () => {
                     nextCallback={handleStep}
                   />
 
-                  <Fifth
-                    visible={step === 5}
-                    siteUrl={formData.site_url.value}
-                  />
+                  <Fifth visible={step === 5} siteUrl={formData.site_url.value} />
                   {step === 6 && (
                     <div>
                       <h5>{t('warn_title')}</h5>
                       <p>
-                        <Trans
-                          i18nKey="install.warn_desc"
-                          components={{ 1: <code /> }}
-                        />{' '}
+                        <Trans i18nKey="install.warn_desc" components={{ 1: <code /> }} />{' '}
                         <Trans i18nKey="install.install_now">
                           You may try
                           <a href="###" onClick={(e) => handleInstallNow(e)}>
@@ -369,10 +341,7 @@ const Index: FC = () => {
                     <div>
                       <h5>{t('db_failed')}</h5>
                       <p>
-                        <Trans
-                          i18nKey="install.db_failed_desc"
-                          components={{ 1: <code /> }}
-                        />
+                        <Trans i18nKey="install.db_failed_desc" components={{ 1: <code /> }} />
                       </p>
                     </div>
                   )}

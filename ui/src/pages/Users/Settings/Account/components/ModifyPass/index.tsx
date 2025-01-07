@@ -124,9 +124,7 @@ const Index: FC = () => {
       ...formData,
     });
     if (!bol) {
-      const errObj = Object.keys(formData).filter(
-        (key) => formData[key].isInvalid,
-      );
+      const errObj = Object.keys(formData).filter((key) => formData[key].isInvalid);
       const ele = document.getElementById(errObj[0]);
       scrollToElementTop(ele);
     }
@@ -230,9 +228,7 @@ const Index: FC = () => {
                 })
               }
             />
-            <Form.Control.Feedback type="invalid">
-              {formData.pass.errorMsg}
-            </Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">{formData.pass.errorMsg}</Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group controlId="pass2" className="mb-3">
@@ -252,9 +248,7 @@ const Index: FC = () => {
                 })
               }
             />
-            <Form.Control.Feedback type="invalid">
-              {formData.pass2.errorMsg}
-            </Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">{formData.pass2.errorMsg}</Form.Control.Feedback>
           </Form.Group>
           <div>
             <Button type="submit" variant="primary" className="me-2">

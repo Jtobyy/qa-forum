@@ -69,9 +69,7 @@ const Link = () => {
       setLink({ ...link, isInvalid: true });
       return;
     }
-    const newStr = name.value
-      ? `[${name.value}](${link.value})`
-      : `<${link.value}>`;
+    const newStr = name.value ? `[${name.value}](${link.value})` : `<${link.value}>`;
 
     editor.replaceSelection(newStr);
 
@@ -90,11 +88,7 @@ const Link = () => {
   return (
     <>
       <ToolItem {...item} onClick={addLink} />
-      <Modal
-        show={visible}
-        onHide={onHide}
-        onExited={onExited}
-        fullscreen="sm-down">
+      <Modal show={visible} onHide={onHide} onExited={onExited} fullscreen="sm-down">
         <Modal.Header closeButton>
           <h5 className="mb-0">{t('link.add_link')}</h5>
         </Modal.Header>
@@ -112,12 +106,9 @@ const Link = () => {
             </Form.Group>
 
             <Form.Group controlId="editor.internetSiteName" className="mb-3">
-              <Form.Label>{`${t('link.form.fields.name.label')} ${t(
-                'optional',
-                {
-                  keyPrefix: 'form',
-                },
-              )}`}</Form.Label>
+              <Form.Label>{`${t('link.form.fields.name.label')} ${t('optional', {
+                keyPrefix: 'form',
+              })}`}</Form.Label>
               <Form.Control
                 type="text"
                 value={name.value}

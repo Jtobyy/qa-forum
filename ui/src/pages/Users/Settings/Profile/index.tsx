@@ -27,12 +27,7 @@ import type { FormDataType } from '@/common/interface';
 import { UploadImg, Avatar, Icon, ImgViewer } from '@/components';
 import { loggedUserInfoStore, userCenterStore, siteInfoStore } from '@/stores';
 import { useToast } from '@/hooks';
-import {
-  modifyUserInfo,
-  getLoggedUserInfo,
-  getUcSettings,
-  UcSettingAgent,
-} from '@/services';
+import { modifyUserInfo, getLoggedUserInfo, getUcSettings, UcSettingAgent } from '@/services';
 import { handleFormError, scrollToElementTop } from '@/utils';
 
 const Index: React.FC = () => {
@@ -210,9 +205,7 @@ const Index: React.FC = () => {
       ...formData,
     });
     if (!bol) {
-      const errObj = Object.keys(formData).filter(
-        (key) => formData[key].isInvalid,
-      );
+      const errObj = Object.keys(formData).filter((key) => formData[key].isInvalid);
       const ele = document.getElementById(errObj[0]);
       scrollToElementTop(ele);
     }
@@ -298,9 +291,7 @@ const Index: React.FC = () => {
     <>
       <h3 className="mb-4">{t('heading')}</h3>
       {profileAgent?.enabled && profileAgent?.redirect_url ? (
-        <a href={profileAgent.redirect_url}>
-          {t('goto_modify', { keyPrefix: 'settings' })}
-        </a>
+        <a href={profileAgent.redirect_url}>{t('goto_modify', { keyPrefix: 'settings' })}</a>
       ) : null}
       {!ucAgent?.enabled || profileAgent?.enabled === false ? (
         <Form noValidate onSubmit={handleSubmit}>
@@ -435,21 +426,12 @@ const Index: React.FC = () => {
                   </Stack>
                 )}
                 {formData.avatar.type === 'default' && (
-                  <Avatar
-                    size="160px"
-                    avatar=""
-                    alt={formData.display_name.value}
-                  />
+                  <Avatar size="160px" avatar="" alt={formData.display_name.value} />
                 )}
               </div>
             </ImgViewer>
-            <Form.Control
-              isInvalid={formData.avatar.isInvalid}
-              className="d-none"
-            />
-            <Form.Control.Feedback type="invalid">
-              {formData.avatar.errorMsg}
-            </Form.Control.Feedback>
+            <Form.Control isInvalid={formData.avatar.isInvalid} className="d-none" />
+            <Form.Control.Feedback type="invalid">{formData.avatar.errorMsg}</Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group controlId="bio" className="mb-3">
@@ -476,9 +458,7 @@ const Index: React.FC = () => {
                 })
               }
             />
-            <Form.Control.Feedback type="invalid">
-              {formData.bio.errorMsg}
-            </Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">{formData.bio.errorMsg}</Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group controlId="website" className="mb-3">

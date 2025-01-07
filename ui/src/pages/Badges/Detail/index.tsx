@@ -41,8 +41,7 @@ const Index = () => {
 
   const page = Number(urlSearchParams.get('page')) || 1;
   const pageSize = 30;
-  const { data: badgeInfo, isLoading: isHeaderLoading } =
-    useGetBadgeInfo(badge_id);
+  const { data: badgeInfo, isLoading: isHeaderLoading } = useGetBadgeInfo(badge_id);
   const { data: badges, isLoading: isDetailLoading } = useBadgeDetailList({
     badge_id,
     page,
@@ -80,12 +79,7 @@ const Index = () => {
                       ? `/questions/${item.question_id}?commentId=${item.comment_id}`
                       : '';
             return (
-              <Col
-                sm={12}
-                md={6}
-                lg={3}
-                key={item.author_user_info.id}
-                className="mb-4">
+              <Col sm={12} md={6} lg={3} key={item.author_user_info.id} className="mb-4">
                 <FormatTime
                   time={item.created_at}
                   preFix={t('awarded')}
@@ -103,11 +97,7 @@ const Index = () => {
         )}
       </Row>
       <div className="d-flex justify-content-center">
-        <Pagination
-          currentPage={page}
-          pageSize={pageSize}
-          totalSize={badges?.count || 0}
-        />
+        <Pagination currentPage={page} pageSize={pageSize} totalSize={badges?.count || 0} />
       </div>
     </div>
   );

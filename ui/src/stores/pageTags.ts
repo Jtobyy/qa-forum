@@ -51,10 +51,7 @@ const pageTags = create<HelmetStore>((set) => ({
     if (params.title || params.subtitle) {
       o.pageTitle = makePageTitle(params.title, params.subtitle);
     }
-    o.description =
-      params.description ||
-      siteInfoStore.getState().siteInfo?.description ||
-      '';
+    o.description = params.description || siteInfoStore.getState().siteInfo?.description || '';
     o.keywords = params.keywords || '';
 
     set({

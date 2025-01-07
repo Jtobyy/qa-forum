@@ -40,12 +40,7 @@ const initResources = {
 };
 
 const storageLang = Storage.get(LANG_RESOURCE_STORAGE_KEY);
-if (
-  storageLang &&
-  storageLang.resources &&
-  storageLang.lng &&
-  storageLang.lng !== 'en_US'
-) {
+if (storageLang && storageLang.resources && storageLang.lng && storageLang.lng !== 'en_US') {
   initResources[storageLang.lng] = {
     translation: storageLang.resources,
   };

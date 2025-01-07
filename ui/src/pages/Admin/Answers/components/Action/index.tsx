@@ -73,10 +73,7 @@ const AnswerActions = ({ itemData, curFilter, refreshList }) => {
   return (
     <Dropdown>
       <Dropdown.Toggle variant="link" className="no-toggle p-0">
-        <Icon
-          name="three-dots-vertical"
-          title={t('action', { keyPrefix: 'admin.answers' })}
-        />
+        <Icon name="three-dots-vertical" title={t('action', { keyPrefix: 'admin.answers' })} />
       </Dropdown.Toggle>
       <Dropdown.Menu align="end">
         {curFilter === 'deleted' ? (

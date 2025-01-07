@@ -30,12 +30,7 @@ interface Props {
   sort: string;
   visible: boolean;
 }
-const Index: FC<Props> = ({
-  tabName = 'answers',
-  visible,
-  sort,
-  count = 0,
-}) => {
+const Index: FC<Props> = ({ tabName = 'answers', visible, sort, count = 0 }) => {
   const { t } = useTranslation('translation', { keyPrefix: 'personal' });
 
   if (!visible) {
@@ -48,11 +43,7 @@ const Index: FC<Props> = ({
         {count} {t(tabName)}
       </h5>
       {(tabName === 'answers' || tabName === 'questions') && (
-        <QueryGroup
-          data={sortBtns}
-          currentSort={sort}
-          i18nKeyPrefix="personal"
-        />
+        <QueryGroup data={sortBtns} currentSort={sort} i18nKeyPrefix="personal" />
       )}
     </div>
   );

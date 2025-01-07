@@ -50,10 +50,7 @@ const createEditorUtils = (editor: Editor) => {
   };
 
   editor.getSelection = () => {
-    return editor.state.sliceDoc(
-      editor.state.selection.main.from,
-      editor.state.selection.main.to,
-    );
+    return editor.state.sliceDoc(editor.state.selection.main.from, editor.state.selection.main.to);
   };
 
   editor.replaceSelection = (value: string) => {
@@ -65,9 +62,7 @@ const createEditorUtils = (editor: Editor) => {
           insert: value,
         },
       ],
-      selection: EditorSelection.cursor(
-        editor.state.selection.main.from + value.length,
-      ),
+      selection: EditorSelection.cursor(editor.state.selection.main.from + value.length),
     });
   };
 
@@ -169,17 +164,11 @@ const createEditorUtils = (editor: Editor) => {
           insert: text,
         },
       ],
-      selection: EditorSelection.range(
-        range.from + before.length,
-        range.to + before.length,
-      ),
+      selection: EditorSelection.range(range.from + before.length, range.to + before.length),
     });
   };
 
-  editor.replaceLines = (
-    replace: Parameters<Array<string>['map']>[0],
-    symbolLen = 0,
-  ) => {
+  editor.replaceLines = (replace: Parameters<Array<string>['map']>[0], symbolLen = 0) => {
     const range = editor.state.selection.ranges[0];
     const line = editor.state.doc.lineAt(range.from).number;
     const { from, to } = editor.state.doc.line(line);
@@ -213,9 +202,7 @@ const createEditorUtils = (editor: Editor) => {
     let selection = EditorSelection.single(to, to + content.length);
     if (from === to) {
       insert = `${content}\n`;
-      selection = EditorSelection.create([
-        EditorSelection.cursor(to + content.length),
-      ]);
+      selection = EditorSelection.create([EditorSelection.cursor(to + content.length)]);
     }
 
     editor.dispatch({
@@ -229,13 +216,8 @@ const createEditorUtils = (editor: Editor) => {
     });
   };
 
-  editor.replaceRange = (
-    value: string,
-    selectionStart: Position,
-    selectionEnd: Position,
-  ) => {
-    const from =
-      editor.state.doc.line(selectionStart.line).from + selectionStart.ch;
+  editor.replaceRange = (value: string, selectionStart: Position, selectionEnd: Position) => {
+    const from = editor.state.doc.line(selectionStart.line).from + selectionStart.ch;
     const to = editor.state.doc.line(selectionEnd.line).from + selectionEnd.ch;
     editor.dispatch({
       changes: [

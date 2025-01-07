@@ -67,20 +67,14 @@ const list = [
 const Index: FC<Props> = ({ slug, tabName = 'overview', isSelf }) => {
   const { t } = useTranslation('translation', { keyPrefix: 'personal' });
   return (
-    <Nav
-      className="pt-2 mb-4 flex-nowrap"
-      variant="pills"
-      style={{ overflow: 'auto' }}>
+    <Nav className="pt-2 mb-4 flex-nowrap" variant="pills" style={{ overflow: 'auto' }}>
       {list.map((item) => {
         if (item.role && !isSelf) {
           return null;
         }
         if (item.path) {
           return (
-            <NavLink
-              to={`/users/${slug}${item.path}`}
-              key={item.name}
-              className="nav-link">
+            <NavLink to={`/users/${slug}${item.path}`} key={item.name} className="nav-link">
               {t(item.name)}
             </NavLink>
           );
@@ -90,9 +84,7 @@ const Index: FC<Props> = ({ slug, tabName = 'overview', isSelf }) => {
             key={item.name}
             to={`/users/${slug}`}
             className={({ isActive }) =>
-              isActive && tabName === 'overview'
-                ? 'nav-link active'
-                : 'nav-link'
+              isActive && tabName === 'overview' ? 'nav-link active' : 'nav-link'
             }>
             {t(item.name)}
           </NavLink>

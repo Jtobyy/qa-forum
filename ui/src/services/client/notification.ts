@@ -29,10 +29,7 @@ export const useQueryNotifications = (params) => {
     skipNulls: true,
   })}`;
 
-  const { data, error, mutate } = useSWR<Type.ListResult>(
-    apiUrl,
-    request.instance.get,
-  );
+  const { data, error, mutate } = useSWR<Type.ListResult>(apiUrl, request.instance.get);
 
   return {
     data,

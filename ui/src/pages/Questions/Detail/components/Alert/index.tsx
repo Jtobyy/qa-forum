@@ -46,14 +46,8 @@ const Index: FC<Props> = ({ data }) => {
             {t('question_detail.closed_in')}{' '}
             <time
               dateTime={dayjs.unix(data.time).tz().toISOString()}
-              title={dayjs
-                .unix(data.time)
-                .tz()
-                .format(t('dates.long_date_with_time'))}>
-              {dayjs
-                .unix(data.time)
-                .tz()
-                .format(t('dates.long_date_with_year'))}
+              title={dayjs.unix(data.time).tz().format(t('dates.long_date_with_time'))}>
+              {dayjs.unix(data.time).tz().format(t('dates.long_date_with_year'))}
             </time>
             .
           </div>

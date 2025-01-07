@@ -24,14 +24,7 @@ import { useTranslation } from 'react-i18next';
 
 import classNames from 'classnames';
 
-import {
-  FormatTime,
-  Icon,
-  Pagination,
-  BaseUserCard,
-  Empty,
-  QueryGroup,
-} from '@/components';
+import { FormatTime, Icon, Pagination, BaseUserCard, Empty, QueryGroup } from '@/components';
 import { ADMIN_LIST_STATUS } from '@/common/constants';
 import * as Type from '@/common/interface';
 import { useQuestionSearch } from '@/services';
@@ -118,27 +111,19 @@ const Questions: FC = () => {
                     {li.title}
                   </Link>
                   {li.accepted_answer_id > 0 && (
-                    <Icon
-                      name="check-circle-fill"
-                      className="ms-2 text-success"
-                    />
+                    <Icon name="check-circle-fill" className="ms-2 text-success" />
                   )}
                 </td>
                 <td>{li.vote_count}</td>
                 <td>
-                  <Link
-                    to={`/admin/answers?questionId=${li.id}`}
-                    rel="noreferrer">
+                  <Link to={`/admin/answers?questionId=${li.id}`} rel="noreferrer">
                     {li.answer_count}
                   </Link>
                 </td>
                 <td>
                   <Stack>
                     <BaseUserCard data={li.user_info} nameMaxWidth="130px" />
-                    <FormatTime
-                      className="small text-secondary"
-                      time={li.create_time}
-                    />
+                    <FormatTime className="small text-secondary" time={li.create_time} />
                   </Stack>
                 </td>
                 <td>
@@ -154,11 +139,7 @@ const Questions: FC = () => {
                     })}
                   </span>
                   {li.show === 2 && (
-                    <span
-                      className={classNames(
-                        'badge',
-                        ADMIN_LIST_STATUS.unlisted.variant,
-                      )}>
+                    <span className={classNames('badge', ADMIN_LIST_STATUS.unlisted.variant)}>
                       {t(ADMIN_LIST_STATUS.unlisted.name, {
                         keyPrefix: 'btns',
                       })}
@@ -182,11 +163,7 @@ const Questions: FC = () => {
       </Table>
       {Number(count) <= 0 && !isLoading && <Empty />}
       <div className="mt-4 mb-2 d-flex justify-content-center">
-        <Pagination
-          currentPage={curPage}
-          totalSize={count}
-          pageSize={PAGE_SIZE}
-        />
+        <Pagination currentPage={curPage} totalSize={count} pageSize={PAGE_SIZE} />
       </div>
     </>
   );

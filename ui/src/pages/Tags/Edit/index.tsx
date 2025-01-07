@@ -93,11 +93,7 @@ const Index = () => {
 
   useEffect(() => {
     const { displayName, slugName, description, editSummary } = formData;
-    const {
-      displayName: display_name,
-      slugName: slug_name,
-      description: original_text,
-    } = immData;
+    const { displayName: display_name, slugName: slug_name, description: original_text } = immData;
 
     if (
       display_name.value !== displayName.value ||
@@ -253,9 +249,7 @@ const Index = () => {
         <Col className="page-main flex-auto">
           <Form noValidate onSubmit={handleSubmit}>
             <Form.Group controlId="revision" className="mb-3">
-              <Form.Label>
-                {t('form.fields.revision.label', { keyPrefix: 'tag_modal' })}
-              </Form.Label>
+              <Form.Label>{t('form.fields.revision.label', { keyPrefix: 'tag_modal' })}</Form.Label>
               <Form.Select onChange={handleSelectedRevision}>
                 {revisions.map(({ create_at, reason, user_info }, index) => {
                   const date = dayjs(create_at * 1000)
@@ -310,16 +304,11 @@ const Index = () => {
             </Form.Group>
 
             <Form.Group controlId="description" className="mt-4">
-              <Form.Label>
-                {t('form.fields.desc.label', { keyPrefix: 'tag_modal' })}
-              </Form.Label>
+              <Form.Label>{t('form.fields.desc.label', { keyPrefix: 'tag_modal' })}</Form.Label>
               <Editor
                 value={formData.description.value}
                 onChange={handleDescriptionChange}
-                className={classNames(
-                  'form-control p-0',
-                  focusType === 'description' && 'focus',
-                )}
+                className={classNames('form-control p-0', focusType === 'description' && 'focus')}
                 onFocus={() => {
                   setForceType('description');
                 }}
@@ -369,9 +358,7 @@ const Index = () => {
         </Col>
         <Col className="page-right-side mt-4 mt-xl-0">
           <Card>
-            <Card.Header>
-              {t('title', { keyPrefix: 'how_to_format' })}
-            </Card.Header>
+            <Card.Header>{t('title', { keyPrefix: 'how_to_format' })}</Card.Header>
             <Card.Body
               className="fmt small"
               dangerouslySetInnerHTML={{

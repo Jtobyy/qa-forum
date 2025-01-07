@@ -41,9 +41,7 @@ const Index = () => {
   });
   return (
     <Container>
-      {USER_AGENT_NAMES.WeCom.toLowerCase() === agentName.toLowerCase() ? (
-        <WeCom />
-      ) : null}
+      {USER_AGENT_NAMES.WeCom.toLowerCase() === agentName.toLowerCase() ? <WeCom /> : null}
     </Container>
   );
 };

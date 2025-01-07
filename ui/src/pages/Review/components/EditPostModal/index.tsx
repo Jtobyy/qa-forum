@@ -78,13 +78,7 @@ const initFormData = {
   },
 };
 
-const Index: FC<Props> = ({
-  originalData,
-  visible = false,
-  objectType,
-  handleClose,
-  callback,
-}) => {
+const Index: FC<Props> = ({ originalData, visible = false, objectType, handleClose, callback }) => {
   const { t } = useTranslation('translation', { keyPrefix: 'ask' });
   const [formData, setFormData] = useState<FormDataItem>(initFormData);
   const [focusEditor, setFocusEditor] = useState(false);
@@ -161,9 +155,7 @@ const Index: FC<Props> = ({
     });
 
     if (!bol) {
-      const errObj = Object.keys(formData).filter(
-        (key) => formData[key].isInvalid,
-      );
+      const errObj = Object.keys(formData).filter((key) => formData[key].isInvalid);
       const ele = document.getElementById(errObj[0]);
       scrollToElementTop(ele);
     }
@@ -274,9 +266,7 @@ const Index: FC<Props> = ({
       className="w-100"
       dialogClassName="edit-post-modal">
       <Modal.Header closeButton>
-        <Modal.Title>
-          {t('edit_post', { keyPrefix: 'page_review' })}
-        </Modal.Title>
+        <Modal.Title>{t('edit_post', { keyPrefix: 'page_review' })}</Modal.Title>
       </Modal.Header>
       <Form noValidate onSubmit={handleSubmit}>
         <Modal.Body>
@@ -326,10 +316,7 @@ const Index: FC<Props> = ({
                     content: { value, errorMsg: '', isInvalid: false },
                   });
                 }}
-                className={classNames(
-                  'form-control p-0',
-                  focusEditor ? 'focus' : '',
-                )}
+                className={classNames('form-control p-0', focusEditor ? 'focus' : '')}
                 onFocus={() => {
                   setFocusEditor(true);
                 }}
@@ -368,9 +355,7 @@ const Index: FC<Props> = ({
                   'is-invalid': formData.content.isInvalid,
                 })}>
                 <Form.Label>Comment</Form.Label>
-                <Mentions
-                  pageUsers={pageUsers.getUsers()}
-                  onSelected={handleSelected}>
+                <Mentions pageUsers={pageUsers.getUsers()} onSelected={handleSelected}>
                   <TextArea
                     size="sm"
                     rows={4}

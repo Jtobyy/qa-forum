@@ -43,11 +43,7 @@ const ActivateScriptNodes = (el, part) => {
         break;
       }
     }
-    if (
-      startMarkNode &&
-      node.nodeType === 1 &&
-      node.nodeName.toLowerCase() === 'script'
-    ) {
+    if (startMarkNode && node.nodeType === 1 && node.nodeName.toLowerCase() === 'script') {
       scriptList.push(node);
     }
   }
@@ -80,10 +76,7 @@ const renderCustomArea = (el, part, pos: pos, content: string = '') => {
   }
 
   if (startMarkNode && endMarkNode) {
-    while (
-      startMarkNode.nextSibling &&
-      startMarkNode.nextSibling !== endMarkNode
-    ) {
+    while (startMarkNode.nextSibling && startMarkNode.nextSibling !== endMarkNode) {
       el.removeChild(startMarkNode.nextSibling);
     }
   }
@@ -114,9 +107,7 @@ const handleCustomFooter = (content) => {
 };
 
 const Index: FC = () => {
-  const { custom_head, custom_header, custom_footer } = customizeStore(
-    (state) => state,
-  );
+  const { custom_head, custom_header, custom_footer } = customizeStore((state) => state);
   useEffect(() => {
     const isSeo = document.querySelector('meta[name="go-template"]');
     if (!isSeo) {

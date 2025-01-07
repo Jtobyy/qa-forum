@@ -47,11 +47,10 @@ const Index: FC = () => {
   const curPath = pathMatch?.params.path || 'dashboard';
 
   const interfaceLang = interfaceStore((_) => _.interface.language);
-  const { data: configurablePlugins, mutate: updateConfigurablePlugins } =
-    useQueryPlugins({
-      status: 'active',
-      have_config: true,
-    });
+  const { data: configurablePlugins, mutate: updateConfigurablePlugins } = useQueryPlugins({
+    status: 'active',
+    have_config: true,
+  });
 
   const menus = cloneDeep(ADMIN_NAV_MENUS);
   if (configurablePlugins && configurablePlugins.length > 0) {

@@ -37,9 +37,7 @@ const InputGroupBtn = ({
   uiOpt,
 }: {
   formKitWithContext: FormKit;
-  uiOpt:
-    | InputGroupOptions['prefixBtnOptions']
-    | InputGroupOptions['suffixBtnOptions'];
+  uiOpt: InputGroupOptions['prefixBtnOptions'] | InputGroupOptions['suffixBtnOptions'];
 }) => {
   return (
     <Button
@@ -70,17 +68,11 @@ const Index: FC<Props> = ({
     <InputGroup>
       {prefixText && <InputGroup.Text>{prefixText}</InputGroup.Text>}
       {uiOpt && 'prefixBtnOptions' in uiOpt && (
-        <InputGroupBtn
-          uiOpt={uiOpt.prefixBtnOptions}
-          formKitWithContext={formKitWithContext}
-        />
+        <InputGroupBtn uiOpt={uiOpt.prefixBtnOptions} formKitWithContext={formKitWithContext} />
       )}
       {children}
       {uiOpt && 'suffixBtnOptions' in uiOpt && (
-        <InputGroupBtn
-          uiOpt={uiOpt.suffixBtnOptions}
-          formKitWithContext={formKitWithContext}
-        />
+        <InputGroupBtn uiOpt={uiOpt.suffixBtnOptions} formKitWithContext={formKitWithContext} />
       )}
       {suffixText ? <InputGroup.Text>{suffixText}</InputGroup.Text> : null}
     </InputGroup>

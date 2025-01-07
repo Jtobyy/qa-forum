@@ -31,11 +31,7 @@ import { useCaptchaPlugin, useRenderHtmlPlugin } from '@/utils/pluginKit';
 import { pathFactory } from '@/router/pathFactory';
 import { Editor, EditorRef, Icon, htmlRender } from '@/components';
 import type * as Type from '@/common/interface';
-import {
-  useQueryAnswerInfo,
-  modifyAnswer,
-  useQueryRevisions,
-} from '@/services';
+import { useQueryAnswerInfo, modifyAnswer, useQueryRevisions } from '@/services';
 
 import './index.scss';
 
@@ -269,10 +265,7 @@ const Index = () => {
               <Editor
                 value={formData.content.value}
                 onChange={handleAnswerChange}
-                className={classNames(
-                  'form-control p-0',
-                  focusType === 'answer' && 'focus',
-                )}
+                className={classNames('form-control p-0', focusType === 'answer' && 'focus')}
                 onFocus={() => {
                   setForceType('answer');
                 }}
@@ -319,9 +312,7 @@ const Index = () => {
         </Col>
         <Col className="page-right-side mt-4 mt-xl-0">
           <Card>
-            <Card.Header>
-              {t('title', { keyPrefix: 'how_to_format' })}
-            </Card.Header>
+            <Card.Header>{t('title', { keyPrefix: 'how_to_format' })}</Card.Header>
             <Card.Body
               className="fmt small"
               dangerouslySetInnerHTML={{

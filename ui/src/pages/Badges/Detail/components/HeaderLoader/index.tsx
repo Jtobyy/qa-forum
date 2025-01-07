@@ -23,10 +23,7 @@ const Index = () => {
   return (
     <Card className="mb-4 placeholder-glow">
       <Card.Body className="d-block d-sm-flex">
-        <div
-          className="placeholder me-3 flex-shrink-0"
-          style={{ width: '96px', height: '96px' }}
-        />
+        <div className="placeholder me-3 flex-shrink-0" style={{ width: '96px', height: '96px' }} />
 
         <div className="w-100 mt-3 mt-sm-0">
           <div className="placeholder h5 w-25" />

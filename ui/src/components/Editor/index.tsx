@@ -70,15 +70,7 @@ interface Props extends EventRef {
 }
 
 const MDEditor: ForwardRefRenderFunction<EditorRef, Props> = (
-  {
-    editorPlaceholder = '',
-    className = '',
-    value,
-    onChange,
-    onFocus,
-    onBlur,
-    autoFocus = false,
-  },
+  { editorPlaceholder = '', className = '', value, onChange, onFocus, onBlur, autoFocus = false },
   ref,
 ) => {
   const editorRef = useRef<HTMLDivElement>(null);
@@ -144,10 +136,7 @@ const MDEditor: ForwardRefRenderFunction<EditorRef, Props> = (
         </EditorContext.Provider>
 
         <div className="content-wrap">
-          <div
-            className="md-editor position-relative w-100 h-100"
-            ref={editorRef}
-          />
+          <div className="md-editor position-relative w-100 h-100" ref={editorRef} />
         </div>
       </div>
       <Viewer ref={previewRef} value={value} />

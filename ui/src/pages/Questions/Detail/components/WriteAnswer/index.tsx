@@ -246,10 +246,7 @@ const Index: FC<Props> = ({ visible = false, data, callback }) => {
           <Form.Label>
             <h5>{t('title')}</h5>
           </Form.Label>
-          <Form.Control
-            isInvalid={formData.content.isInvalid}
-            className="d-none"
-          />
+          <Form.Control isInvalid={formData.content.isInvalid} className="d-none" />
           {!showEditor && !data.answered && (
             <div className="d-flex">
               <TextArea
@@ -318,17 +315,13 @@ const Index: FC<Props> = ({ visible = false, data, callback }) => {
             </>
           )}
 
-          <Form.Control.Feedback type="invalid">
-            {formData.content.errorMsg}
-          </Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">{formData.content.errorMsg}</Form.Control.Feedback>
         </Form.Group>
       )}
 
       {data.answered && !showEditor ? (
         // the 0th answer is the oldest one
-        <Link
-          to={`/posts/${data.qid}/${data.first_answer_id}/edit`}
-          className="btn btn-primary">
+        <Link to={`/posts/${data.qid}/${data.first_answer_id}/edit`} className="btn btn-primary">
           {t('edit_answer')}
         </Link>
       ) : (

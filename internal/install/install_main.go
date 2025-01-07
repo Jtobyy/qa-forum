@@ -47,7 +47,7 @@ func Run(configPath string) {
 
 	installServer := NewInstallHTTPServer()
 	if len(port) == 0 {
-		port = "80"
+		port = "8080"
 	}
 	fmt.Printf("[SUCCESS] answer installation service will run at: http://localhost:%s/install/ \n", port)
 	if err = installServer.Run(":" + port); err != nil {

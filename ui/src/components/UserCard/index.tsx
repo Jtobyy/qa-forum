@@ -34,14 +34,7 @@ interface Props {
   className?: string;
 }
 
-const Index: FC<Props> = ({
-  data,
-  time,
-  preFix,
-  isLogged,
-  timelinePath,
-  className = '',
-}) => {
+const Index: FC<Props> = ({ data, time, preFix, isLogged, timelinePath, className = '' }) => {
   return (
     <div className={classnames('d-flex', className)}>
       {data?.status !== 'deleted' ? (
@@ -100,11 +93,7 @@ const Index: FC<Props> = ({
         {time &&
           (isLogged ? (
             <Link to={timelinePath}>
-              <FormatTime
-                time={time}
-                preFix={preFix}
-                className="link-secondary"
-              />
+              <FormatTime time={time} preFix={preFix} className="link-secondary" />
             </Link>
           ) : (
             <FormatTime time={time} preFix={preFix} />

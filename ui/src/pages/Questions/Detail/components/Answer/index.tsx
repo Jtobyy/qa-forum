@@ -141,11 +141,7 @@ const Index: FC<Props> = ({
             className="ms-3"
             onClick={acceptAnswer}>
             <Icon name="check-circle-fill" className="me-2" />
-            <span>
-              {data.accepted === 2
-                ? t('answers.btn_accepted')
-                : t('answers.btn_accept')}
-            </span>
+            <span>{data.accepted === 2 ? t('answers.btn_accepted') : t('answers.btn_accept')}</span>
           </Button>
         )}
       </div>
@@ -163,8 +159,7 @@ const Index: FC<Props> = ({
           />
         </div>
         <div className="mb-3 mb-md-0 me-4" style={{ minWidth: '196px' }}>
-          {data.update_user_info &&
-          data.update_user_info?.username !== data.user_info?.username ? (
+          {data.update_user_info && data.update_user_info?.username !== data.user_info?.username ? (
             <UserCard
               data={data?.update_user_info}
               time={Number(data.update_time)}
@@ -199,11 +194,7 @@ const Index: FC<Props> = ({
         </div>
       </div>
 
-      <Comment
-        objectId={data.id}
-        mode="answer"
-        commentId={searchParams.get('commentId')}
-      />
+      <Comment objectId={data.id} mode="answer" commentId={searchParams.get('commentId')} />
     </div>
   );
 };

@@ -90,35 +90,21 @@ const Index: FC<Props> = ({ data, initPage, hasAnswer, isLogged }) => {
     <div>
       <h1 className="h3 mb-3 text-wrap text-break">
         {data?.pin === 2 && (
-          <Icon
-            name="pin-fill"
-            className="me-1"
-            title={t('pinned', { keyPrefix: 'btns' })}
-          />
+          <Icon name="pin-fill" className="me-1" title={t('pinned', { keyPrefix: 'btns' })} />
         )}
         <Link
           className="link-dark"
           reloadDocument
           to={pathFactory.questionLanding(data.id, data.url_title)}>
           {data.title}
-          {data.status === 2
-            ? ` [${t('closed', { keyPrefix: 'question' })}]`
-            : ''}
+          {data.status === 2 ? ` [${t('closed', { keyPrefix: 'question' })}]` : ''}
         </Link>
       </h1>
 
       <div className="d-flex flex-wrap align-items-center small mb-3 text-secondary">
-        <FormatTime
-          time={data.create_time}
-          preFix={t('Asked')}
-          className="me-3"
-        />
+        <FormatTime time={data.create_time} preFix={t('Asked')} className="me-3" />
 
-        <FormatTime
-          time={data.update_time}
-          preFix={t('update')}
-          className="me-3"
-        />
+        <FormatTime time={data.update_time} preFix={t('update')} className="me-3" />
         {data?.view_count > 0 && (
           <div className="me-3">
             {t('Views')} {formatCount(data.view_count)}
@@ -176,8 +162,7 @@ const Index: FC<Props> = ({ data, initPage, hasAnswer, isLogged }) => {
           />
         </div>
         <div style={{ minWidth: '196px' }} className="mb-3 me-4 mb-md-0">
-          {data.update_user_info &&
-          data.update_user_info?.username !== data.user_info?.username ? (
+          {data.update_user_info && data.update_user_info?.username !== data.user_info?.username ? (
             <UserCard
               data={data?.update_user_info}
               time={data.edit_time}
@@ -194,11 +179,7 @@ const Index: FC<Props> = ({ data, initPage, hasAnswer, isLogged }) => {
               />
             </Link>
           ) : (
-            <FormatTime
-              time={data.edit_time}
-              preFix={t('edit')}
-              className="text-secondary small"
-            />
+            <FormatTime time={data.edit_time} preFix={t('edit')} className="text-secondary small" />
           )}
         </div>
         <div style={{ minWidth: '196px' }}>
@@ -212,11 +193,7 @@ const Index: FC<Props> = ({ data, initPage, hasAnswer, isLogged }) => {
         </div>
       </div>
 
-      <Comment
-        objectId={data?.id}
-        mode="question"
-        commentId={searchParams.get('commentId')}
-      />
+      <Comment objectId={data?.id} mode="question" commentId={searchParams.get('commentId')} />
     </div>
   );
 };

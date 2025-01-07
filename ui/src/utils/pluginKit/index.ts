@@ -105,9 +105,7 @@ class Plugins {
   activatePlugins(activatedPlugins: Type.ActivatedPlugin[]) {
     this.plugins.forEach((plugin: any) => {
       const { slug_name } = plugin.info;
-      const activatedPlugin: any = activatedPlugins?.find(
-        (p) => p.slug_name === slug_name,
-      );
+      const activatedPlugin: any = activatedPlugins?.find((p) => p.slug_name === slug_name);
       if (activatedPlugin) {
         plugin.activated = activatedPlugin?.enabled;
       }
@@ -138,9 +136,7 @@ class Plugins {
 const plugins = new Plugins();
 
 const getRoutePlugins = () => {
-  return plugins
-    .getPlugins()
-    .filter((plugin) => plugin.info.type === PluginType.Route);
+  return plugins.getPlugins().filter((plugin) => plugin.info.type === PluginType.Route);
 };
 
 const defaultProps = () => {
@@ -159,9 +155,7 @@ const validateRoutePlugin = async (slugName) => {
     const pluginsStatus = await getPluginsStatus();
     registeredPlugin = pluginsStatus.find((p) => p.slug_name === slugName);
   } else {
-    registeredPlugin = plugins.registeredPlugins.find(
-      (p) => p.slug_name === slugName,
-    );
+    registeredPlugin = plugins.registeredPlugins.find((p) => p.slug_name === slugName);
   }
 
   return Boolean(registeredPlugin?.enabled);
@@ -212,17 +206,14 @@ const mergeRoutePlugins = (routes) => {
  * Only used to enhance the capabilities of the markdown editor
  * Add RefObject type to solve the problem of dom being null in hooks
  */
-const useRenderHtmlPlugin = (
-  element: HTMLElement | RefObject<HTMLElement> | null,
-) => {
+const useRenderHtmlPlugin = (element: HTMLElement | RefObject<HTMLElement> | null) => {
   plugins
     .getPlugins()
     .filter((plugin) => {
       return (
         plugin.activated &&
         plugin.hooks?.useRender &&
-        (plugin.info.type === PluginType.Editor ||
-          plugin.info.type === PluginType.Render)
+        (plugin.info.type === PluginType.Editor || plugin.info.type === PluginType.Render)
       );
     })
     .forEach((plugin) => {
@@ -233,17 +224,11 @@ const useRenderHtmlPlugin = (
 };
 
 // Only for render type plugins
-const useRenderPlugin = (
-  element: HTMLElement | RefObject<HTMLElement> | null,
-) => {
+const useRenderPlugin = (element: HTMLElement | RefObject<HTMLElement> | null) => {
   return plugins
     .getPlugins()
     .filter((plugin) => {
-      return (
-        plugin.activated &&
-        plugin.hooks?.useRender &&
-        plugin.info.type === PluginType.Render
-      );
+      return plugin.activated && plugin.hooks?.useRender && plugin.info.type === PluginType.Render;
     })
     .forEach((plugin) => {
       plugin.hooks?.useRender?.forEach((hook) => {
@@ -256,9 +241,7 @@ const useRenderPlugin = (
 const useCaptchaPlugin = (key: Type.CaptchaKey) => {
   const captcha = plugins
     .getPlugins()
-    .filter(
-      (plugin) => plugin.info.type === PluginType.Captcha && plugin.activated,
-    );
+    .filter((plugin) => plugin.info.type === PluginType.Captcha && plugin.activated);
   const pluginHooks = plugins.getOnePluginHooks(captcha[0]?.info.slug_name);
   return pluginHooks?.useCaptcha?.({
     captchaKey: key,
@@ -268,11 +251,5 @@ const useCaptchaPlugin = (key: Type.CaptchaKey) => {
 
 export type { Plugin, PluginInfo };
 
-export {
-  useRenderHtmlPlugin,
-  mergeRoutePlugins,
-  useCaptchaPlugin,
-  useRenderPlugin,
-  PluginType,
-};
+export { useRenderHtmlPlugin, mergeRoutePlugins, useCaptchaPlugin, useRenderPlugin, PluginType };
 export default plugins;

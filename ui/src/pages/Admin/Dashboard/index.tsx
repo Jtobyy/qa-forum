@@ -23,12 +23,7 @@ import { useTranslation } from 'react-i18next';
 
 import { useDashBoard } from '@/services';
 
-import {
-  AnswerLinks,
-  HealthStatus,
-  Statistics,
-  SystemInfo,
-} from './components';
+import { Statistics } from './components';
 
 const Dashboard: FC = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'admin.dashboard' });
@@ -45,15 +40,6 @@ const Dashboard: FC = () => {
       <Row>
         <Col lg={6}>
           <Statistics data={data.info} />
-        </Col>
-        <Col lg={6}>
-          <HealthStatus data={data.info} />
-        </Col>
-        <Col lg={6}>
-          <SystemInfo data={data.info} />
-        </Col>
-        <Col lg={6}>
-          <AnswerLinks />
         </Col>
       </Row>
     </>

@@ -25,12 +25,7 @@ import { IEditorContext } from './types';
 
 interface IProps {
   keyMap?: string[];
-  onClick?: ({
-    editor,
-    wrapText,
-    replaceLines,
-    appendBlock,
-  }: IEditorContext) => void;
+  onClick?: ({ editor, wrapText, replaceLines, appendBlock }: IEditorContext) => void;
   tip?: string;
   className?: string;
   as?: any;
@@ -38,12 +33,7 @@ interface IProps {
   label?: string;
   disable?: boolean;
   isShow?: boolean;
-  onBlur?: ({
-    editor,
-    wrapText,
-    replaceLines,
-    appendBlock,
-  }: IEditorContext) => void;
+  onBlur?: ({ editor, wrapText, replaceLines, appendBlock }: IEditorContext) => void;
 }
 const ToolItem: FC<IProps> = (props) => {
   const editor = useContext(EditorContext);
@@ -87,9 +77,7 @@ const ToolItem: FC<IProps> = (props) => {
     <Button
       variant="link"
       title={tip}
-      className={`p-0 b-0 btn-no-border toolbar text-body ${
-        disable ? 'disabled' : ''
-      }`}
+      className={`p-0 b-0 btn-no-border toolbar text-body ${disable ? 'disabled' : ''}`}
       disabled={disable}
       tabIndex={-1}
       onClick={(e) => {

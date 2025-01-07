@@ -61,9 +61,7 @@ const Index = ({ userName, onSendReply, onCancel, mode }) => {
             className={classNames('custom-form-control', {
               'is-invalid': validationErrorMsg,
             })}>
-            <Mentions
-              pageUsers={pageUsers.getUsers()}
-              onSelected={handleSelected}>
+            <Mentions pageUsers={pageUsers.getUsers()} onSelected={handleSelected}>
               <TextArea
                 size="sm"
                 value={value}
@@ -73,15 +71,10 @@ const Index = ({ userName, onSendReply, onCancel, mode }) => {
             </Mentions>
             <div className="form-text">{t(`tip_${mode}`)}</div>
           </div>
-          <Form.Control.Feedback type="invalid">
-            {validationErrorMsg}
-          </Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">{validationErrorMsg}</Form.Control.Feedback>
         </div>
         <div className="d-flex flex-row flex-md-column ms-0 ms-md-2 mt-2 mt-md-0">
-          <Button
-            size="sm"
-            className="text-nowrap"
-            onClick={() => handleSendReply()}>
+          <Button size="sm" className="text-nowrap" onClick={() => handleSendReply()}>
             {t('btn_add_comment')}
           </Button>
           <Button

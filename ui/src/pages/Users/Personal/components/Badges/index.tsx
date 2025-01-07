@@ -36,11 +36,7 @@ const Index: FC<IProps> = ({ data, visible, username }) => {
     <div className="d-flex flex-wrap" style={{ margin: '-12px' }}>
       {data.map((item) => {
         return (
-          <CardBadge
-            data={item}
-            urlSearchParams={`username=${username}`}
-            badgePillType="count"
-          />
+          <CardBadge data={item} urlSearchParams={`username=${username}`} badgePillType="count" />
         );
       })}
     </div>

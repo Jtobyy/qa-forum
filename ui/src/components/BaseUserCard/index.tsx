@@ -47,9 +47,7 @@ const Index: FC<Props> = ({
   return (
     <div className={`d-flex align-items-center  text-secondary ${className}`}>
       {data?.status !== 'deleted' ? (
-        <Link
-          to={`/users/${data?.username}`}
-          className="d-flex align-items-center">
+        <Link to={`/users/${data?.username}`} className="d-flex align-items-center">
           {showAvatar && (
             <Avatar
               avatar={data?.avatar}
@@ -59,9 +57,7 @@ const Index: FC<Props> = ({
               alt={data?.display_name}
             />
           )}
-          <span
-            className="me-1 name-ellipsis"
-            style={{ maxWidth: nameMaxWidth }}>
+          <span className="me-1 name-ellipsis" style={{ maxWidth: nameMaxWidth }}>
             {data?.display_name}
           </span>
         </Link>

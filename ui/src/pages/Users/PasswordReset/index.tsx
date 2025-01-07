@@ -102,9 +102,7 @@ const Index: React.FC = () => {
       ...formData,
     });
     if (!bol) {
-      const errObj = Object.keys(formData).filter(
-        (key) => formData[key].isInvalid,
-      );
+      const errObj = Object.keys(formData).filter((key) => formData[key].isInvalid);
       const ele = document.getElementById(errObj[0]);
       scrollToElementTop(ele);
     }
@@ -166,9 +164,7 @@ const Index: React.FC = () => {
                   });
                 }}
               />
-              <Form.Control.Feedback type="invalid">
-                {formData.pass.errorMsg}
-              </Form.Control.Feedback>
+              <Form.Control.Feedback type="invalid">{formData.pass.errorMsg}</Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group controlId="passSecond" className="mb-3">

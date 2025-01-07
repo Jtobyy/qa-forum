@@ -26,13 +26,7 @@ import ReactDOM from 'react-dom/client';
 import { useToast } from '@/hooks';
 import { useCaptchaPlugin } from '@/utils/pluginKit';
 import type * as Type from '@/common/interface';
-import {
-  reportList,
-  postReport,
-  closeQuestion,
-  putReport,
-  putFlagReviewAction,
-} from '@/services';
+import { reportList, postReport, closeQuestion, putReport, putFlagReviewAction } from '@/services';
 
 interface Params {
   isBackend?: boolean;
@@ -81,9 +75,7 @@ const useReportModal = (callback?: () => void) => {
     }).then((res) => {
       setList(res);
       if (otherParams.reportType) {
-        const findType = res.find(
-          (v) => v.reason_type === otherParams.reportType,
-        );
+        const findType = res.find((v) => v.reason_type === otherParams.reportType);
         if (findType) {
           setReportType({
             type: findType.reason_type,
@@ -108,8 +100,7 @@ const useReportModal = (callback?: () => void) => {
   const handleRadio = (val) => {
     setInvalidState(false);
     setContent({
-      value:
-        val.reason_type === params?.reportType ? String(params?.content) : '',
+      value: val.reason_type === params?.reportType ? String(params?.content) : '',
       isInvalid: false,
       errorMsg: '',
     });
@@ -281,9 +272,7 @@ const useReportModal = (callback?: () => void) => {
                   <Form.Group
                     controlId={`report_${item?.reason_type}`}
                     className={`${
-                      item.have_content && reportType === item.type
-                        ? 'mb-2'
-                        : 'mb-3'
+                      item.have_content && reportType === item.type ? 'mb-2' : 'mb-3'
                     }`}>
                     <FormCheck>
                       <FormCheck.Input
@@ -296,39 +285,32 @@ const useReportModal = (callback?: () => void) => {
                       <FormCheck.Label htmlFor={item.reason_type}>
                         <span className="fw-bold">{item?.name}</span>
                         <br />
-                        <span className="text-secondary">
-                          {item?.description}
-                        </span>
+                        <span className="text-secondary">{item?.description}</span>
                       </FormCheck.Label>
-                      <Form.Control.Feedback type="invalid">
-                        {t('msg.empty')}
-                      </Form.Control.Feedback>
+                      <Form.Control.Feedback type="invalid">{t('msg.empty')}</Form.Control.Feedback>
                     </FormCheck>
                   </Form.Group>
-                  {reportType.haveContent &&
-                    reportType.type === item.reason_type && (
-                      <Form.Group controlId="content" className="ps-4 mb-3">
-                        <Form.Control
-                          type="text"
-                          as={
-                            item.content_type === 'text' ? 'input' : 'textarea'
-                          }
-                          value={content.value}
-                          isInvalid={content.isInvalid}
-                          placeholder={item.placeholder}
-                          onChange={(e) =>
-                            setContent({
-                              value: e.target.value,
-                              isInvalid: false,
-                              errorMsg: '',
-                            })
-                          }
-                        />
-                        <Form.Control.Feedback type="invalid">
-                          {content.errorMsg}
-                        </Form.Control.Feedback>
-                      </Form.Group>
-                    )}
+                  {reportType.haveContent && reportType.type === item.reason_type && (
+                    <Form.Group controlId="content" className="ps-4 mb-3">
+                      <Form.Control
+                        type="text"
+                        as={item.content_type === 'text' ? 'input' : 'textarea'}
+                        value={content.value}
+                        isInvalid={content.isInvalid}
+                        placeholder={item.placeholder}
+                        onChange={(e) =>
+                          setContent({
+                            value: e.target.value,
+                            isInvalid: false,
+                            errorMsg: '',
+                          })
+                        }
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {content.errorMsg}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  )}
                 </div>
               );
             })}

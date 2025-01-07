@@ -35,12 +35,7 @@ interface IProps {
   approveCallback: () => void;
 }
 
-const Index: FC<IProps> = ({
-  itemData,
-  objectType,
-  curFilter,
-  approveCallback,
-}) => {
+const Index: FC<IProps> = ({ itemData, objectType, curFilter, approveCallback }) => {
   const { t } = useTranslation('translation', { keyPrefix: 'page_review' });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -186,9 +181,7 @@ const Index: FC<IProps> = ({
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item onClick={() => handleActionEdit()}>
-            {t('edit_post')}
-          </Dropdown.Item>
+          <Dropdown.Item onClick={() => handleActionEdit()}>{t('edit_post')}</Dropdown.Item>
           {curFilter === 'normal' && objectType === 'question' && (
             <Dropdown.Item onClick={() => handleAction('close')}>
               {t('close', { keyPrefix: 'btns' })}

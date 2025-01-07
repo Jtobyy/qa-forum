@@ -58,9 +58,7 @@ const Index: FC<Props> = ({
       .map((v) => ({ ...v, state: 'delete' }));
 
     deleteTags = deleteTags?.map((v) => {
-      const index = oldData?.tags?.findIndex(
-        (c) => c.slug_name === v.slug_name,
-      );
+      const index = oldData?.tags?.findIndex((c) => c.slug_name === v.slug_name);
       return {
         ...v,
         pre_index: index,
@@ -112,17 +110,11 @@ const Index: FC<Props> = ({
       )}
       {objectType === 'tag' && opts?.showTagUrlSlug && (
         <div
-          className={classnames(
-            'small font-monospace',
-            newData.original_text && 'mb-4',
-          )}
+          className={classnames('small font-monospace', newData.original_text && 'mb-4')}
           dangerouslySetInnerHTML={{
             __html: `/tags/${
               newData?.main_tag_slug_name
-                ? diffText(
-                    newData.main_tag_slug_name,
-                    oldData?.main_tag_slug_name,
-                  )
+                ? diffText(newData.main_tag_slug_name, oldData?.main_tag_slug_name)
                 : diffText(newData.slug_name, oldData?.slug_name)
             }`,
           }}

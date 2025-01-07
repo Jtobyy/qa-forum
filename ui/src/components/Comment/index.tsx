@@ -28,21 +28,10 @@ import unionBy from 'lodash/unionBy';
 import * as Types from '@/common/interface';
 import { Modal } from '@/components';
 import { usePageUsers, useReportModal, useCaptchaModal } from '@/hooks';
-import {
-  matchedUsers,
-  parseUserInfo,
-  scrollToElementTop,
-  bgFadeOut,
-} from '@/utils';
+import { matchedUsers, parseUserInfo, scrollToElementTop, bgFadeOut } from '@/utils';
 import { tryNormalLogged } from '@/utils/guard';
 import { useCaptchaPlugin } from '@/utils/pluginKit';
-import {
-  useQueryComments,
-  addComment,
-  deleteComment,
-  updateComment,
-  postVote,
-} from '@/services';
+import { useQueryComments, addComment, deleteComment, updateComment, postVote } from '@/services';
 import { commentReplyStore } from '@/stores';
 import Reactions from '@/pages/Questions/Detail/components/Reactions';
 
@@ -54,8 +43,7 @@ const Comment = ({ objectId, mode, commentId }) => {
   const pageUsers = usePageUsers();
   const [pageIndex, setPageIndex] = useState(0);
   const [visibleComment, setVisibleComment] = useState(false);
-  const { id: currentReplyId, update: updateCurrentReplyId } =
-    commentReplyStore();
+  const { id: currentReplyId, update: updateCurrentReplyId } = commentReplyStore();
   const pageSize = pageIndex === 0 ? 3 : 15;
   const { data, mutate } = useQueryComments({
     object_id: objectId,
@@ -185,9 +173,7 @@ const Comment = ({ objectId, mode, commentId }) => {
       .then(async (res) => {
         await addCaptcha?.close();
         if (item.type === 'reply') {
-          const index = comments.findIndex(
-            (comment) => comment.comment_id === item.comment_id,
-          );
+          const index = comments.findIndex((comment) => comment.comment_id === item.comment_id);
           updateCurrentReplyId('');
           comments.splice(index + 1, 0, res);
           setComments([...comments]);
@@ -304,9 +290,7 @@ const Comment = ({ objectId, mode, commentId }) => {
         setComments(
           comments.map((item) => {
             if (item.comment_id === id) {
-              item.vote_count = is_cancel
-                ? item.vote_count - 1
-                : item.vote_count + 1;
+              item.vote_count = is_cancel ? item.vote_count - 1 : item.vote_count + 1;
               item.is_vote = !is_cancel;
             }
             return item;
@@ -386,19 +370,14 @@ const Comment = ({ objectId, mode, commentId }) => {
         )}>
         {comments.map((item) => {
           return (
-            <div
-              key={item.comment_id}
-              id={item.comment_id}
-              className="py-2 comment-item">
+            <div key={item.comment_id} id={item.comment_id} className="py-2 comment-item">
               {item.showEdit ? (
                 <Form
                   className="mt-2"
                   value={item.original_text}
                   type="edit"
                   mode={mode}
-                  onSendReply={(value) =>
-                    handleSendReply({ ...item, value, type: 'edit' })
-                  }
+                  onSendReply={(value) => handleSendReply({ ...item, value, type: 'edit' })}
                   onCancel={() => handleCancel(item.comment_id)}
                 />
               ) : (
@@ -420,9 +399,7 @@ const Comment = ({ objectId, mode, commentId }) => {
                 <Reply
                   userName={item.user_display_name}
                   mode={mode}
-                  onSendReply={(value) =>
-                    handleSendReply({ ...item, value, type: 'reply' })
-                  }
+                  onSendReply={(value) => handleSendReply({ ...item, value, type: 'reply' })}
                   onCancel={() => handleCancel(item.comment_id)}
                 />
               ) : null}
@@ -459,21 +436,19 @@ const Comment = ({ objectId, mode, commentId }) => {
               {t('btn_add_comment')}
             </Button>
           )}
-          {data &&
-            (pageIndex || 1) < Math.ceil((data?.count || 0) / pageSize) && (
-              <Button
-                variant="link"
-                size="sm"
-                className="p-0 ms-3 btn-no-border"
-                onClick={() => {
-                  setPageIndex(pageIndex + 1);
-                }}>
-                {t('show_more', {
-                  count:
-                    data.count - (pageIndex === 0 ? 3 : pageIndex * pageSize),
-                })}
-              </Button>
-            )}
+          {data && (pageIndex || 1) < Math.ceil((data?.count || 0) / pageSize) && (
+            <Button
+              variant="link"
+              size="sm"
+              className="p-0 ms-3 btn-no-border"
+              onClick={() => {
+                setPageIndex(pageIndex + 1);
+              }}>
+              {t('show_more', {
+                count: data.count - (pageIndex === 0 ? 3 : pageIndex * pageSize),
+              })}
+            </Button>
+          )}
         </div>
 
         {visibleComment && (

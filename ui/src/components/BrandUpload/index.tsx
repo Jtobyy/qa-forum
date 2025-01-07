@@ -69,10 +69,7 @@ const Index: FC<Props> = ({
           <Icon name="cloud-upload" />
         </UploadImg>
 
-        <Button
-          disabled={readOnly}
-          variant="outline-secondary"
-          onClick={onRemove}>
+        <Button disabled={readOnly} variant="outline-secondary" onClick={onRemove}>
           <Icon name="trash" />
         </Button>
       </ButtonGroup>

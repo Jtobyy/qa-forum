@@ -24,13 +24,7 @@ import { useTranslation } from 'react-i18next';
 import ReactDOM from 'react-dom/client';
 
 import { Icon } from '@/components';
-import type {
-  FormValue,
-  ImgCodeRes,
-  CaptchaKey,
-  FieldError,
-  ImgCodeReq,
-} from '@/common/interface';
+import type { FormValue, ImgCodeRes, CaptchaKey, FieldError, ImgCodeReq } from '@/common/interface';
 import { checkImgCode } from '@/services';
 
 type SubmitCallback = {
@@ -200,12 +194,7 @@ const Index = (captchaKey: CaptchaKey) => {
   useEffect(() => {
     // @ts-ignore
     refRoot.current.render(
-      <Modal
-        size="sm"
-        title="Captcha"
-        show={stateShow}
-        onHide={() => close()}
-        centered>
+      <Modal size="sm" title="Captcha" show={stateShow} onHide={() => close()} centered>
         <Modal.Header closeButton>
           <Modal.Title as="h5">{t('title')}</Modal.Title>
         </Modal.Header>
@@ -213,12 +202,7 @@ const Index = (captchaKey: CaptchaKey) => {
           <Form noValidate onSubmit={handleSubmit}>
             <Form.Group controlId="code" className="mb-3">
               <div className="mb-3 p-2 d-flex align-items-center justify-content-center bg-light rounded-2">
-                <img
-                  src={captcha?.captcha_img}
-                  alt="captcha img"
-                  width="auto"
-                  height="60px"
-                />
+                <img src={captcha?.captcha_img} alt="captcha img" width="auto" height="60px" />
               </div>
               <InputGroup>
                 <Form.Control
@@ -240,9 +224,7 @@ const Index = (captchaKey: CaptchaKey) => {
                   <Icon name="arrow-repeat" />
                 </Button>
 
-                <Form.Control.Feedback type="invalid">
-                  {imgCode?.errorMsg}
-                </Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">{imgCode?.errorMsg}</Form.Control.Feedback>
               </InputGroup>
             </Form.Group>
 

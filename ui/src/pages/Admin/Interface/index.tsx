@@ -21,24 +21,12 @@ import { FC, FormEvent, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useToast } from '@/hooks';
-import {
-  LangsType,
-  FormDataType,
-  AdminSettingsInterface,
-} from '@/common/interface';
+import { LangsType, FormDataType, AdminSettingsInterface } from '@/common/interface';
 import { interfaceStore, loggedUserInfoStore } from '@/stores';
 import { JSONSchema, SchemaForm, UISchema } from '@/components';
 import { DEFAULT_TIMEZONE } from '@/common/constants';
-import {
-  updateInterfaceSetting,
-  useInterfaceSetting,
-  getLoggedUserInfo,
-} from '@/services';
-import {
-  setupAppLanguage,
-  loadLanguageOptions,
-  setupAppTimeZone,
-} from '@/utils/localize';
+import { updateInterfaceSetting, useInterfaceSetting, getLoggedUserInfo } from '@/services';
+import { setupAppLanguage, loadLanguageOptions, setupAppTimeZone } from '@/utils/localize';
 import { handleFormError, scrollToElementTop } from '@/utils';
 
 const Interface: FC = () => {

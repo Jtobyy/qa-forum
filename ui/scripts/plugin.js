@@ -24,7 +24,10 @@ const pluginPath = path.join(__dirname, '../src/plugins');
 const pluginFolders = fs.readdirSync(pluginPath);
 
 function pascalize(str) {
-  return str.split(/[_-]/).map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join('');
+  return str
+    .split(/[_-]/)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('');
 }
 
 function resetPackageJson() {
@@ -36,10 +39,7 @@ function resetPackageJson() {
       delete dependencies[key];
     }
   }
-  fs.writeFileSync(
-    packageJsonPath,
-    JSON.stringify(packageJsonContent, null, 2),
-  );
+  fs.writeFileSync(packageJsonPath, JSON.stringify(packageJsonContent, null, 2));
 }
 
 function resetIndexTs() {
@@ -52,10 +52,7 @@ function addPluginToPackageJson(packageName) {
   const packageJsonContent = require(packageJsonPath);
   packageJsonContent.dependencies[packageName] = 'workspace:*';
 
-  fs.writeFileSync(
-    packageJsonPath,
-    JSON.stringify(packageJsonContent, null, 2),
-  );
+  fs.writeFileSync(packageJsonPath, JSON.stringify(packageJsonContent, null, 2));
 }
 
 function addPluginToIndexTs(packageName) {
@@ -74,7 +71,7 @@ const pluginLength = pluginFolders.filter((folder) => {
   const pluginFolder = path.join(pluginPath, folder);
   const stat = fs.statSync(pluginFolder);
   return stat.isDirectory() && folder !== 'builtin';
-}).length
+}).length;
 
 if (pluginLength > 0) {
   resetIndexTs();

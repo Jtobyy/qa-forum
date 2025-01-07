@@ -47,15 +47,8 @@ const questionLanding = (questionId: string = '', slugTitle: string = '') => {
   return `/questions/${questionId}`;
 };
 
-const answerLanding = (params: {
-  questionId: string;
-  slugTitle?: string;
-  answerId: string;
-}) => {
-  const questionLandingUrl = questionLanding(
-    params.questionId,
-    params.slugTitle,
-  );
+const answerLanding = (params: { questionId: string; slugTitle?: string; answerId: string }) => {
+  const questionLandingUrl = questionLanding(params.questionId, params.slugTitle);
   return `${questionLandingUrl}/${params.answerId}`;
 };
 

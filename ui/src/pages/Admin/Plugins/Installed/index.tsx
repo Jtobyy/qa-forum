@@ -29,11 +29,7 @@ import * as Type from '@/common/interface';
 import { useQueryPlugins, updatePluginStatus } from '@/services';
 import PluginKit from '@/utils/pluginKit';
 
-const InstalledPluginsFilterKeys: Type.InstalledPluginsFilterBy[] = [
-  'all',
-  'active',
-  'inactive',
-];
+const InstalledPluginsFilterKeys: Type.InstalledPluginsFilterBy[] = ['all', 'active', 'inactive'];
 
 const bgMap = {
   active: 'text-bg-success',
@@ -46,8 +42,7 @@ const Users: FC = () => {
   });
   const navigate = useNavigate();
   const [urlSearchParams] = useSearchParams();
-  const curFilter =
-    urlSearchParams.get('filter') || InstalledPluginsFilterKeys[0];
+  const curFilter = urlSearchParams.get('filter') || InstalledPluginsFilterKeys[0];
   const {
     data,
     isLoading,
@@ -82,8 +77,7 @@ const Users: FC = () => {
       <h3>{t('title')}</h3>
       <div className="mb-4">
         <Trans i18nKey="admin.installed_plugins.plugin_link">
-          Plugins extend and expand the functionality. You may find plugins in
-          the
+          Plugins extend and expand the functionality. You may find plugins in the
           <a
             href="https://github.com/apache/incubator-answer-plugins"
             target="_blank"
@@ -135,10 +129,7 @@ const Users: FC = () => {
                 <td className="text-break">{plugin.version}</td>
                 <td>
                   <span
-                    className={classNames(
-                      'badge',
-                      bgMap[plugin.enabled ? 'active' : 'inactive'],
-                    )}>
+                    className={classNames('badge', bgMap[plugin.enabled ? 'active' : 'inactive'])}>
                     {t(`filter.${plugin.enabled ? 'active' : 'inactive'}`)}
                   </span>
                 </td>

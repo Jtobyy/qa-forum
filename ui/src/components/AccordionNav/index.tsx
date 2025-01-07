@@ -28,13 +28,7 @@ import { floppyNavigation } from '@/utils';
 import { Icon } from '@/components';
 import './index.css';
 
-function MenuNode({
-  menu,
-  callback,
-  activeKey,
-  expanding = false,
-  path = '/',
-}) {
+function MenuNode({ menu, callback, activeKey, expanding = false, path = '/' }) {
   const { t } = useTranslation('translation', { keyPrefix: 'nav_menus' });
   const isLeaf = !menu.children.length;
   const href = isLeaf ? `${path}${menu.path}` : '#';
@@ -48,19 +42,17 @@ function MenuNode({
           onClick={(evt) => {
             callback(evt, menu, href, isLeaf);
           }}
-          className={classNames(
-            'text-nowrap d-flex flex-nowrap align-items-center w-100',
-            { expanding, 'link-dark': activeKey !== menu.path },
-          )}>
+          className={classNames('text-nowrap d-flex flex-nowrap align-items-center w-100', {
+            expanding,
+            'link-dark': activeKey !== menu.path,
+          })}>
           <span className="me-auto text-truncate">
             {menu.displayName ? menu.displayName : t(menu.name)}
           </span>
           {menu.badgeContent ? (
             <span className="badge text-bg-dark">{menu.badgeContent}</span>
           ) : null}
-          {!isLeaf && (
-            <Icon className="collapse-indicator" name="chevron-right" />
-          )}
+          {!isLeaf && <Icon className="collapse-indicator" name="chevron-right" />}
         </Nav.Link>
       ) : (
         <Nav.Link
@@ -70,19 +62,17 @@ function MenuNode({
           onClick={(evt) => {
             callback(evt, menu, href, isLeaf);
           }}
-          className={classNames(
-            'text-nowrap d-flex flex-nowrap align-items-center w-100',
-            { expanding, 'link-dark': activeKey !== menu.path },
-          )}>
+          className={classNames('text-nowrap d-flex flex-nowrap align-items-center w-100', {
+            expanding,
+            'link-dark': activeKey !== menu.path,
+          })}>
           <span className="me-auto text-truncate">
             {menu.displayName ? menu.displayName : t(menu.name)}
           </span>
           {menu.badgeContent ? (
             <span className="badge text-bg-dark">{menu.badgeContent}</span>
           ) : null}
-          {!isLeaf && (
-            <Icon className="collapse-indicator" name="chevron-right" />
-          )}
+          {!isLeaf && <Icon className="collapse-indicator" name="chevron-right" />}
         </Nav.Link>
       )}
 

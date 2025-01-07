@@ -23,13 +23,7 @@ import { ListGroupItem } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 import { pathFactory } from '@/router/pathFactory';
-import {
-  Tag,
-  FormatTime,
-  BaseUserCard,
-  Counts,
-  HighlightText,
-} from '@/components';
+import { Tag, FormatTime, BaseUserCard, Counts, HighlightText } from '@/components';
 import Pattern from '@/common/pattern';
 import type { SearchResItem } from '@/common/interface';
 import { escapeRemove } from '@/utils';
@@ -42,10 +36,7 @@ const Index: FC<Props> = ({ data }) => {
   if (!data?.object_type) {
     return null;
   }
-  let itemUrl = pathFactory.questionLanding(
-    data.object.id,
-    data.object.url_title,
-  );
+  let itemUrl = pathFactory.questionLanding(data.object.id, data.object.url_title);
   if (data.object_type === 'answer' && data.object.question_id) {
     itemUrl = pathFactory.answerLanding({
       questionId: data.object.question_id,
@@ -65,16 +56,12 @@ const Index: FC<Props> = ({ data }) => {
   return (
     <ListGroupItem className="py-3 px-0 border-start-0 border-end-0 bg-transparent">
       <div className="mb-2 clearfix">
-        <span
-          className="float-start me-2 badge text-bg-dark"
-          style={{ marginTop: '2px' }}>
+        <span className="float-start me-2 badge text-bg-dark" style={{ marginTop: '2px' }}>
           {data.object_type === 'question' ? 'Q' : 'A'}
         </span>
         <Link className="h5 mb-0 link-dark text-break" to={itemUrl}>
           <HighlightText text={data.object.title} keywords={keywords} />
-          {data.object.status === 'closed'
-            ? ` [${t('closed', { keyPrefix: 'question' })}]`
-            : null}
+          {data.object.status === 'closed' ? ` [${t('closed', { keyPrefix: 'question' })}]` : null}
         </Link>
       </div>
       <div className="d-flex flex-wrap align-items-center small text-secondary mb-2">
@@ -103,10 +90,7 @@ const Index: FC<Props> = ({ data }) => {
 
       {data.object?.excerpt && (
         <p className="small text-truncate-2 mb-2 last-p text-break">
-          <HighlightText
-            text={escapeRemove(data.object.excerpt) || ''}
-            keywords={keywords}
-          />
+          <HighlightText text={escapeRemove(data.object.excerpt) || ''} keywords={keywords} />
         </p>
       )}
 

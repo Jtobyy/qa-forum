@@ -48,10 +48,7 @@ const TagIntroduction = () => {
   });
   const { t } = useTranslation('translation', { keyPrefix: 'tag_info' });
   const navigate = useNavigate();
-  const { data: synonymsData, mutate } = useQuerySynonymsTags(
-    tagInfo?.tag_id,
-    tagInfo?.status,
-  );
+  const { data: synonymsData, mutate } = useQuerySynonymsTags(tagInfo?.tag_id, tagInfo?.status);
   let pageTitle = '';
   if (tagInfo) {
     pageTitle = `'${tagInfo.display_name}' ${t('tag_wiki', {
@@ -186,21 +183,14 @@ const TagIntroduction = () => {
           </Alert>
         )}
         <h3 className="mb-3">
-          <Link
-            to={pathFactory.tagLanding(tagInfo.slug_name)}
-            replace
-            className="link-dark">
+          <Link to={pathFactory.tagLanding(tagInfo.slug_name)} replace className="link-dark">
             {tagInfo.display_name}
           </Link>
         </h3>
 
         <div className="text-secondary mb-4 small">
           <FormatTime preFix={t('created_at')} time={tagInfo.created_at} />
-          <FormatTime
-            preFix={t('edited_at')}
-            className="ms-3"
-            time={tagInfo.updated_at}
-          />
+          <FormatTime preFix={t('edited_at')} className="ms-3" time={tagInfo.updated_at} />
         </div>
 
         <div
@@ -214,10 +204,7 @@ const TagIntroduction = () => {
                 key={action.name}
                 variant="link"
                 size="sm"
-                className={classNames(
-                  'link-secondary btn-no-border p-0',
-                  index > 0 && 'ms-3',
-                )}
+                className={classNames('link-secondary btn-no-border p-0', index > 0 && 'ms-3')}
                 onClick={() => onAction(action)}>
                 {action.name}
               </Button>
@@ -240,19 +227,11 @@ const TagIntroduction = () => {
           <Card.Header className="d-flex justify-content-between">
             <span>{t('synonyms.title')}</span>
             {isEdit ? (
-              <Button
-                variant="link"
-                className="p-0 btn-no-border"
-                onClick={handleSave}>
+              <Button variant="link" className="p-0 btn-no-border" onClick={handleSave}>
                 {t('synonyms.btn_save')}
               </Button>
-            ) : synonymsData?.member_actions?.find(
-                (v) => v.action === 'edit',
-              ) ? (
-              <Button
-                variant="link"
-                className="p-0 btn-no-border"
-                onClick={handleEdit}>
+            ) : synonymsData?.member_actions?.find((v) => v.action === 'edit') ? (
+              <Button variant="link" className="p-0 btn-no-border" onClick={handleEdit}>
                 {t('synonyms.btn_edit')}
               </Button>
             ) : null}
@@ -266,8 +245,7 @@ const TagIntroduction = () => {
                     data={{
                       slug_name: tagName || '',
                       main_tag_slug_name: '',
-                      display_name:
-                        tagInfo?.display_name || tagInfo?.slug_name || '',
+                      display_name: tagInfo?.display_name || tagInfo?.slug_name || '',
                       recommend: false,
                       reserved: false,
                     }}
@@ -284,21 +262,14 @@ const TagIntroduction = () => {
               (synonymsData?.synonyms && synonymsData.synonyms.length > 0 ? (
                 <div className="m-n1">
                   {synonymsData.synonyms.map((item) => {
-                    return (
-                      <Tag key={item.tag_id} className="m-1" data={item} />
-                    );
+                    return <Tag key={item.tag_id} className="m-1" data={item} />;
                   })}
                 </div>
               ) : (
                 <>
                   <div className="text-muted mb-3">{t('synonyms.empty')}</div>
-                  {synonymsData?.member_actions?.find(
-                    (v) => v.action === 'edit',
-                  ) && (
-                    <Button
-                      variant="outline-primary"
-                      size="sm"
-                      onClick={handleEdit}>
+                  {synonymsData?.member_actions?.find((v) => v.action === 'edit') && (
+                    <Button variant="outline-primary" size="sm" onClick={handleEdit}>
                       {t('synonyms.btn_add')}
                     </Button>
                   )}

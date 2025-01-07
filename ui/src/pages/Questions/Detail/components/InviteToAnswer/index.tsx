@@ -120,10 +120,7 @@ const Index: FC<Props> = ({ questionId, readOnly = false }) => {
       <Card.Header className="text-nowrap d-flex justify-content-between text-capitalize">
         {t('title')}
         {!readOnly && (
-          <Button
-            onClick={() => setEditing(true)}
-            variant="link"
-            className="p-0">
+          <Button onClick={() => setEditing(true)} variant="link" className="p-0">
             {t('edit', { keyPrefix: 'btns' })}
           </Button>
         )}
@@ -146,9 +143,7 @@ const Index: FC<Props> = ({ questionId, readOnly = false }) => {
               </Link>
             );
           })}
-          {users?.length === 0 ? (
-            <div className="text-muted">{t('desc')}</div>
-          ) : null}
+          {users?.length === 0 ? <div className="text-muted">{t('desc')}</div> : null}
         </div>
       </Card.Body>
       {editing && (

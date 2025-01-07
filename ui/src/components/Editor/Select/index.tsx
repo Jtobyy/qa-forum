@@ -27,13 +27,7 @@ interface IProps {
   placeholder?;
   onSelect?;
 }
-const Select: FC<IProps> = ({
-  options = [],
-  value = '',
-  onChange,
-  placeholder = '',
-  onSelect,
-}) => {
+const Select: FC<IProps> = ({ options = [], value = '', onChange, placeholder = '', onSelect }) => {
   const [isFocus, setFocusState] = useState(false);
   const [cursor, setCursor] = useState(0);
 
@@ -53,18 +47,14 @@ const Select: FC<IProps> = ({
       setCursor(cursor + 1);
     }
     if (keyCode === 13 && cursor > -1 && cursor <= options.length - 1) {
-      const lang = options.filter((opt) =>
-        value ? opt.indexOf(value) === 0 : true,
-      )[cursor];
+      const lang = options.filter((opt) => (value ? opt.indexOf(value) === 0 : true))[cursor];
 
       setFocusState(false);
       onSelect(lang);
     }
   };
 
-  const result = options.filter((opt) =>
-    value ? opt.indexOf(value) === 0 : true,
-  );
+  const result = options.filter((opt) => (value ? opt.indexOf(value) === 0 : true));
 
   return (
     <div className="position-relative" onKeyDown={handleKeyDown}>

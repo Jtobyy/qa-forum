@@ -83,9 +83,7 @@ const Index: FC = () => {
       ...formData,
     });
     if (!bol) {
-      const errObj = Object.keys(formData).filter(
-        (key) => formData[key].isInvalid,
-      );
+      const errObj = Object.keys(formData).filter((key) => formData[key].isInvalid);
       const ele = document.getElementById(errObj[0]);
       scrollToElementTop(ele);
     }
@@ -166,10 +164,7 @@ const Index: FC = () => {
             <Form.Control
               type="text"
               disabled
-              defaultValue={userInfo?.e_mail?.replace(
-                /(.{2})(.+)(@.+)/i,
-                '$1****$3',
-              )}
+              defaultValue={userInfo?.e_mail?.replace(/(.{2})(.+)(@.+)/i, '$1****$3')}
             />
           </Form.Group>
 
@@ -201,9 +196,7 @@ const Index: FC = () => {
                 })
               }
             />
-            <Form.Control.Feedback type="invalid">
-              {formData.pass.errorMsg}
-            </Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">{formData.pass.errorMsg}</Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group controlId="e_mail" className="mb-3">
@@ -225,9 +218,7 @@ const Index: FC = () => {
                 })
               }
             />
-            <Form.Control.Feedback type="invalid">
-              {formData.e_mail.errorMsg}
-            </Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">{formData.e_mail.errorMsg}</Form.Control.Feedback>
           </Form.Group>
 
           <div>

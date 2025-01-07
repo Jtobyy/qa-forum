@@ -93,15 +93,8 @@ const Heading = () => {
     setLockState(false);
   };
   return (
-    <ToolItem
-      as="dropdown"
-      {...item}
-      isShow={isShow}
-      onClick={onAddHeader}
-      onBlur={onAddHeader}>
-      <Dropdown.Menu
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}>
+    <ToolItem as="dropdown" {...item} isShow={isShow} onClick={onAddHeader} onBlur={onAddHeader}>
+      <Dropdown.Menu onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         {headerList.map((header) => {
           return (
             <Dropdown.Item

@@ -106,13 +106,7 @@ const Badges: FC = () => {
             <tr key={badge.id}>
               <td className="d-flex align-items-center">
                 {badge.icon?.startsWith('http') ? (
-                  <img
-                    src={badge.icon}
-                    width={32}
-                    height={32}
-                    alt={badge.name}
-                    className="me-3"
-                  />
+                  <img src={badge.icon} width={32} height={32} alt={badge.name} className="me-3" />
                 ) : (
                   <Icon
                     name={badge?.icon}
@@ -141,9 +135,7 @@ const Badges: FC = () => {
                 <Link to={`/badges/${badge.id}`}>{badge.award_count}</Link>
               </td>
               <td>
-                <span className={classNames('badge', bgMap[badge.status])}>
-                  {t(badge.status)}
-                </span>
+                <span className={classNames('badge', bgMap[badge.status])}>{t(badge.status)}</span>
               </td>
               <Action
                 status={badge.status}
@@ -155,11 +147,7 @@ const Badges: FC = () => {
       </Table>
       {Number(data?.count) <= 0 && !isLoading && <Empty />}
       <div className="mt-4 mb-2 d-flex justify-content-center">
-        <Pagination
-          currentPage={curPage}
-          totalSize={data?.count || 0}
-          pageSize={PAGE_SIZE}
-        />
+        <Pagination currentPage={curPage} totalSize={data?.count || 0} pageSize={PAGE_SIZE} />
       </div>
     </>
   );

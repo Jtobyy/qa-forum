@@ -73,9 +73,7 @@ const Index: FC<{
 
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-    <div
-      className={classnames('img-viewer', className)}
-      onClick={checkClickForImgView}>
+    <div className={classnames('img-viewer', className)} onClick={checkClickForImgView}>
       {children}
       <Modal
         show={visible}

@@ -33,19 +33,11 @@ interface IProps {
   alt: string;
 }
 
-const Index: FC<IProps> = ({
-  avatar,
-  size,
-  className,
-  searchStr = '',
-  alt,
-}) => {
+const Index: FC<IProps> = ({ avatar, size, className, searchStr = '', alt }) => {
   let url = '';
   if (typeof avatar === 'string') {
     if (avatar.length > 1) {
-      url = `${avatar}?${searchStr}${
-        avatar?.includes('gravatar') ? '&d=identicon' : ''
-      }`;
+      url = `${avatar}?${searchStr}${avatar?.includes('gravatar') ? '&d=identicon' : ''}`;
     }
   } else if (avatar?.type === 'gravatar' && avatar.gravatar) {
     url = `${avatar.gravatar}?${searchStr}&d=identicon`;
@@ -53,8 +45,7 @@ const Index: FC<IProps> = ({
     url = `${avatar.custom}?${searchStr}`;
   }
 
-  const roundedCls =
-    className && className.indexOf('rounded') !== -1 ? '' : 'rounded';
+  const roundedCls = className && className.indexOf('rounded') !== -1 ? '' : 'rounded';
 
   return (
     <>

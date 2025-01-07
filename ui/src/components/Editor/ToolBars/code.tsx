@@ -208,10 +208,7 @@ const Code = () => {
 
     let value;
 
-    if (
-      code.value.split('\n').length > 1 ||
-      code.value.length >= SINGLELINEMAXLENGTH
-    ) {
+    if (code.value.split('\n').length > 1 || code.value.length >= SINGLELINEMAXLENGTH) {
       value = `\n\`\`\`${lang}\n${code.value}\n\`\`\`\n`;
     } else {
       value = `\`${code.value}\``;
@@ -230,11 +227,7 @@ const Code = () => {
 
   return (
     <ToolItem {...item} onClick={addCode}>
-      <Modal
-        show={visible}
-        onHide={onHide}
-        onExited={onExited}
-        fullscreen="sm-down">
+      <Modal show={visible} onHide={onHide} onExited={onExited} fullscreen="sm-down">
         <Modal.Header closeButton>
           <h5 className="mb-0">{t('code.add_code')}</h5>
         </Modal.Header>
@@ -252,18 +245,13 @@ const Code = () => {
               onChange={(e) => setCode({ ...code, value: e.target.value })}
             />
             {code.isInvalid && (
-              <Form.Control.Feedback type="invalid">
-                {code.errorMsg}
-              </Form.Control.Feedback>
+              <Form.Control.Feedback type="invalid">{code.errorMsg}</Form.Control.Feedback>
             )}
           </Form.Group>
           <Form.Group controlId="editor.codeLanguageType" className="mb-3">
-            <Form.Label>{`${t('code.form.fields.language.label')} ${t(
-              'optional',
-              {
-                keyPrefix: 'form',
-              },
-            )}`}</Form.Label>
+            <Form.Label>{`${t('code.form.fields.language.label')} ${t('optional', {
+              keyPrefix: 'form',
+            })}`}</Form.Label>
             <Select
               options={codeLanguageType}
               value={lang}

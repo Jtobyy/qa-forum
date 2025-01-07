@@ -53,9 +53,7 @@ const DeleteUserModal = ({ show, onClose, onDelete }) => {
               <Form.Check.Label htmlFor="delete_user">
                 <span>{t('delete_user.label')}</span>
                 <br />
-                <span className="small text-secondary">
-                  {t('delete_user.text')}
-                </span>
+                <span className="small text-secondary">{t('delete_user.text')}</span>
               </Form.Check.Label>
             </Form.Check>
           </Form.Group>

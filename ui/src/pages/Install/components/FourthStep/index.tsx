@@ -203,9 +203,7 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
             });
           }}
         />
-        <Form.Control.Feedback type="invalid">
-          {data.site_name.errorMsg}
-        </Form.Control.Feedback>
+        <Form.Control.Feedback type="invalid">{data.site_name.errorMsg}</Form.Control.Feedback>
       </Form.Group>
       <Form.Group controlId="site_url" className="mb-3">
         <Form.Label>{t('site_url.label')}</Form.Label>
@@ -224,9 +222,7 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
           }}
         />
         <Form.Text>{t('site_url.text')}</Form.Text>
-        <Form.Control.Feedback type="invalid">
-          {data.site_url.errorMsg}
-        </Form.Control.Feedback>
+        <Form.Control.Feedback type="invalid">{data.site_url.errorMsg}</Form.Control.Feedback>
       </Form.Group>
       <Form.Group controlId="contact_email" className="mb-3">
         <Form.Label>{t('contact_email.label')}</Form.Label>
@@ -246,9 +242,7 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
           }}
         />
         <Form.Text>{t('contact_email.text')}</Form.Text>
-        <Form.Control.Feedback type="invalid">
-          {data.contact_email.errorMsg}
-        </Form.Control.Feedback>
+        <Form.Control.Feedback type="invalid">{data.contact_email.errorMsg}</Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group controlId="login_required" className="mb-3">
@@ -288,9 +282,7 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
             });
           }}
         />
-        <Form.Control.Feedback type="invalid">
-          {data.name.errorMsg}
-        </Form.Control.Feedback>
+        <Form.Control.Feedback type="invalid">{data.name.errorMsg}</Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group controlId="password" className="mb-3">
@@ -311,9 +303,7 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
           }}
         />
         <Form.Text>{t('admin_password.text')}</Form.Text>
-        <Form.Control.Feedback type="invalid">
-          {data.password.errorMsg}
-        </Form.Control.Feedback>
+        <Form.Control.Feedback type="invalid">{data.password.errorMsg}</Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group controlId="email" className="mb-3">
@@ -333,9 +323,7 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
           }}
         />
         <Form.Text>{t('admin_email.text')}</Form.Text>
-        <Form.Control.Feedback type="invalid">
-          {data.email.errorMsg}
-        </Form.Control.Feedback>
+        <Form.Control.Feedback type="invalid">{data.email.errorMsg}</Form.Control.Feedback>
       </Form.Group>
 
       <div className="d-flex align-items-center justify-content-between">

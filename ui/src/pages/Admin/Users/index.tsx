@@ -24,13 +24,7 @@ import { useTranslation } from 'react-i18next';
 
 import classNames from 'classnames';
 
-import {
-  Pagination,
-  FormatTime,
-  BaseUserCard,
-  Empty,
-  QueryGroup,
-} from '@/components';
+import { Pagination, FormatTime, BaseUserCard, Empty, QueryGroup } from '@/components';
 import * as Type from '@/common/interface';
 import { useUserModal } from '@/hooks';
 import {
@@ -46,13 +40,7 @@ import { formatCount } from '@/utils';
 import DeleteUserModal from './components/DeleteUserModal';
 import Action from './components/Action';
 
-const UserFilterKeys: Type.UserFilterBy[] = [
-  'normal',
-  'staff',
-  'inactive',
-  'suspended',
-  'deleted',
-];
+const UserFilterKeys: Type.UserFilterBy[] = ['normal', 'staff', 'inactive', 'suspended', 'deleted'];
 
 const bgMap = {
   normal: 'text-bg-success',
@@ -89,11 +77,7 @@ const Users: FC = () => {
     page: curPage,
     page_size: PAGE_SIZE,
     query: curQuery,
-    ...(curFilter === 'all'
-      ? {}
-      : curFilter === 'staff'
-        ? { staff: true }
-        : { status: curFilter }),
+    ...(curFilter === 'all' ? {} : curFilter === 'staff' ? { staff: true } : { status: curFilter }),
   });
 
   const userModal = useUserModal({
@@ -126,10 +110,7 @@ const Users: FC = () => {
     }
   }, [ucAgent]);
 
-  const changeDeleteUserModalState = (modalData: {
-    show: boolean;
-    userId: string;
-  }) => {
+  const changeDeleteUserModalState = (modalData: { show: boolean; userId: string }) => {
     setDeleteUserModalState(modalData);
   };
 
@@ -147,19 +128,15 @@ const Users: FC = () => {
     });
   };
 
-  const showAddUser =
-    !ucAgent?.enabled || (ucAgent?.enabled && adminUcAgent?.allow_create_user);
+  const showAddUser = !ucAgent?.enabled || (ucAgent?.enabled && adminUcAgent?.allow_create_user);
   const showActionPassword =
-    !ucAgent?.enabled ||
-    (ucAgent?.enabled && adminUcAgent?.allow_update_user_password);
+    !ucAgent?.enabled || (ucAgent?.enabled && adminUcAgent?.allow_update_user_password);
 
   const showActionRole =
-    !ucAgent?.enabled ||
-    (ucAgent?.enabled && adminUcAgent?.allow_update_user_role);
+    !ucAgent?.enabled || (ucAgent?.enabled && adminUcAgent?.allow_update_user_role);
 
   const showActionStatus =
-    !ucAgent?.enabled ||
-    (ucAgent?.enabled && adminUcAgent?.allow_update_user_status);
+    !ucAgent?.enabled || (ucAgent?.enabled && adminUcAgent?.allow_update_user_status);
   const showAction = showActionPassword || showActionRole || showActionStatus;
 
   return (
@@ -174,10 +151,7 @@ const Users: FC = () => {
             i18nKeyPrefix="admin.users"
           />
           {showAddUser ? (
-            <Button
-              variant="outline-primary"
-              size="sm"
-              onClick={() => userModal.onShow()}>
+            <Button variant="outline-primary" size="sm" onClick={() => userModal.onShow()}>
               {t('add_user')}
             </Button>
           ) : null}
@@ -252,19 +226,14 @@ const Users: FC = () => {
                   </td>
                 )}
                 <td>
-                  <span className={classNames('badge', bgMap[user.status])}>
-                    {t(user.status)}
-                  </span>
+                  <span className={classNames('badge', bgMap[user.status])}>{t(user.status)}</span>
                 </td>
                 {curFilter !== 'suspended' && curFilter !== 'deleted' && (
                   <td>
-                    <span className="badge text-bg-light">
-                      {t(user.role_name)}
-                    </span>
+                    <span className="badge text-bg-light">{t(user.role_name)}</span>
                   </td>
                 )}
-                {curFilter !== 'deleted' &&
-                (showAction || user.status === 'inactive') ? (
+                {curFilter !== 'deleted' && (showAction || user.status === 'inactive') ? (
                   <Action
                     userData={user}
                     showActionPassword={showActionPassword}
@@ -282,11 +251,7 @@ const Users: FC = () => {
       </Table>
       {Number(data?.count) <= 0 && !isLoading && <Empty />}
       <div className="mt-4 mb-2 d-flex justify-content-center">
-        <Pagination
-          currentPage={curPage}
-          totalSize={data?.count || 0}
-          pageSize={PAGE_SIZE}
-        />
+        <Pagination currentPage={curPage} totalSize={data?.count || 0} pageSize={PAGE_SIZE} />
       </div>
 
       <DeleteUserModal

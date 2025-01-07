@@ -42,13 +42,7 @@ const Index: FC<IProps> = ({ data }) => {
     <Card className="mb-4">
       <Card.Body className="d-flex">
         {data.icon?.startsWith('http') ? (
-          <img
-            src={data.icon}
-            width={96}
-            height={96}
-            alt={data.name}
-            className="me-3"
-          />
+          <img src={data.icon} width={96} height={96} alt={data.name} className="me-3" />
         ) : (
           <Icon
             name={data?.icon}
@@ -65,9 +59,7 @@ const Index: FC<IProps> = ({ data }) => {
           <h5>{data.name}</h5>
           <div dangerouslySetInnerHTML={{ __html: data.description || '' }} />
 
-          {!data.is_single && (
-            <div className="mt-2">{t('can_earn_multiple')}</div>
-          )}
+          {!data.is_single && <div className="mt-2">{t('can_earn_multiple')}</div>}
 
           {(data.award_count > 0 || data.earned_count > 0) && (
             <div className="small mt-2">
@@ -78,13 +70,9 @@ const Index: FC<IProps> = ({ data }) => {
               )}
 
               {data.earned_count > 1 && (
-                <Badge bg="success">
-                  {t('earned_×', { number: data.earned_count })}
-                </Badge>
+                <Badge bg="success">{t('earned_×', { number: data.earned_count })}</Badge>
               )}
-              {data.earned_count === 1 && (
-                <Badge bg="success">{t('earned')}</Badge>
-              )}
+              {data.earned_count === 1 && <Badge bg="success">{t('earned')}</Badge>}
             </div>
           )}
         </div>

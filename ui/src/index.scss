@@ -48,7 +48,7 @@ a {
 }
 // If the image does not have a `src` attribute, it must break and may not trigger the `onerror` event.
 // With or without the `alt` attribute, it is visually hidden directly.
-img[src=""] {
+img[src=''] {
   visibility: hidden !important;
 }
 
@@ -276,7 +276,10 @@ img[src=""] {
       word-break: initial;
     }
   }
-  ol ol,ol ul,ul ol,ul ul {
+  ol ol,
+  ol ul,
+  ul ol,
+  ul ul {
     margin-bottom: 1rem;
   }
 }
@@ -335,8 +338,8 @@ img[src=""] {
   animation: bg-fade-out 2s ease 0.3s;
 }
 
-
-.btnSvg, .btnSvg:hover {
+.btnSvg,
+.btnSvg:hover {
   display: inline-block;
   font-size: 16px;
   width: 16px;
@@ -354,11 +357,11 @@ img[src=""] {
 }
 
 .bronze {
-  color: #CD7F32;
+  color: #cd7f32;
 }
 .silver {
-  color: #C0C0C0;
+  color: #c0c0c0;
 }
 .gold {
-  color: #FFD700;
+  color: #ffd700;
 }

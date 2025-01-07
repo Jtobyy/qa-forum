@@ -73,18 +73,14 @@ const Index: FC<Props> = ({
       centered={centered}
       fullscreen="sm-down">
       <Modal.Header closeButton>
-        <Modal.Title as="h5">
-          {title || t('title', { keyPrefix: 'modal_confirm' })}
-        </Modal.Title>
+        <Modal.Title as="h5">{title || t('title', { keyPrefix: 'modal_confirm' })}</Modal.Title>
       </Modal.Header>
       <Modal.Body className={bodyClass}>{children}</Modal.Body>
       {(showCancel || showConfirm) && (
         <Modal.Footer>
           {showCancel && (
             <Button variant={cancelBtnVariant} onClick={onCancel}>
-              {cancelText === 'close'
-                ? t('btns.close')
-                : cancelText || t('btns.cancel')}
+              {cancelText === 'close' ? t('btns.close') : cancelText || t('btns.cancel')}
             </Button>
           )}
           {showConfirm && (
@@ -95,9 +91,7 @@ const Index: FC<Props> = ({
               }}
               id="ok_button"
               disabled={confirmBtnDisabled}>
-              {confirmText === 'OK'
-                ? t('btns.ok')
-                : confirmText || t('btns.confirm')}
+              {confirmText === 'OK' ? t('btns.ok') : confirmText || t('btns.confirm')}
             </Button>
           )}
         </Modal.Footer>

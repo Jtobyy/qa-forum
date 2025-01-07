@@ -27,10 +27,7 @@ const Index: FC = () => {
   return (
     <Row className="pt-4 mb-5">
       <Col xxl={12}>
-        <Nav
-          className="mb-4 flex-nowrap"
-          variant="pills"
-          style={{ overflow: 'auto' }}>
+        <Nav className="mb-4 flex-nowrap" variant="pills" style={{ overflow: 'auto' }}>
           <NavLink to="/tos" key="tos" className="nav-link">
             {t('tos')}
           </NavLink>

@@ -93,15 +93,11 @@ export const updateReaction = (params) => {
 };
 
 export const queryReactions = (object_id: string) => {
-  return request.get<Type.ReactionItems>(
-    `/answer/api/v1/meta/reaction?object_id=${object_id}`,
-  );
+  return request.get<Type.ReactionItems>(`/answer/api/v1/meta/reaction?object_id=${object_id}`);
 };
 
 export const queryTags = (tag: string) => {
-  return request.get(
-    `/answer/api/v1/question/tags?tag=${encodeURIComponent(tag)}`,
-  );
+  return request.get(`/answer/api/v1/question/tags?tag=${encodeURIComponent(tag)}`);
 };
 
 export const useQueryAnswerInfo = (id: string) => {
@@ -122,10 +118,7 @@ export const modifyAnswer = (params: Type.AnswerParams) => {
 };
 
 export const login = (params: Type.LoginReqParams) => {
-  return request.post<Type.UserInfoRes>(
-    '/answer/api/v1/user/login/email',
-    params,
-  );
+  return request.post<Type.UserInfoRes>('/answer/api/v1/user/login/email', params);
 };
 
 export const register = (params: Type.RegisterReqParams) => {
@@ -193,10 +186,9 @@ export const saveQuestion = (params: Type.QuestionParams) => {
 };
 
 export const questionDetail = (id: string) => {
-  return request.get<Type.QuestionDetailRes>(
-    `/answer/api/v1/question/info?id=${id}`,
-    { allow404: true },
-  );
+  return request.get<Type.QuestionDetailRes>(`/answer/api/v1/question/info?id=${id}`, {
+    allow404: true,
+  });
 };
 
 export const getAnswers = (params: Type.AnswersReq) => {
@@ -208,11 +200,7 @@ export const postAnswer = (params: Type.PostAnswerReq) => {
   return request.post('/answer/api/v1/answer', params);
 };
 
-export const bookmark = (params: {
-  group_id: string;
-  object_id: string;
-  bookmark: boolean;
-}) => {
+export const bookmark = (params: { group_id: string; object_id: string; bookmark: boolean }) => {
   return request.post('/answer/api/v1/collection/switch', params);
 };
 
@@ -223,20 +211,11 @@ export const postVote = (
   return request.post(`/answer/api/v1/vote/${type}`, params);
 };
 
-export const following = (params: {
-  object_id: string;
-  is_cancel: boolean;
-}) => {
-  return request.post<{ follows: number; is_followed: boolean }>(
-    '/answer/api/v1/follow',
-    params,
-  );
+export const following = (params: { object_id: string; is_cancel: boolean }) => {
+  return request.post<{ follows: number; is_followed: boolean }>('/answer/api/v1/follow', params);
 };
 
-export const acceptanceAnswer = (params: {
-  answer_id?: string;
-  question_id: string;
-}) => {
+export const acceptanceAnswer = (params: { answer_id?: string; question_id: string }) => {
   return request.post('/answer/api/v1/answer/acceptance', params);
 };
 
@@ -279,11 +258,7 @@ export const deleteAnswer = (params: {
   return request.delete('/answer/api/v1/answer', params);
 };
 
-export const closeQuestion = (params: {
-  id: string;
-  close_msg?: string;
-  close_type: number;
-}) => {
+export const closeQuestion = (params: { id: string; close_msg?: string; close_type: number }) => {
   return request.put('/answer/api/v1/question/status', params);
 };
 

@@ -28,10 +28,7 @@ export interface AlgoliaRes {
 }
 
 export const useGetSearchPLuginInfo = () => {
-  const { data, error } = useSWR<AlgoliaRes>(
-    '/answer/api/v1/search/desc',
-    request.instance.get,
-  );
+  const { data, error } = useSWR<AlgoliaRes>('/answer/api/v1/search/desc', request.instance.get);
 
   return {
     data,

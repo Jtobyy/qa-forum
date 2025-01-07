@@ -34,9 +34,7 @@ const HotQuestions: FC = () => {
   }
   return (
     <Card>
-      <Card.Header className="text-nowrap text-capitalize">
-        {t('hot_questions')}
-      </Card.Header>
+      <Card.Header className="text-nowrap text-capitalize">{t('hot_questions')}</Card.Header>
       <ListGroup variant="flush">
         {questionRes?.list?.map((li) => {
           return (
@@ -49,18 +47,14 @@ const HotQuestions: FC = () => {
               {li.answer_count > 0 ? (
                 <div
                   className={`d-flex align-items-center small mt-1 ${
-                    li.accepted_answer_id > 0
-                      ? 'link-success'
-                      : 'link-secondary'
+                    li.accepted_answer_id > 0 ? 'link-success' : 'link-secondary'
                   }`}>
                   {li.accepted_answer_id >= 1 ? (
                     <Icon name="check-circle-fill" />
                   ) : (
                     <Icon name="chat-square-text-fill" />
                   )}
-                  <span className="ms-1">
-                    {t('x_answers', { count: li.answer_count })}
-                  </span>
+                  <span className="ms-1">{t('x_answers', { count: li.answer_count })}</span>
                 </div>
               ) : null}
             </ListGroupItem>

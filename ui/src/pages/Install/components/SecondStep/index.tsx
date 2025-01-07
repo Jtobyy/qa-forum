@@ -51,8 +51,7 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
 
   const checkValidated = (): boolean => {
     let bol = true;
-    const { db_type, db_username, db_password, db_host, db_name, db_file } =
-      data;
+    const { db_type, db_username, db_password, db_host, db_name, db_file } = data;
 
     if (db_type.value !== 'sqlite3') {
       if (!db_username.value) {
@@ -202,9 +201,7 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
                 });
               }}
             />
-            <Form.Control.Feedback type="invalid">
-              {data.db_host.errorMsg}
-            </Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">{data.db_host.errorMsg}</Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group controlId="name" className="mb-3">
@@ -224,9 +221,7 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
                 });
               }}
             />
-            <Form.Control.Feedback type="invalid">
-              {data.db_name.errorMsg}
-            </Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">{data.db_name.errorMsg}</Form.Control.Feedback>
           </Form.Group>
         </>
       ) : (
@@ -247,9 +242,7 @@ const Index: FC<Props> = ({ visible, data, changeCallback, nextCallback }) => {
               });
             }}
           />
-          <Form.Control.Feedback type="invalid">
-            {data.db_file.errorMsg}
-          </Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">{data.db_file.errorMsg}</Form.Control.Feedback>
         </Form.Group>
       )}
 

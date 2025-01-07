@@ -44,10 +44,7 @@ const Index: FC<Props> = ({ visible, data }) => {
               className="text-break"
               to={
                 item.object_type === 'question'
-                  ? pathFactory.questionLanding(
-                      item.question_id,
-                      item.url_title,
-                    )
+                  ? pathFactory.questionLanding(item.question_id, item.url_title)
                   : pathFactory.answerLanding({
                       questionId: item.question_id,
                       slugTitle: item.url_title,
@@ -63,10 +60,7 @@ const Index: FC<Props> = ({ visible, data }) => {
               }}
             />
 
-            <FormatTime
-              time={item.created_at}
-              className="small text-secondary"
-            />
+            <FormatTime time={item.created_at} className="small text-secondary" />
           </ListGroupItem>
         );
       })}

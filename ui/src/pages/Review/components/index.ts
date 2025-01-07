@@ -24,11 +24,4 @@ import SuggestContent from './SuggestContent';
 import FlagContent from './FlagContent';
 import QueuedContent from './QueuedContent';
 
-export {
-  ReviewType,
-  ApproveDropdown,
-  EditPostModal,
-  FlagContent,
-  SuggestContent,
-  QueuedContent,
-};
+export { ReviewType, ApproveDropdown, EditPostModal, FlagContent, SuggestContent, QueuedContent };

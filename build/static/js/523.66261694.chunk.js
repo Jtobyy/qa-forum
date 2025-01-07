@@ -1,0 +1,2 @@
+"use strict";(globalThis.webpackChunkanswer_static=globalThis.webpackChunkanswer_static||[]).push([[523],{523:(a,e,s)=>{s.r(e),s.d(e,{default:()=>t});var l=s(13377),r=s(13131);const t=({data:a,visible:e,username:s})=>e?(0,r.jsx)("div",{className:"d-flex flex-wrap",style:{margin:"-12px"},children:a.map((a=>(0,r.jsx)(l.E,{data:a,urlSearchParams:`username=${s}`,badgePillType:"count"})))}):null}}]);
+//# sourceMappingURL=523.66261694.chunk.js.map

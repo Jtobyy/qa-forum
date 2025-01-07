@@ -81,8 +81,7 @@ const Index: FC<Props> = ({ data }) => {
           <span className="me-1 text-break">{data?.display_name}</span>
         )}
         <div className="text-secondary">
-          {formatCount(data?.rank)}{' '}
-          {t('x_reputation', { keyPrefix: 'personal' })}
+          {formatCount(data?.rank)} {t('x_reputation', { keyPrefix: 'personal' })}
         </div>
       </div>
     </div>

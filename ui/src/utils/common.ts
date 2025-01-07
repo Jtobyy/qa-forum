@@ -132,9 +132,7 @@ function formatUptime(value) {
 
   if (second > 60 * 60 && second < 60 * 60 * 24) {
     const hour = second / 3600;
-    return `${Math.floor(hour)} ${
-      hour > 1 ? t('dates.hours') : t('dates.hour')
-    }`;
+    return `${Math.floor(hour)} ${hour > 1 ? t('dates.hours') : t('dates.hour')}`;
   }
   if (second > 60 * 60 * 24) {
     const day = second / 3600 / 24;
@@ -197,10 +195,7 @@ function formatDiffPart(part: any, className: string): string {
         ' ',
       )}</span></div>`;
     }
-    return `<div><span class="${className}">${part.value.replace(
-      /\n/g,
-      ' ',
-    )}</span></div>`;
+    return `<div><span class="${className}">${part.value.replace(/\n/g, ' ')}</span></div>`;
   }
   return `<span class="${className}">${part.value}</span>`;
 }

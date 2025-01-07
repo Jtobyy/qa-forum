@@ -96,25 +96,25 @@ export const ADMIN_NAV_MENUS = [
   {
     name: 'badges',
   },
-  {
-    name: 'customize',
-    children: [
-      {
-        name: 'themes',
-      },
-      {
-        name: 'css_html',
-        path: 'css-html',
-      },
-    ],
-  },
+  // {
+  //   name: 'customize',
+  //   children: [
+  //     {
+  //       name: 'themes',
+  //     },
+  //     {
+  //       name: 'css_html',
+  //       path: 'css-html',
+  //     },
+  //   ],
+  // },
   {
     name: 'settings',
     children: [
-      { name: 'general' },
+      // { name: 'general' },
       { name: 'interface' },
       { name: 'branding' },
-      { name: 'smtp' },
+      // { name: 'smtp' },
       { name: 'legal' },
       { name: 'write' },
       { name: 'seo' },
@@ -123,15 +123,15 @@ export const ADMIN_NAV_MENUS = [
       { name: 'privileges' },
     ],
   },
-  {
-    name: 'plugins',
-    children: [
-      {
-        name: 'installed_plugins',
-        path: 'installed-plugins',
-      },
-    ],
-  },
+  // {
+  //   name: 'plugins',
+  //   children: [
+  //     {
+  //       name: 'installed_plugins',
+  //       path: 'installed-plugins',
+  //     },
+  //   ],
+  // },
 ];
 
 export const TIMEZONES = [

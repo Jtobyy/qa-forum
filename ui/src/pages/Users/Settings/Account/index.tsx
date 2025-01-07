@@ -46,9 +46,7 @@ const Index = () => {
     <>
       <h3 className="mb-4">{t('heading')}</h3>
       {accountAgent?.enabled && accountAgent?.redirect_url ? (
-        <a href={accountAgent.redirect_url}>
-          {t('goto_modify', { keyPrefix: 'settings' })}
-        </a>
+        <a href={accountAgent.redirect_url}>{t('goto_modify', { keyPrefix: 'settings' })}</a>
       ) : null}
       {!ucAgent?.enabled || accountAgent?.enabled === false ? (
         <>

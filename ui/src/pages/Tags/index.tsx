@@ -92,9 +92,7 @@ const Tags = () => {
               </Form.Group>
             </Form>
             {role_id === 2 || role_id === 3 ? (
-              <Link
-                className="btn btn-outline-primary btn-sm"
-                to="/tags/create">
+              <Link className="btn btn-outline-primary btn-sm" to="/tags/create">
                 {t('title', { keyPrefix: 'tag_modal' })}
               </Link>
             ) : null}
@@ -114,14 +112,7 @@ const Tags = () => {
             <TagsLoader />
           ) : (
             tags?.list?.map((tag) => (
-              <Col
-                key={tag.slug_name}
-                xl={3}
-                lg={4}
-                md={4}
-                sm={6}
-                xs={12}
-                className="mb-4">
+              <Col key={tag.slug_name} xl={3} lg={4} md={4} sm={6} xs={12} className="mb-4">
                 <Card className="h-100">
                   <Card.Body className="d-flex flex-column align-items-start">
                     <Tag className="mb-3" data={tag} />
@@ -135,9 +126,7 @@ const Tags = () => {
                         variant="outline-primary"
                         size="sm"
                         onClick={() => handleFollow(tag)}>
-                        {tag.is_follower
-                          ? t('button_following')
-                          : t('button_follow')}
+                        {tag.is_follower ? t('button_following') : t('button_follow')}
                       </Button>
                       <span className="text-secondary small text-nowrap">
                         {formatCount(tag.question_count)} {t('tag_label')}
@@ -150,11 +139,7 @@ const Tags = () => {
           )}
         </Row>
         <div className="d-flex justify-content-center">
-          <Pagination
-            currentPage={page}
-            totalSize={tags?.count || 0}
-            pageSize={pageSize}
-          />
+          <Pagination currentPage={page} totalSize={tags?.count || 0} pageSize={pageSize} />
         </div>
       </Col>
     </Row>

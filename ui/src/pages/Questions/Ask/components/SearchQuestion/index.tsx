@@ -52,11 +52,7 @@ const SearchQuestion = ({ similarQuestions }) => {
                   to={pathFactory.questionLanding(item.id, item.url_title)}
                   target="_blank">
                   <span
-                    className={`${
-                      item.accepted_answer || item.answer_count > 0
-                        ? 'me-3'
-                        : ''
-                    }`}>
+                    className={`${item.accepted_answer || item.answer_count > 0 ? 'me-3' : ''}`}>
                     {item.title}
                     {item.status === 'closed'
                       ? ` [${t('closed', { keyPrefix: 'question' })}] `

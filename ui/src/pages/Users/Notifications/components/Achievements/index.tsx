@@ -42,8 +42,7 @@ const Achievements = ({ data, handleReadNotification }) => {
   return (
     <ListGroup className="achievement-wrap rounded-0">
       {data.map((item) => {
-        const { comment, question, answer } =
-          item?.object_info?.object_map || {};
+        const { comment, question, answer } = item?.object_info?.object_map || {};
         let url = '';
         switch (item.object_info.object_type) {
           case 'question':
@@ -75,12 +74,8 @@ const Achievements = ({ data, handleReadNotification }) => {
                 {item.rank > 0 && (
                   <div className="text-success num text-end">{`+${item.rank}`}</div>
                 )}
-                {item.rank === 0 && (
-                  <div className="num text-end">{item.rank}</div>
-                )}
-                {item.rank < 0 && (
-                  <div className="text-danger num text-end">{`${item.rank}`}</div>
-                )}
+                {item.rank === 0 && <div className="num text-end">{item.rank}</div>}
+                {item.rank < 0 && <div className="text-danger num text-end">{`${item.rank}`}</div>}
               </>
             )}
 
@@ -88,9 +83,7 @@ const Achievements = ({ data, handleReadNotification }) => {
               <Link to={url} onClick={() => handleReadNotification(item.id)}>
                 {item.object_info.title}
               </Link>
-              <span className="text-secondary small">
-                {t(item.object_info.object_type)}
-              </span>
+              <span className="text-secondary small">{t(item.object_info.object_type)}</span>
             </div>
           </ListGroup.Item>
         );

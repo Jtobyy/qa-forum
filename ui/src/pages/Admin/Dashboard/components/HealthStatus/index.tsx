@@ -83,9 +83,7 @@ const HealthStatus: FC<IProps> = ({ data }) => {
           </Col>
           <Col xs={6} className="mb-1">
             <span className="text-secondary me-1">{t('upload_folder')}</span>
-            <strong>
-              {data.uploading_files ? t('writable') : t('not_writable')}
-            </strong>
+            <strong>{data.uploading_files ? t('writable') : t('not_writable')}</strong>
           </Col>
           <Col xs={6} className="mb-1">
             <span className="text-secondary me-1">{t('https')}</span>
@@ -93,9 +91,7 @@ const HealthStatus: FC<IProps> = ({ data }) => {
           </Col>
           <Col xs={6}>
             <span className="text-secondary me-1">{t('timezone')}</span>
-            <strong>
-              {data.time_zone.split('/')?.[1]?.replaceAll('_', ' ')}
-            </strong>
+            <strong>{data.time_zone.split('/')?.[1]?.replaceAll('_', ' ')}</strong>
           </Col>
           <Col xs={6}>
             <span className="text-secondary me-1">{t('smtp')}</span>

@@ -24,11 +24,7 @@ import { useToast } from '@/hooks';
 import { FormDataType } from '@/common/interface';
 import { JSONSchema, SchemaForm, UISchema, initFormData } from '@/components';
 import { SYSTEM_AVATAR_OPTIONS } from '@/common/constants';
-import {
-  getUsersSetting,
-  putUsersSetting,
-  AdminSettingsUsers,
-} from '@/services';
+import { getUsersSetting, putUsersSetting, AdminSettingsUsers } from '@/services';
 import { handleFormError, scrollToElementTop } from '@/utils';
 import * as Type from '@/common/interface';
 import { siteInfoStore } from '@/stores';

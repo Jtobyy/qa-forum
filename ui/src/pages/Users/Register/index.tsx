@@ -46,8 +46,7 @@ const Index: React.FC = () => {
   }
 
   const showSignupForm =
-    loginSetting?.allow_new_registrations &&
-    loginSetting.allow_email_registrations;
+    loginSetting?.allow_new_registrations && loginSetting.allow_email_registrations;
 
   return (
     <Container style={{ paddingTop: '4rem', paddingBottom: '5rem' }}>

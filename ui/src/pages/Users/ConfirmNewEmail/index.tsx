@@ -68,9 +68,7 @@ const Index: FC = () => {
             </>
           )}
 
-          {step === 'invalid' && (
-            <p className="text-center">{t('confirm_new_email_invalid')}</p>
-          )}
+          {step === 'invalid' && <p className="text-center">{t('confirm_new_email_invalid')}</p>}
         </Col>
       </Row>
     </Container>

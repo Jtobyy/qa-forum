@@ -54,9 +54,7 @@ const Index: FC<IProps> = ({ msg, variant = 'warning', onClose }) => {
             className={`${variant !== 'warning' ? 'text-white' : ''}`}
           />
           <button
-            className={`btn-close me-2 m-auto ${
-              variant !== 'warning' ? 'btn-close-white' : ''
-            }`}
+            className={`btn-close me-2 m-auto ${variant !== 'warning' ? 'btn-close-white' : ''}`}
             onClick={onClose}
             data-bs-dismiss="toast"
             aria-label="Close"

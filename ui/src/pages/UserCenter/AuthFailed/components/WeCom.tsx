@@ -56,18 +56,12 @@ const Index: FC = () => {
           <h3 className="text-center pt-3 mb-3">
             {ucAgent?.agent_info?.display_name} {t('login')}
           </h3>
-          <p className="text-danger text-center">
-            {t('login_failed_email_tip')}
-          </p>
+          <p className="text-danger text-center">{t('login_failed_email_tip')}</p>
 
           <Carousel controls={false}>
             {data.map((item) => (
               <Carousel.Item key={item.id}>
-                <img
-                  className="d-block w-100"
-                  src={item.url}
-                  alt="First slide"
-                />
+                <img className="d-block w-100" src={item.url} alt="First slide" />
               </Carousel.Item>
             ))}
           </Carousel>

@@ -184,17 +184,10 @@ const Index: FC<IProps> = ({ refreshCount }) => {
       <Card.Header>{t('suggest_edits')}</Card.Header>
       <Card.Body className="p-0">
         <Alert variant="info" className="border-0 rounded-0 mb-0">
-          <Stack
-            direction="horizontal"
-            gap={1}
-            className="align-items-center mb-2">
+          <Stack direction="horizontal" gap={1} className="align-items-center mb-2">
             <BaseUserCard data={editor} avatarSize="24" avatarClass="me-2" />
             {editTime && (
-              <FormatTime
-                time={editTime}
-                className="small text-secondary"
-                preFix={t('proposed')}
-              />
+              <FormatTime time={editTime} className="small text-secondary" preFix={t('proposed')} />
             )}
           </Stack>
           <Stack className="align-items-start">
@@ -221,22 +214,13 @@ const Index: FC<IProps> = ({ refreshCount }) => {
       <Card.Footer className="p-3">
         <p>{t('approve_revision_tip')}</p>
         <Stack direction="horizontal" gap={2}>
-          <Button
-            variant="outline-primary"
-            disabled={isLoading}
-            onClick={handlingApprove}>
+          <Button variant="outline-primary" disabled={isLoading} onClick={handlingApprove}>
             {t('approve', { keyPrefix: 'btns' })}
           </Button>
-          <Button
-            variant="outline-primary"
-            disabled={isLoading}
-            onClick={handlingReject}>
+          <Button variant="outline-primary" disabled={isLoading} onClick={handlingReject}>
             {t('reject', { keyPrefix: 'btns' })}
           </Button>
-          <Button
-            variant="outline-primary"
-            disabled={isLoading}
-            onClick={handlingSkip}>
+          <Button variant="outline-primary" disabled={isLoading} onClick={handlingSkip}>
             {t('skip', { keyPrefix: 'btns' })}
           </Button>
         </Stack>

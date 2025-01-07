@@ -32,20 +32,11 @@ const Index: FC<Props> = ({ count = 10 }) => {
         <ListGroupItem
           className="bg-transparent py-3 px-0 border-start-0 border-end-0 placeholder-glow"
           key={v}>
-          <div
-            className="placeholder w-100 h5 align-top"
-            style={{ height: '24px' }}
-          />
+          <div className="placeholder w-100 h5 align-top" style={{ height: '24px' }} />
 
-          <div
-            className="placeholder w-75 d-block align-top mb-2"
-            style={{ height: '21px' }}
-          />
+          <div className="placeholder w-75 d-block align-top mb-2" style={{ height: '21px' }} />
 
-          <div
-            className="placeholder w-50 align-top"
-            style={{ height: '24px' }}
-          />
+          <div className="placeholder w-50 align-top" style={{ height: '24px' }} />
         </ListGroupItem>
       ))}
     </>

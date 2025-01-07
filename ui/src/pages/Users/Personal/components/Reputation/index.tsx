@@ -41,9 +41,7 @@ const Index: FC<Props> = ({ visible, data }) => {
             className="d-flex py-3 px-0 bg-transparent border-start-0 border-end-0"
             key={item.object_id}>
             <div
-              className={`me-3 text-end ${
-                item.reputation > 0 ? 'text-success' : 'text-danger'
-              }`}
+              className={`me-3 text-end ${item.reputation > 0 ? 'text-success' : 'text-danger'}`}
               style={{ width: '40px', minWidth: '40px' }}>
               {item.reputation > 0 ? '+' : ''}
               {item.reputation}
@@ -53,10 +51,7 @@ const Index: FC<Props> = ({ visible, data }) => {
                 className="text-break"
                 to={
                   item.object_type === 'question'
-                    ? pathFactory.questionLanding(
-                        item.question_id,
-                        item.url_title,
-                      )
+                    ? pathFactory.questionLanding(item.question_id, item.url_title)
                     : pathFactory.answerLanding({
                         questionId: item.question_id,
                         slugTitle: item.url_title,

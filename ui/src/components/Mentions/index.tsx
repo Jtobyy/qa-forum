@@ -47,10 +47,7 @@ const Mentions: FC<IProps> = ({ children, pageUsers, onSelected }) => {
         displayName: item.display_name,
         userName: item.username,
       }))
-      ?.filter(
-        (item) =>
-          users.findIndex((user) => user.userName === item.userName) < 0,
-      ) || [];
+      ?.filter((item) => users.findIndex((user) => user.userName === item.userName) < 0) || [];
 
   const searchUser = () => {
     const element = dropdownRef.current?.children[0];
@@ -119,9 +116,7 @@ const Mentions: FC<IProps> = ({ children, pageUsers, onSelected }) => {
   };
   const filterData = val
     ? [...users, ...mapStaffUsers].filter(
-        (item) =>
-          item.displayName?.indexOf(val) === 0 ||
-          item.userName?.indexOf(val) === 0,
+        (item) => item.displayName?.indexOf(val) === 0 || item.userName?.indexOf(val) === 0,
       )
     : [];
   const handleKeyDown = (e) => {
@@ -153,9 +148,7 @@ const Mentions: FC<IProps> = ({ children, pageUsers, onSelected }) => {
       show={filterData.length > 0}
       onKeyDown={handleKeyDown}>
       {children}
-      <Dropdown.Menu
-        className={filterData.length > 0 ? 'visible' : 'invisible'}
-        ref={menuRef}>
+      <Dropdown.Menu className={filterData.length > 0 ? 'visible' : 'invisible'} ref={menuRef}>
         {filterData
           .filter((_, index) => index < MAX_RECODE)
           .map((item, index) => {

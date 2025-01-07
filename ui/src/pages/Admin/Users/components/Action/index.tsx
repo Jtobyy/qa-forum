@@ -28,11 +28,7 @@ import {
   useActivationEmailModal,
   useToast,
 } from '@/hooks';
-import {
-  updateUserPassword,
-  changeUserStatus,
-  updateUserProfile,
-} from '@/services';
+import { updateUserPassword, changeUserStatus, updateUserProfile } from '@/services';
 
 interface Props {
   showActionPassword?: boolean;
@@ -198,13 +194,9 @@ const UserOperation = ({
               {t('set_new_password')}
             </Dropdown.Item>
           ) : null}
-          <Dropdown.Item onClick={() => handleAction('profile')}>
-            {t('edit_profile')}
-          </Dropdown.Item>
+          <Dropdown.Item onClick={() => handleAction('profile')}>{t('edit_profile')}</Dropdown.Item>
           {showActionRole ? (
-            <Dropdown.Item onClick={() => handleAction('role')}>
-              {t('change_role')}
-            </Dropdown.Item>
+            <Dropdown.Item onClick={() => handleAction('role')}>{t('change_role')}</Dropdown.Item>
           ) : null}
           {userData.status === 'inactive' ? (
             <Dropdown.Item onClick={() => handleAction('activation')}>

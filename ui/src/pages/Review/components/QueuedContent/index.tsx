@@ -25,14 +25,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { getPendingReviewPostList, putPendingReviewAction } from '@/services';
-import {
-  BaseUserCard,
-  Tag,
-  FormatTime,
-  Icon,
-  ImgViewer,
-  htmlRender,
-} from '@/components';
+import { BaseUserCard, Tag, FormatTime, Icon, ImgViewer, htmlRender } from '@/components';
 import { scrollToDocTop } from '@/utils';
 import type * as Type from '@/common/interface';
 import { ADMIN_LIST_STATUS } from '@/common/constants';
@@ -125,28 +118,22 @@ const Index: FC<IProps> = ({ refreshCount }) => {
     }
   };
 
-  const { object_type, author_user_info, object_status, reason } =
-    flagItemData || {
-      object_type: '',
-      author_user_info: null,
-      reason: null,
-      object_status: 0,
-    };
+  const { object_type, author_user_info, object_status, reason } = flagItemData || {
+    object_type: '',
+    author_user_info: null,
+    reason: null,
+    object_status: 0,
+  };
 
   const { itemLink, itemId, itemTimePrefix } = generateData(flagItemData);
 
   if (noTasks) return null;
   return (
     <Card>
-      <Card.Header>
-        {object_type !== 'user' ? t('queued_post') : t('queued_post_user')}
-      </Card.Header>
+      <Card.Header>{object_type !== 'user' ? t('queued_post') : t('queued_post_user')}</Card.Header>
       <Card.Body className="p-0">
         <Alert variant="info" className="border-0 rounded-0 mb-0">
-          <Stack
-            direction="horizontal"
-            gap={1}
-            className="align-items-center mb-2">
+          <Stack direction="horizontal" gap={1} className="align-items-center mb-2">
             <div className="small d-flex align-items-center">
               <Icon type="bi" name="plugin" size="24px" className="me-2 lh-1" />
               <span>{flagItemData?.submitter_display_name}</span>
@@ -175,9 +162,7 @@ const Index: FC<IProps> = ({ refreshCount }) => {
               <h5 className="mb-3">{flagItemData?.title}</h5>
               <div className="mb-4">
                 {flagItemData?.tags?.map((item) => {
-                  return (
-                    <Tag key={item.slug_name} className="me-1" data={item} />
-                  );
+                  return <Tag key={item.slug_name} className="me-1" data={item} />;
                 })}
               </div>
             </>
@@ -193,31 +178,19 @@ const Index: FC<IProps> = ({ refreshCount }) => {
           </div>
           <div className="d-flex flex-wrap align-items-center justify-content-between mt-4">
             <div>
-              <span
-                className={classNames(
-                  'badge',
-                  ADMIN_LIST_STATUS[object_status]?.variant,
-                )}>
+              <span className={classNames('badge', ADMIN_LIST_STATUS[object_status]?.variant)}>
                 {t(ADMIN_LIST_STATUS[object_status]?.name, {
                   keyPrefix: 'btns',
                 })}
               </span>
               {flagItemData?.object_show_status === 2 && (
-                <span
-                  className={classNames(
-                    'ms-1 badge',
-                    ADMIN_LIST_STATUS.unlisted.variant,
-                  )}>
+                <span className={classNames('ms-1 badge', ADMIN_LIST_STATUS.unlisted.variant)}>
                   {t(ADMIN_LIST_STATUS.unlisted.name, { keyPrefix: 'btns' })}
                 </span>
               )}
             </div>
             <div className="d-flex align-items-center small">
-              <BaseUserCard
-                data={author_user_info}
-                avatarSize="24"
-                avatarClass="me-2"
-              />
+              <BaseUserCard data={author_user_info} avatarSize="24" avatarClass="me-2" />
               <FormatTime
                 time={Number(flagItemData?.created_at)}
                 className="text-secondary ms-1 flex-shrink-0"
@@ -229,11 +202,7 @@ const Index: FC<IProps> = ({ refreshCount }) => {
       </Card.Body>
 
       <Card.Footer className="p-3">
-        <p>
-          {object_type !== 'user'
-            ? t('approve_post_tip')
-            : t('approve_user_tip')}
-        </p>
+        <p>{object_type !== 'user' ? t('approve_post_tip') : t('approve_user_tip')}</p>
         <Stack direction="horizontal" gap={2}>
           <Button
             variant="outline-primary"
@@ -248,10 +217,7 @@ const Index: FC<IProps> = ({ refreshCount }) => {
             {t('reject', { keyPrefix: 'btns' })}
           </Button>
 
-          <Button
-            variant="outline-primary"
-            disabled={isLoading}
-            onClick={handlingSkip}>
+          <Button variant="outline-primary" disabled={isLoading} onClick={handlingSkip}>
             {t('skip', { keyPrefix: 'btns' })}
           </Button>
         </Stack>

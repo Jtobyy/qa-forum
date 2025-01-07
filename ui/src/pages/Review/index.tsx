@@ -27,12 +27,7 @@ import { Empty } from '@/components';
 import { getReviewType } from '@/services';
 import type * as Type from '@/common/interface';
 
-import {
-  ReviewType,
-  FlagContent,
-  SuggestContent,
-  QueuedContent,
-} from './components';
+import { ReviewType, FlagContent, SuggestContent, QueuedContent } from './components';
 
 const Index: FC = () => {
   const [urlSearch, setUrlSearchParams] = useSearchParams();
@@ -58,9 +53,7 @@ const Index: FC = () => {
             if (changeReviewType) {
               setCurrentReviewType(filterData[0].name);
             } else {
-              const currentTypeItem = resp.find(
-                (item) => item.name === currentReviewType,
-              );
+              const currentTypeItem = resp.find((item) => item.name === currentReviewType);
               if (currentTypeItem?.todo_amount === 0) {
                 setCurrentReviewType(filterData[0].name);
               }
@@ -109,11 +102,7 @@ const Index: FC = () => {
       </Col>
 
       <Col className="page-right-side mt-4 mt-xl-0">
-        <ReviewType
-          list={reviewTypeList}
-          checked={currentReviewType}
-          callback={handleTypeChange}
-        />
+        <ReviewType list={reviewTypeList} checked={currentReviewType} callback={handleTypeChange} />
       </Col>
     </Row>
   );

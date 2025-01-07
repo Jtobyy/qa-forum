@@ -67,19 +67,13 @@ const Index = ({
   };
 
   return (
-    <div
-      className={classNames(
-        'd-flex align-items-start flex-column flex-md-row',
-        className,
-      )}>
+    <div className={classNames('d-flex align-items-start flex-column flex-md-row', className)}>
       <div className="w-100">
         <div
           className={classNames('custom-form-control', {
             'is-invalid': validationErrorMsg,
           })}>
-          <Mentions
-            pageUsers={pageUsers.getUsers()}
-            onSelected={handleSelected}>
+          <Mentions pageUsers={pageUsers.getUsers()} onSelected={handleSelected}>
             <TextArea
               size="sm"
               value={type === 'edit' ? parseEditMentionUser(value) : value}
@@ -89,16 +83,11 @@ const Index = ({
           </Mentions>
           <div className="form-text">{t(`tip_${mode}`)}</div>
         </div>
-        <Form.Control.Feedback type="invalid">
-          {validationErrorMsg}
-        </Form.Control.Feedback>
+        <Form.Control.Feedback type="invalid">{validationErrorMsg}</Form.Control.Feedback>
       </div>
       {type === 'edit' ? (
         <div className="d-flex flex-row flex-md-column ms-0 ms-md-2 mt-2 mt-md-0">
-          <Button
-            size="sm"
-            className="text-nowrap "
-            onClick={() => handleSendReply()}>
+          <Button size="sm" className="text-nowrap " onClick={() => handleSendReply()}>
             {t('btn_save_edits')}
           </Button>
           <Button

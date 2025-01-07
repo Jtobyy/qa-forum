@@ -25,18 +25,8 @@ import { Trans, useTranslation } from 'react-i18next';
 import { usePageTags } from '@/hooks';
 import type { LoginReqParams, FormDataType } from '@/common/interface';
 import { Unactivate, WelcomeTitle, PluginRender } from '@/components';
-import {
-  loggedUserInfoStore,
-  loginSettingStore,
-  userCenterStore,
-} from '@/stores';
-import {
-  floppyNavigation,
-  guard,
-  handleFormError,
-  userCenter,
-  scrollToElementTop,
-} from '@/utils';
+import { loggedUserInfoStore, loginSettingStore, userCenterStore } from '@/stores';
+import { floppyNavigation, guard, handleFormError, userCenter, scrollToElementTop } from '@/utils';
 import { PluginType, useCaptchaPlugin } from '@/utils/pluginKit';
 import { login, UcAgent } from '@/services';
 import { setupAppTheme } from '@/utils/localize';
@@ -53,8 +43,7 @@ const Index: React.FC = () => {
     ucAgentInfo = ucAgent.agent_info;
   }
   const canOriginalLogin =
-    (!ucAgentInfo || ucAgentInfo.enabled_original_user_system) &&
-    loginSetting.allow_password_login;
+    (!ucAgentInfo || ucAgentInfo.enabled_original_user_system) && loginSetting.allow_password_login;
 
   const [formData, setFormData] = useState<FormDataType>({
     e_mail: {
@@ -103,9 +92,7 @@ const Index: React.FC = () => {
       ...formData,
     });
     if (!bol) {
-      const errObj = Object.keys(formData).filter(
-        (key) => formData[key].isInvalid,
-      );
+      const errObj = Object.keys(formData).filter((key) => formData[key].isInvalid);
       const ele = document.getElementById(errObj[0]);
       scrollToElementTop(ele);
     }
@@ -187,17 +174,9 @@ const Index: React.FC = () => {
       <WelcomeTitle />
       {step === 1 ? (
         <Col className="mx-auto" md={6} lg={4} xl={3}>
-          <PluginRender
-            type={PluginType.Captcha}
-            slug_name="captcha_basic"
-            className="mb-5"
-          />
+          <PluginRender type={PluginType.Captcha} slug_name="captcha_basic" className="mb-5" />
 
-          <PluginRender
-            type={PluginType.Captcha}
-            slug_name="captcha_google_v2"
-            className="mb-5"
-          />
+          <PluginRender type={PluginType.Captcha} slug_name="captcha_google_v2" className="mb-5" />
           {ucAgentInfo ? (
             <PluginRender
               type={PluginType.Connector}

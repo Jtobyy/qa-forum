@@ -46,10 +46,7 @@ const Index: FC<Props> = ({ data, type }) => {
                       slugTitle: item.question_info?.url_title,
                       answerId: item.answer_id,
                     })
-                  : pathFactory.questionLanding(
-                      item.question_id,
-                      item.url_title,
-                    )
+                  : pathFactory.questionLanding(item.question_id, item.url_title)
               }>
               {type === 'answer' ? item.question_info.title : item.title}
             </Link>

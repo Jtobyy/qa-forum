@@ -133,9 +133,7 @@ const Index: FC = () => {
             });
           }}
         />
-        <Form.Control.Feedback type="invalid">
-          {formData.e_mail.errorMsg}
-        </Form.Control.Feedback>
+        <Form.Control.Feedback type="invalid">{formData.e_mail.errorMsg}</Form.Control.Feedback>
       </Form.Group>
 
       <div className="d-grid mb-3">

@@ -28,12 +28,7 @@ interface Props {
   formData: Type.FormDataType;
   readOnly?: boolean;
 }
-const Index: FC<Props> = ({
-  fieldName,
-  onChange,
-  formData,
-  readOnly = false,
-}) => {
+const Index: FC<Props> = ({ fieldName, onChange, formData, readOnly = false }) => {
   const fieldObject = formData[fieldName];
   const handleChange = (evt: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = evt.currentTarget;

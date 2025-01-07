@@ -25,8 +25,7 @@ const Index: FC<{ children?: ReactNode }> = ({ children }) => {
     <div className="text-center py-5">
       {children || (
         <Trans i18nKey="personal.list_empty">
-          We couldn't find anything. <br /> Try different or less specific
-          keywords.
+          We couldn't find anything. <br /> Try different or less specific keywords.
         </Trans>
       )}
     </div>

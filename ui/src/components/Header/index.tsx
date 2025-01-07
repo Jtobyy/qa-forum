@@ -18,22 +18,9 @@
  */
 
 import { FC, memo, useState, useEffect } from 'react';
-import {
-  Navbar,
-  Container,
-  Nav,
-  Form,
-  FormControl,
-  Col,
-} from 'react-bootstrap';
+import { Navbar, Container, Nav, Form, FormControl, Col } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import {
-  useSearchParams,
-  Link,
-  useNavigate,
-  useLocation,
-  useMatch,
-} from 'react-router-dom';
+import { useSearchParams, Link, useNavigate, useLocation, useMatch } from 'react-router-dom';
 
 import classnames from 'classnames';
 
@@ -168,11 +155,7 @@ const Header: FC = () => {
           {/* mobile nav */}
           <div className="d-flex lg-none align-items-center flex-lg-nowrap">
             {user?.username ? (
-              <NavItems
-                redDot={redDot}
-                userInfo={user}
-                logOut={(e) => handleLogout(e)}
-              />
+              <NavItems redDot={redDot} userInfo={user} logOut={(e) => handleLogout(e)} />
             ) : (
               <>
                 <Link
@@ -188,9 +171,7 @@ const Header: FC = () => {
                   <Link
                     className={classnames(
                       'btn',
-                      navbarStyle === 'theme-colored'
-                        ? 'btn-light'
-                        : 'btn-primary',
+                      navbarStyle === 'theme-colored' ? 'btn-light' : 'btn-primary',
                     )}
                     to={userCenter.getSignUpUrl()}>
                     {t('btns.signup')}
@@ -223,16 +204,12 @@ const Header: FC = () => {
           </Col>
 
           <Nav.Item className="lg-none mt-3 pb-1">
-            <Link
-              to={askUrl}
-              className="text-capitalize text-nowrap btn btn-light">
+            <Link to={askUrl} className="text-capitalize text-nowrap btn btn-light">
               {t('btns.add_question')}
             </Link>
           </Nav.Item>
           {/* pc nav */}
-          <Col
-            lg={4}
-            className="d-none d-lg-flex justify-content-start justify-content-sm-end">
+          <Col lg={4} className="d-none d-lg-flex justify-content-start justify-content-sm-end">
             {user?.username ? (
               <Nav className="d-flex align-items-center flex-lg-nowrap">
                 <Nav.Item className="me-3">
@@ -246,11 +223,7 @@ const Header: FC = () => {
                   </Link>
                 </Nav.Item>
 
-                <NavItems
-                  redDot={redDot}
-                  userInfo={user}
-                  logOut={handleLogout}
-                />
+                <NavItems redDot={redDot} userInfo={user} logOut={handleLogout} />
               </Nav>
             ) : (
               <>
@@ -267,9 +240,7 @@ const Header: FC = () => {
                   <Link
                     className={classnames(
                       'btn',
-                      navbarStyle === 'theme-colored'
-                        ? 'btn-light'
-                        : 'btn-primary',
+                      navbarStyle === 'theme-colored' ? 'btn-light' : 'btn-primary',
                     )}
                     to={userCenter.getSignUpUrl()}>
                     {t('btns.signup')}

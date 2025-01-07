@@ -171,9 +171,7 @@ const useTagModal = (props: IProps = {}) => {
     onClose();
   };
 
-  const handleDisplayNameChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
+  const handleDisplayNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setFormData({
       ...formData,
@@ -197,9 +195,7 @@ const useTagModal = (props: IProps = {}) => {
     });
   };
 
-  const handleDescriptionChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
+  const handleDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setFormData({
       ...formData,
@@ -239,9 +235,7 @@ const useTagModal = (props: IProps = {}) => {
                 isInvalid={formData.slugName.isInvalid}
               />
 
-              <Form.Text as="div">
-                {t('form.fields.slug_name.msg.range')}
-              </Form.Text>
+              <Form.Text as="div">{t('form.fields.slug_name.msg.range')}</Form.Text>
               <Form.Control.Feedback type="invalid">
                 {formData.slugName.errorMsg}
               </Form.Control.Feedback>

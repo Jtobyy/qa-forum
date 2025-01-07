@@ -18,10 +18,7 @@
  */
 
 import { useCallback } from 'react';
-import {
-  useBeforeUnload,
-  unstable_usePrompt as usePrompt,
-} from 'react-router-dom';
+import { useBeforeUnload, unstable_usePrompt as usePrompt } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 // https://gist.github.com/chaance/2f3c14ec2351a175024f62fd6ba64aa6
@@ -31,10 +28,7 @@ interface PromptProps {
   beforeUnload?: boolean;
 }
 
-const usePromptWithUnload = ({
-  when = false,
-  beforeUnload = true,
-}: PromptProps) => {
+const usePromptWithUnload = ({ when = false, beforeUnload = true }: PromptProps) => {
   const { t } = useTranslation('translation', { keyPrefix: 'prompt' });
 
   usePrompt({

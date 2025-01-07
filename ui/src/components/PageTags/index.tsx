@@ -28,9 +28,7 @@ const doInsertCustomCSS = !document.querySelector('link[href*="custom.css"]');
 
 const Index: FC = () => {
   const { favicon, square_icon } = brandingStore((state) => state.branding);
-  const { pageTitle, keywords, description } = pageTagStore(
-    (state) => state.items,
-  );
+  const { pageTitle, keywords, description } = pageTagStore((state) => state.items);
   const appVersion = siteInfoStore((_) => _.version);
   const hashVersion = siteInfoStore((_) => _.revision);
   const siteName = siteInfoStore((_) => _.siteInfo).name;
@@ -57,10 +55,7 @@ const Index: FC = () => {
   const currentLang = getCurrentLang();
   const setDocLang = () => {
     if (currentLang) {
-      document.documentElement.setAttribute(
-        'lang',
-        currentLang.replace('_', '-'),
-      );
+      document.documentElement.setAttribute('lang', currentLang.replace('_', '-'));
     }
   };
   // properties used for social media tags
@@ -91,10 +86,7 @@ const Index: FC = () => {
       {keywords && <meta name="keywords" content={keywords} />}
       {description && <meta name="description" content={description} />}
       {doInsertCustomCSS && (
-        <link
-          rel="stylesheet"
-          href={`${process.env.PUBLIC_URL}${REACT_BASE_PATH}/custom.css`}
-        />
+        <link rel="stylesheet" href={`${process.env.PUBLIC_URL}${REACT_BASE_PATH}/custom.css`} />
       )}
       {/* Social media meta share tags start here */}
       <meta property="og:type" content={openGraphType} />
@@ -110,10 +102,7 @@ const Index: FC = () => {
       <meta name="twitter:card" content={twitterType} />
       <meta name="twitter:domain" content={hostname} />
       {description && <meta name="twitter:description" content={description} />}
-      <meta
-        name="twitter:image"
-        content={square_icon || favicon || '/favicon.ico'}
-      />
+      <meta name="twitter:image" content={square_icon || favicon || '/favicon.ico'} />
       {/* Social media meta share tags end here */}
     </Helmet>
   );

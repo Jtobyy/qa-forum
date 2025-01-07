@@ -44,10 +44,7 @@ const ActionBar = ({
     <div className="d-flex justify-content-between flex-wrap small">
       <div className="d-flex align-items-center flex-wrap link-secondary">
         {userStatus !== 'deleted' ? (
-          <Link
-            to={`/users/${username}`}
-            className="name-ellipsis"
-            style={{ maxWidth: '200px' }}>
+          <Link to={`/users/${username}`} className="name-ellipsis" style={{ maxWidth: '200px' }}>
             {nickName}
           </Link>
         ) : (
@@ -59,9 +56,7 @@ const ActionBar = ({
           title={t('tip_vote')}
           variant="link"
           size="sm"
-          className={`flex-shrink-0 me-3 btn-no-border p-0 ${
-            isVote ? '' : 'link-secondary'
-          }`}
+          className={`flex-shrink-0 me-3 btn-no-border p-0 ${isVote ? '' : 'link-secondary'}`}
           onClick={onVote}>
           <Icon name="hand-thumbs-up-fill" />
           {voteCount > 0 && <span className="ms-2">{voteCount}</span>}
@@ -81,10 +76,7 @@ const ActionBar = ({
               key={action.name}
               variant="link"
               size="sm"
-              className={classNames(
-                'link-secondary btn-no-border m-0 p-0',
-                index > 0 && 'ms-3',
-              )}
+              className={classNames('link-secondary btn-no-border m-0 p-0', index > 0 && 'ms-3')}
               onClick={() => onAction(action)}>
               {action.name}
             </Button>
@@ -92,11 +84,7 @@ const ActionBar = ({
         })}
       </div>
       <Dropdown className="d-block d-md-none">
-        <Dropdown.Toggle
-          as="div"
-          variant="success"
-          className="no-toggle"
-          id="dropdown-comment">
+        <Dropdown.Toggle as="div" variant="success" className="no-toggle" id="dropdown-comment">
           <Icon name="three-dots" className="text-secondary" />
         </Dropdown.Toggle>
 

@@ -23,11 +23,7 @@ import { useTranslation } from 'react-i18next';
 
 import classnames from 'classnames';
 
-import {
-  getTransNs,
-  getTransKeyPrefix,
-  PluginInfo,
-} from '@/utils/pluginKit/utils';
+import { getTransNs, getTransKeyPrefix, PluginInfo } from '@/utils/pluginKit/utils';
 import { SvgIcon } from '@/components';
 import { userCenterStore } from '@/stores';
 import './i18n';
@@ -48,8 +44,7 @@ const Index: FC<Props> = ({ className }) => {
     keyPrefix: getTransKeyPrefix(pluginInfo),
   });
   const ucAgent = userCenterStore().agent;
-  const ucLoginRedirect =
-    ucAgent?.enabled && ucAgent?.agent_info?.login_redirect_url;
+  const ucLoginRedirect = ucAgent?.enabled && ucAgent?.agent_info?.login_redirect_url;
 
   if (ucLoginRedirect) {
     return (
@@ -58,9 +53,7 @@ const Index: FC<Props> = ({ className }) => {
         variant="outline-secondary"
         href={ucAgent?.agent_info.login_redirect_url}>
         <SvgIcon base64={ucAgent?.agent_info.icon} svgClassName="btnSvg me-2" />
-        <span>
-          {t('connect', { auth_name: ucAgent?.agent_info.display_name })}
-        </span>
+        <span>{t('connect', { auth_name: ucAgent?.agent_info.display_name })}</span>
       </Button>
     );
   }

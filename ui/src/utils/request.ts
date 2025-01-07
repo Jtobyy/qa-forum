@@ -31,8 +31,7 @@ import { floppyNavigation } from './floppyNavigation';
 import { isIgnoredPath, IGNORE_PATH_LIST } from './guard';
 
 const baseConfig = {
-  baseURL:
-    process.env.NODE_ENV === 'development' ? '' : process.env.REACT_APP_API_URL,
+  baseURL: process.env.NODE_ENV === 'development' ? '' : process.env.REACT_APP_API_URL,
   timeout: 10000,
   withCredentials: true,
 };
@@ -76,11 +75,7 @@ class Request {
         return data;
       },
       (error) => {
-        const {
-          status,
-          data: errBody,
-          config: errConfig,
-        } = error.response || {};
+        const { status, data: errBody, config: errConfig } = error.response || {};
         const { data = {}, msg = '' } = errBody || {};
 
         const errorObject: {
@@ -209,9 +204,7 @@ class Request {
             errorCodeStore.getState().update('50X');
           }
 
-          console.error(
-            `Request failed with status code ${status}, ${msg || ''}`,
-          );
+          console.error(`Request failed with status code ${status}, ${msg || ''}`);
         }
         return Promise.reject(errorObject);
       },
@@ -226,27 +219,15 @@ class Request {
     return this.instance.get(url, config);
   }
 
-  public post<T = any>(
-    url: string,
-    data?: any,
-    config?: AxiosRequestConfig,
-  ): Promise<T> {
+  public post<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
     return this.instance.post(url, data, config);
   }
 
-  public put<T = any>(
-    url: string,
-    data?: any,
-    config?: AxiosRequestConfig,
-  ): Promise<T> {
+  public put<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
     return this.instance.put(url, data, config);
   }
 
-  public delete<T = any>(
-    url: string,
-    data?: any,
-    config?: AxiosRequestConfig,
-  ): Promise<T> {
+  public delete<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
     return this.instance.delete(url, {
       data,
       ...config,

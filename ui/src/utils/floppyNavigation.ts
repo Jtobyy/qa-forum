@@ -143,20 +143,12 @@ const navigate = (to: string | number, config: NavigateConfig = {}) => {
       handler = 'replace';
     }
     if (handler === 'href') {
-      if (
-        to.startsWith('/') &&
-        !to.startsWith('//') &&
-        !to.startsWith(REACT_BASE_PATH)
-      ) {
+      if (to.startsWith('/') && !to.startsWith('//') && !to.startsWith(REACT_BASE_PATH)) {
         to = `${REACT_BASE_PATH}${to}`;
       }
       window.location.href = to;
     } else if (handler === 'replace') {
-      if (
-        to.startsWith('/') &&
-        !to.startsWith('//') &&
-        !to.startsWith(REACT_BASE_PATH)
-      ) {
+      if (to.startsWith('/') && !to.startsWith('//') && !to.startsWith(REACT_BASE_PATH)) {
         to = `${REACT_BASE_PATH}${to}`;
       }
       window.location.replace(to);

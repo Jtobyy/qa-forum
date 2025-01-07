@@ -37,8 +37,7 @@ const Inbox = ({ data, handleReadNotification }) => {
   return (
     <ListGroup className="rounded-0">
       {data.map((item) => {
-        const { comment, question, answer } =
-          item?.object_info?.object_map || {};
+        const { comment, question, answer } = item?.object_info?.object_map || {};
         let url = '';
         switch (item.object_info.object_type) {
           case 'question':
@@ -56,15 +55,10 @@ const Inbox = ({ data, handleReadNotification }) => {
         return (
           <ListGroup.Item
             key={item.id}
-            className={classNames(
-              'py-3 border-start-0 border-end-0',
-              !item.is_read && 'warning',
-            )}>
+            className={classNames('py-3 border-start-0 border-end-0', !item.is_read && 'warning')}>
             <div>
               {item.user_info && item.user_info.status !== 'deleted' ? (
-                <Link to={`/users/${item.user_info.username}`}>
-                  {item.user_info.display_name}{' '}
-                </Link>
+                <Link to={`/users/${item.user_info.username}`}>{item.user_info.display_name} </Link>
               ) : (
                 // someone for anonymous user display
                 <span>{item.user_info?.display_name || t('someone')} </span>

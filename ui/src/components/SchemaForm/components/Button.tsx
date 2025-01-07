@@ -122,12 +122,7 @@ const Index: FC<Props> = ({
         variant={variant}>
         {isLoading ? (
           <>
-            <Spinner
-              className="align-middle me-2"
-              animation="border"
-              size="sm"
-              variant={variant}
-            />
+            <Spinner className="align-middle me-2" animation="border" size="sm" variant={variant} />
             {loadingText}
           </>
         ) : (
@@ -149,12 +144,7 @@ const Index: FC<Props> = ({
         variant={variant}>
         {isLoading ? (
           <>
-            <Spinner
-              className="align-middle me-2"
-              animation="border"
-              size="sm"
-              variant={variant}
-            />
+            <Spinner className="align-middle me-2" animation="border" size="sm" variant={variant} />
             {loadingText}
           </>
         ) : (

@@ -19,23 +19,13 @@
 
 import { FC, useEffect, useState } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
-import {
-  useParams,
-  Link,
-  useNavigate,
-  useSearchParams,
-} from 'react-router-dom';
+import { useParams, Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { usePageTags } from '@/hooks';
 import * as Type from '@/common/interface';
 import { FollowingTags, CustomSidebar, Icon } from '@/components';
-import {
-  useTagInfo,
-  useFollow,
-  useQuerySynonymsTags,
-  useQuestionList,
-} from '@/services';
+import { useTagInfo, useFollow, useQuerySynonymsTags, useQuestionList } from '@/services';
 import QuestionList, { QUESTION_ORDER_KEYS } from '@/components/QuestionList';
 import HotQuestions from '@/components/HotQuestions';
 import { escapeRemove, guard } from '@/utils';
@@ -47,8 +37,7 @@ const Index: FC = () => {
   const routeParams = useParams();
   const curTagName = routeParams.tagName || '';
   const [urlSearchParams] = useSearchParams();
-  const curOrder = (urlSearchParams.get('order') ||
-    QUESTION_ORDER_KEYS[0]) as Type.QuestionOrderBy;
+  const curOrder = (urlSearchParams.get('order') || QUESTION_ORDER_KEYS[0]) as Type.QuestionOrderBy;
   const curPage = Number(urlSearchParams.get('page')) || 1;
   const reqParams: Type.QueryQuestionsReq = {
     page_size: 20,
@@ -61,10 +50,7 @@ const Index: FC = () => {
   const { data: tagResp, isLoading } = useTagInfo({ name: curTagName });
   const { data: listData, isLoading: listLoading } = useQuestionList(reqParams);
   const { data: followResp } = useFollow(tagFollow);
-  const { data: synonymsRes } = useQuerySynonymsTags(
-    tagInfo?.tag_id,
-    tagInfo?.status,
-  );
+  const { data: synonymsRes } = useQuerySynonymsTags(tagInfo?.tag_id, tagInfo?.status);
   const toggleFollow = () => {
     if (!guard.tryNormalLogged(true)) {
       return;
@@ -90,9 +76,7 @@ const Index: FC = () => {
 
       if (info.excerpt) {
         info.excerpt =
-          info.excerpt.length > 256
-            ? [...info.excerpt].slice(0, 256).join('')
-            : info.excerpt;
+          info.excerpt.length > 256 ? [...info.excerpt].slice(0, 256).join('') : info.excerpt;
       }
 
       setTagInfo(info);
@@ -122,10 +106,7 @@ const Index: FC = () => {
         {isLoading ? (
           <div className="tag-box mb-5 placeholder-glow">
             <div className="mb-3 h3 placeholder" style={{ width: '120px' }} />
-            <p
-              className="placeholder w-100 d-block align-top"
-              style={{ height: '24px' }}
-            />
+            <p className="placeholder w-100 d-block align-top" style={{ height: '24px' }} />
 
             <div
               className="placeholder d-block align-top"
@@ -135,10 +116,7 @@ const Index: FC = () => {
         ) : (
           <div className="tag-box mb-5">
             <h3 className="mb-3">
-              <Link
-                to={pathFactory.tagLanding(tagInfo.slug_name)}
-                replace
-                className="link-dark">
+              <Link to={pathFactory.tagLanding(tagInfo.slug_name)} replace className="link-dark">
                 {tagInfo.display_name}
               </Link>
             </h3>
@@ -156,16 +134,12 @@ const Index: FC = () => {
                   <Button variant="primary" onClick={() => toggleFollow()}>
                     {t('button_following')}
                   </Button>
-                  <Link
-                    className="btn btn-outline-secondary ms-2"
-                    to="/users/settings/notify">
+                  <Link className="btn btn-outline-secondary ms-2" to="/users/settings/notify">
                     <Icon name="bell-fill" />
                   </Link>
                 </div>
               ) : (
-                <Button
-                  variant="outline-primary"
-                  onClick={() => toggleFollow()}>
+                <Button variant="outline-primary" onClick={() => toggleFollow()}>
                   {t('button_follow')}
                 </Button>
               )}

@@ -29,10 +29,7 @@ export const changeUserStatus = (params) => {
 
 export const useQueryUsers = (params) => {
   const apiUrl = `/answer/admin/api/users/page?${qs.stringify(params)}`;
-  const { data, error, mutate } = useSWR<Type.ListResult, Error>(
-    apiUrl,
-    request.instance.get,
-  );
+  const { data, error, mutate } = useSWR<Type.ListResult, Error>(apiUrl, request.instance.get);
   return {
     data,
     isLoading: !data && !error,
@@ -49,11 +46,7 @@ export const changeUserRole = (params) => {
   return request.put('/answer/admin/api/user/role', params);
 };
 
-export const addUser = (params: {
-  display_name: string;
-  email: string;
-  password: string;
-}) => {
+export const addUser = (params: { display_name: string; email: string; password: string }) => {
   return request.post('/answer/admin/api/user', params);
 };
 
@@ -61,10 +54,7 @@ export const addUsers = (params: { users: string }) => {
   return request.post('/answer/admin/api/users', params);
 };
 
-export const updateUserPassword = (params: {
-  password: string;
-  user_id: string;
-}) => {
+export const updateUserPassword = (params: { password: string; user_id: string }) => {
   return request.put('/answer/admin/api/user/password', params);
 };
 

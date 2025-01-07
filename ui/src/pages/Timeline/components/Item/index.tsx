@@ -75,8 +75,7 @@ const Index: FC<Props> = ({ data, isAdmin, objectInfo, revisionList }) => {
             data.activity_type === 'edited' ||
             data.activity_type === 'asked' ||
             data.activity_type === 'created' ||
-            (objectInfo.object_type === 'answer' &&
-              data.activity_type === 'answered')) && (
+            (objectInfo.object_type === 'answer' && data.activity_type === 'answered')) && (
             <Button
               onClick={() => handleItemClick(data.revision_id)}
               variant="link"
@@ -89,19 +88,16 @@ const Index: FC<Props> = ({ data, isAdmin, objectInfo, revisionList }) => {
             </Button>
           )}
           {data.activity_type === 'accept' && (
-            <Link
-              to={`/questions/${objectInfo.question_id}/${data?.object_id}`}>
+            <Link to={`/questions/${objectInfo.question_id}/${data?.object_id}`}>
               {t(data.activity_type)}
             </Link>
           )}
 
-          {objectInfo.object_type === 'question' &&
-            data.activity_type === 'answered' && (
-              <Link
-                to={`/questions/${objectInfo.question_id}/${data.object_id}`}>
-                {t(data.activity_type)}
-              </Link>
-            )}
+          {objectInfo.object_type === 'question' && data.activity_type === 'answered' && (
+            <Link to={`/questions/${objectInfo.question_id}/${data.object_id}`}>
+              {t(data.activity_type)}
+            </Link>
+          )}
 
           {data.activity_type === 'commented' && (
             <Link
@@ -118,9 +114,7 @@ const Index: FC<Props> = ({ data, isAdmin, objectInfo, revisionList }) => {
             <div>{t(data.activity_type)}</div>
           )}
 
-          {data.cancelled && (
-            <div className="text-danger">{t('cancelled')}</div>
-          )}
+          {data.cancelled && <div className="text-danger">{t('cancelled')}</div>}
         </td>
         <td>
           {data.activity_type === 'downvote' && !isAdmin ? (

@@ -47,9 +47,7 @@ const Index: FC = () => {
 
           {location.pathname?.includes('failed') && (
             <div className="d-flex flex-column flex-shrink-1 flex-grow-1 justify-content-center align-items-center">
-              <div
-                className="mb-4 text-secondary"
-                style={{ fontSize: '120px', lineHeight: 1.2 }}>
+              <div className="mb-4 text-secondary" style={{ fontSize: '120px', lineHeight: 1.2 }}>
                 (=‘x‘=)
               </div>
 

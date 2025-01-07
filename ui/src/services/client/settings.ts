@@ -60,10 +60,7 @@ export const useGetUserPluginList = () => {
 
 export const useGetUserPluginConfig = (params) => {
   const apiUrl = `/answer/api/v1/user/plugin/config?${qs.stringify(params)}`;
-  const { data, error, mutate } = useSWR<PluginConfig, Error>(
-    apiUrl,
-    request.instance.get,
-  );
+  const { data, error, mutate } = useSWR<PluginConfig, Error>(apiUrl, request.instance.get);
   return {
     data,
     isLoading: !data && !error,

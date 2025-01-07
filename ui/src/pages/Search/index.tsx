@@ -28,14 +28,7 @@ import { Pagination } from '@/components';
 import { getSearchResult } from '@/services';
 import type { SearchParams, SearchRes } from '@/common/interface';
 
-import {
-  Head,
-  SearchHead,
-  SearchItem,
-  Tips,
-  Empty,
-  ListLoader,
-} from './components';
+import { Head, SearchHead, SearchItem, Tips, Empty, ListLoader } from './components';
 
 const Index = () => {
   const { t } = useTranslation('translation');
@@ -120,11 +113,7 @@ const Index = () => {
         {!isLoading && !list?.length && <Empty />}
 
         <div className="d-flex justify-content-center">
-          <Pagination
-            currentPage={Number(page)}
-            pageSize={20}
-            totalSize={count}
-          />
+          <Pagination currentPage={Number(page)} pageSize={20} totalSize={count} />
         </div>
       </Col>
       <Col className="page-right-side mt-4 mt-xl-0">

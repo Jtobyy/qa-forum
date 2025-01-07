@@ -60,14 +60,7 @@ const Users = () => {
               </Row>
               <Row className={index === keys.length - 1 ? '' : 'mb-4'}>
                 {users[key]?.map((user) => (
-                  <Col
-                    key={user.username}
-                    xl={3}
-                    lg={4}
-                    md={4}
-                    sm={6}
-                    xs={12}
-                    className="mb-4">
+                  <Col key={user.username} xl={3} lg={4} md={4} sm={6} xs={12} className="mb-4">
                     <div className="d-flex">
                       <Link to={`/users/${user.username}`}>
                         <Avatar
@@ -78,9 +71,7 @@ const Users = () => {
                         />
                       </Link>
                       <div className="ms-2">
-                        <Link
-                          className="text-break"
-                          to={`/users/${user.username}`}>
+                        <Link className="text-break" to={`/users/${user.username}`}>
                           {user.display_name}
                         </Link>
                         <div className="text-secondary small">

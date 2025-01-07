@@ -78,9 +78,7 @@ export type UserPermissionKey =
   | 'question.audit'
   | 'tag.audit'
   | 'tag.use_reserved_tag';
-export const useUserPermission = (
-  keys: UserPermissionKey | UserPermissionKey[],
-) => {
+export const useUserPermission = (keys: UserPermissionKey | UserPermissionKey[]) => {
   const apiUrl = '/answer/api/v1/permission';
   const action = Array.isArray(keys) ? keys.join(',') : keys;
 
@@ -98,8 +96,6 @@ export const useUserPermission = (
 };
 
 export const useSearchUserStaff = (name: string) => {
-  const apiUrl = name
-    ? `/answer/api/v1/user/staff?username=${name}&page_size=10`
-    : null;
+  const apiUrl = name ? `/answer/api/v1/user/staff?username=${name}&page_size=10` : null;
   return useSWR<Type.User[]>(apiUrl, request.instance.get);
 };

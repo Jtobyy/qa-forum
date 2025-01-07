@@ -25,11 +25,7 @@ import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { usePageTags } from '@/hooks';
 import { Pagination, FormatTime, Empty } from '@/components';
 import { loggedUserInfoStore } from '@/stores';
-import {
-  usePersonalInfoByName,
-  usePersonalTop,
-  usePersonalListByTabName,
-} from '@/services';
+import { usePersonalInfoByName, usePersonalTop, usePersonalListByTabName } from '@/services';
 import type { UserInfoRes } from '@/common/interface';
 
 import {
@@ -88,9 +84,7 @@ const Personal: FC = () => {
             <UserInfo data={userInfo as UserInfoRes} />
             {isSelf && (
               <div className="mb-3">
-                <Link
-                  className="btn btn-outline-secondary"
-                  to="/users/settings/profile">
+                <Link className="btn btn-outline-secondary" to="/users/settings/profile">
                   {t('edit_profile')}
                 </Link>
               </div>
@@ -120,20 +114,12 @@ const Personal: FC = () => {
           <Reputation data={list} visible={tabName === 'reputation'} />
           <Comments data={list} visible={tabName === 'comments'} />
           <Votes data={list} visible={tabName === 'votes'} />
-          <Badges
-            data={list}
-            visible={tabName === 'badges'}
-            username={username}
-          />
+          <Badges data={list} visible={tabName === 'badges'} username={username} />
           {!list?.length && !isLoading && <Empty />}
 
           {count > 0 && (
             <div className="d-flex justify-content-center py-4">
-              <Pagination
-                pageSize={30}
-                totalSize={count || 0}
-                currentPage={Number(page)}
-              />
+              <Pagination pageSize={30} totalSize={count || 0} currentPage={Number(page)} />
             </div>
           )}
 
@@ -144,10 +130,7 @@ const Personal: FC = () => {
                 <div className="text-secondary">
                   <FormatTime time={userInfo.created_at} preFix={t('joined')} />
                   {t('comma')}{' '}
-                  <FormatTime
-                    time={userInfo.last_login_date}
-                    preFix={t('last_login')}
-                  />
+                  <FormatTime time={userInfo.last_login_date} preFix={t('last_login')} />
                 </div>
               )}
             </>

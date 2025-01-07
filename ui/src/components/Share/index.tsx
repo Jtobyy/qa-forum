@@ -99,24 +99,16 @@ const Index: FC<IProps> = ({ type, qid, aid, title }) => {
           </Dropdown.Item>
         </OverlayTrigger>
         <Dropdown.Item eventKey="facebook">
-          <FacebookShareButton
-            title={title}
-            url={baseUrl}
-            className="w-100 py-1 px-3 text-start">
+          <FacebookShareButton title={title} url={baseUrl} className="w-100 py-1 px-3 text-start">
             {t('share.facebook')}
           </FacebookShareButton>
         </Dropdown.Item>
         <Dropdown.Item>
-          <TwitterShareButton
-            title={title}
-            url={baseUrl}
-            className="w-100 py-1 px-3 text-start">
+          <TwitterShareButton title={title} url={baseUrl} className="w-100 py-1 px-3 text-start">
             {t('share.twitter')}
           </TwitterShareButton>
         </Dropdown.Item>
-        {canSystemShare && (
-          <Dropdown.Item onClick={systemShare}>{t('share.via')}</Dropdown.Item>
-        )}
+        {canSystemShare && <Dropdown.Item onClick={systemShare}>{t('share.via')}</Dropdown.Item>}
       </Dropdown.Menu>
     </Dropdown>
   );

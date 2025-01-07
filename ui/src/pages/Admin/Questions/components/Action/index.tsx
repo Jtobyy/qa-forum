@@ -22,11 +22,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import { Icon, Modal } from '@/components';
-import {
-  changeQuestionStatus,
-  questionOperation,
-  reopenQuestion,
-} from '@/services';
+import { changeQuestionStatus, questionOperation, reopenQuestion } from '@/services';
 import { useReportModal, useToast } from '@/hooks';
 
 const AnswerActions = ({ itemData, refreshList, curFilter, show, pin }) => {
@@ -97,8 +93,7 @@ const AnswerActions = ({ itemData, refreshList, curFilter, show, pin }) => {
     }
 
     if (type === 'list' || type === 'unlist') {
-      const keyPrefix =
-        type === 'list' ? 'question_detail.list' : 'question_detail.unlist';
+      const keyPrefix = type === 'list' ? 'question_detail.list' : 'question_detail.unlist';
       Modal.confirm({
         title: t('title', { keyPrefix }),
         content: t('content', { keyPrefix }),
@@ -134,10 +129,7 @@ const AnswerActions = ({ itemData, refreshList, curFilter, show, pin }) => {
   return (
     <Dropdown>
       <Dropdown.Toggle variant="link" className="no-toggle p-0">
-        <Icon
-          name="three-dots-vertical"
-          title={t('action', { keyPrefix: 'admin.answers' })}
-        />
+        <Icon name="three-dots-vertical" title={t('action', { keyPrefix: 'admin.answers' })} />
       </Dropdown.Toggle>
       <Dropdown.Menu align="end">
         {curFilter === 'normal' && (

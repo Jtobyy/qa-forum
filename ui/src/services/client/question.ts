@@ -25,10 +25,7 @@ import type * as Type from '@/common/interface';
 
 export const useQuestionList = (params: Type.QueryQuestionsReq) => {
   const apiUrl = `/answer/api/v1/question/page?${qs.stringify(params)}`;
-  const { data, error } = useSWR<Type.ListResult, Error>(
-    [apiUrl],
-    request.instance.get,
-  );
+  const { data, error } = useSWR<Type.ListResult, Error>([apiUrl], request.instance.get);
   return {
     data,
     isLoading: !data && !error,
@@ -37,13 +34,8 @@ export const useQuestionList = (params: Type.QueryQuestionsReq) => {
 };
 
 export const useQuestionRecommendList = (params: Type.QueryQuestionsReq) => {
-  const apiUrl = `/answer/api/v1/question/recommend/page?${qs.stringify(
-    params,
-  )}`;
-  const { data, error } = useSWR<Type.ListResult, Error>(
-    [apiUrl],
-    request.instance.get,
-  );
+  const apiUrl = `/answer/api/v1/question/recommend/page?${qs.stringify(params)}`;
+  const { data, error } = useSWR<Type.ListResult, Error>([apiUrl], request.instance.get);
   return {
     data,
     isLoading: !data && !error,
@@ -60,10 +52,7 @@ export const useHotQuestions = (
   },
 ) => {
   const apiUrl = `/answer/api/v1/question/page?${qs.stringify(params)}`;
-  const { data, error } = useSWR<Type.ListResult, Error>(
-    [apiUrl],
-    request.instance.get,
-  );
+  const { data, error } = useSWR<Type.ListResult, Error>([apiUrl], request.instance.get);
   return {
     data,
     isLoading: !data && !error,
@@ -71,10 +60,7 @@ export const useHotQuestions = (
   };
 };
 
-export const useSimilarQuestion = (params: {
-  question_id: string;
-  page_size: number;
-}) => {
+export const useSimilarQuestion = (params: { question_id: string; page_size: number }) => {
   const apiUrl = `/answer/api/v1/question/similar/tag?${qs.stringify(params)}`;
 
   const { data, error } = useSWR<Type.ListResult, Error>(

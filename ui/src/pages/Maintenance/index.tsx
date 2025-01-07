@@ -34,9 +34,7 @@ const Index = () => {
         <Container
           className="d-flex flex-column justify-content-center align-items-center"
           style={{ minHeight: '100vh' }}>
-          <div
-            className="mb-4 text-secondary"
-            style={{ fontSize: '120px', lineHeight: 1.2 }}>
+          <div className="mb-4 text-secondary" style={{ fontSize: '120px', lineHeight: 1.2 }}>
             (=‘_‘=)
           </div>
           <div className="text-center mb-4">{t('desc')}</div>

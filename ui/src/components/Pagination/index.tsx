@@ -78,12 +78,7 @@ const PageItem = ({ page, currentPage, path }: PageItemProps) => {
   );
 };
 
-const Index: FC<Props> = ({
-  currentPage = 1,
-  pageSize = 15,
-  totalSize = 0,
-  pathname = '',
-}) => {
+const Index: FC<Props> = ({ currentPage = 1, pageSize = 15, totalSize = 0, pathname = '' }) => {
   const { t } = useTranslation('translation', { keyPrefix: 'pagination' });
   const location = useLocation();
   if (!pathname) {
@@ -134,22 +129,12 @@ const Index: FC<Props> = ({
         </>
       )}
       {currentPage === 4 && totalPage > 6 && (
-        <PageItem
-          key="page6"
-          page={6}
-          currentPage={currentPage}
-          path={handleParams(6)}
-        />
+        <PageItem key="page6" page={6} currentPage={currentPage} path={handleParams(6)} />
       )}
 
       {currentPage > 4 && (
         <>
-          <PageItem
-            key="first"
-            page={1}
-            currentPage={currentPage}
-            path={handleParams(1)}
-          />
+          <PageItem key="first" page={1} currentPage={currentPage} path={handleParams(1)} />
 
           <Pagination.Ellipsis className="pe-none" />
         </>
@@ -183,9 +168,7 @@ const Index: FC<Props> = ({
       {currentPage >= 5 &&
         totalPage >= currentPage &&
         new Array(
-          totalPage <= 3
-            ? totalPage - currentPage + 1
-            : Math.min(totalPage - currentPage + 1, 3),
+          totalPage <= 3 ? totalPage - currentPage + 1 : Math.min(totalPage - currentPage + 1, 3),
         )
           .fill('')
           .map((v, i) => {
@@ -198,9 +181,7 @@ const Index: FC<Props> = ({
               />
             );
           })}
-      {totalPage > 5 && realPage + 2 < totalPage && (
-        <Pagination.Ellipsis className="pe-none" />
-      )}
+      {totalPage > 5 && realPage + 2 < totalPage && <Pagination.Ellipsis className="pe-none" />}
 
       {totalPage > 0 && currentPage < totalPage && (
         <Pagination.Next

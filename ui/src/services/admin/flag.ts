@@ -29,10 +29,7 @@ export const putReport = (params) => {
 
 export const useFlagSearch = (params: Type.AdminFlagsReq) => {
   const apiUrl = `/answer/admin/api/reports/page?${qs.stringify(params)}`;
-  const { data, error, mutate } = useSWR<Type.ListResult, Error>(
-    [apiUrl],
-    request.instance.get,
-  );
+  const { data, error, mutate } = useSWR<Type.ListResult, Error>([apiUrl], request.instance.get);
   return {
     data,
     isLoading: !data && !error,

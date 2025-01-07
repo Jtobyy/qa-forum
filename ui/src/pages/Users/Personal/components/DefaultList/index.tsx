@@ -66,9 +66,7 @@ const Index: FC<Props> = ({ visible, tabName, data }) => {
               )}
 
               <FormatTime
-                time={
-                  tabName === 'bookmarks' ? item.create_time : item.created_at
-                }
+                time={tabName === 'bookmarks' ? item.create_time : item.created_at}
                 className="me-3"
                 preFix={t('asked')}
               />

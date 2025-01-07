@@ -52,11 +52,7 @@ const emojiMap = [
   },
 ];
 
-const Index: FC<Props> = ({
-  objectId,
-  showAddCommentBtn,
-  handleClickComment,
-}) => {
+const Index: FC<Props> = ({ objectId, showAddCommentBtn, handleClickComment }) => {
   const [reactions, setReactions] = useState<ReactionItem[]>();
   const [reactIsActive, setReactIsActive] = useState<boolean>(false);
   const { t } = useTranslation('translation');
@@ -98,9 +94,7 @@ const Index: FC<Props> = ({
             active={reactions?.find((v) => v.emoji === d.name)?.is_active}
             className={`${index !== 0 ? 'ms-1' : ''}`}
             size="sm"
-            onClick={() =>
-              handleSubmit({ object_id: objectId, emoji: d.name })
-            }>
+            onClick={() => handleSubmit({ object_id: objectId, emoji: d.name })}>
             <Icon name={d.icon} className={d.className} />
           </Button>
         ))}
@@ -168,14 +162,10 @@ const Index: FC<Props> = ({
               variant="light"
               active={data.is_active}
               size="sm"
-              onClick={() =>
-                handleSubmit({ object_id: objectId, emoji: data.emoji })
-              }>
+              onClick={() => handleSubmit({ object_id: objectId, emoji: data.emoji })}>
               <Icon
                 name={String(emojiMap.find((v) => v.name === data.emoji)?.icon)}
-                className={
-                  emojiMap.find((v) => v.name === data.emoji)?.className
-                }
+                className={emojiMap.find((v) => v.name === data.emoji)?.className}
               />
               <span className="ms-1 lh-1">{data.count}</span>
             </Button>

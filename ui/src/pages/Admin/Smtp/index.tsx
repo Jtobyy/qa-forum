@@ -147,9 +147,7 @@ const Smtp: FC = () => {
       },
     },
   };
-  const [formData, setFormData] = useState<Type.FormDataType>(
-    initFormData(schema),
-  );
+  const [formData, setFormData] = useState<Type.FormDataType>(initFormData(schema));
 
   const onSubmit = (evt) => {
     evt.preventDefault();

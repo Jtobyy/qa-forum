@@ -56,9 +56,7 @@ const Image = ({ editorInstance }) => {
     if (files.length === 0) {
       return false;
     }
-    const filteredFiles = Array.from(files).filter(
-      (file) => file.type.indexOf('image') === -1,
-    );
+    const filteredFiles = Array.from(files).filter((file) => file.type.indexOf('image') === -1);
 
     if (filteredFiles.length > 0) {
       AnswerModal.confirm({
@@ -66,9 +64,7 @@ const Image = ({ editorInstance }) => {
       });
       return false;
     }
-    const filteredImages = Array.from(files).filter(
-      (file) => file.size / 1024 / 1024 > 4,
-    );
+    const filteredImages = Array.from(files).filter((file) => file.size / 1024 / 1024 > 4);
 
     if (filteredImages.length > 0) {
       AnswerModal.confirm({
@@ -78,9 +74,7 @@ const Image = ({ editorInstance }) => {
     }
     return true;
   };
-  const upload = (
-    files: FileList,
-  ): Promise<{ url: string; name: string }[]> => {
+  const upload = (files: FileList): Promise<{ url: string; name: string }[]> => {
     const promises = Array.from(files).map(async (file) => {
       const url = await uploadImage({ file, type: 'post' });
 
@@ -263,11 +257,7 @@ const Image = ({ editorInstance }) => {
   };
   return (
     <ToolItem {...item} onClick={addLink}>
-      <Modal
-        show={visible}
-        onHide={onHide}
-        onExited={onExited}
-        fullscreen="sm-down">
+      <Modal show={visible} onHide={onHide} onExited={onExited} fullscreen="sm-down">
         <Modal.Header closeButton>
           <h5 className="mb-0">{t('image.add_image')}</h5>
         </Modal.Header>
@@ -276,9 +266,7 @@ const Image = ({ editorInstance }) => {
             <Tab eventKey="localImage" title={t('image.tab_image')}>
               <Form className="mt-3" onSubmit={handleClick}>
                 <Form.Group controlId="editor.imgLink" className="mb-3">
-                  <Form.Label>
-                    {t('image.form_image.fields.file.label')}
-                  </Form.Label>
+                  <Form.Label>{t('image.form_image.fields.file.label')}</Form.Label>
                   <Form.Control
                     type="file"
                     onChange={onUpload}
@@ -292,19 +280,14 @@ const Image = ({ editorInstance }) => {
 
                 <Form.Group controlId="editor.imgDescription" className="mb-3">
                   <Form.Label>
-                    {`${t('image.form_image.fields.desc.label')} ${t(
-                      'optional',
-                      {
-                        keyPrefix: 'form',
-                      },
-                    )}`}
+                    {`${t('image.form_image.fields.desc.label')} ${t('optional', {
+                      keyPrefix: 'form',
+                    })}`}
                   </Form.Label>
                   <Form.Control
                     type="text"
                     value={imageName.value}
-                    onChange={(e) =>
-                      setImageName({ ...imageName, value: e.target.value })
-                    }
+                    onChange={(e) => setImageName({ ...imageName, value: e.target.value })}
                     isInvalid={imageName.isInvalid}
                   />
                 </Form.Group>
@@ -313,15 +296,11 @@ const Image = ({ editorInstance }) => {
             <Tab eventKey="remoteImage" title={t('image.tab_url')}>
               <Form className="mt-3" onSubmit={handleClick}>
                 <Form.Group controlId="editor.imgUrl" className="mb-3">
-                  <Form.Label>
-                    {t('image.form_url.fields.url.label')}
-                  </Form.Label>
+                  <Form.Label>{t('image.form_url.fields.url.label')}</Form.Label>
                   <Form.Control
                     type="text"
                     value={link.value}
-                    onChange={(e) =>
-                      setLink({ ...link, value: e.target.value })
-                    }
+                    onChange={(e) => setLink({ ...link, value: e.target.value })}
                     isInvalid={currentTab === 'remoteImage' && link.isInvalid}
                   />
                   <Form.Control.Feedback type="invalid">
@@ -338,9 +317,7 @@ const Image = ({ editorInstance }) => {
                   <Form.Control
                     type="text"
                     value={imageName.value}
-                    onChange={(e) =>
-                      setImageName({ ...imageName, value: e.target.value })
-                    }
+                    onChange={(e) => setImageName({ ...imageName, value: e.target.value })}
                     isInvalid={imageName.isInvalid}
                   />
                 </Form.Group>

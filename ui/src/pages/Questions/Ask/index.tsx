@@ -18,7 +18,7 @@
  */
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Row, Col, Form, Button, Card } from 'react-bootstrap';
+import { Row, Col, Form, Button } from 'react-bootstrap';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -41,12 +41,7 @@ import {
   getTagsBySlugName,
   saveQuestionWithAnswer,
 } from '@/services';
-import {
-  handleFormError,
-  SaveDraft,
-  storageExpires,
-  scrollToElementTop,
-} from '@/utils';
+import { handleFormError, SaveDraft, storageExpires, scrollToElementTop } from '@/utils';
 import { pathFactory } from '@/router/pathFactory';
 import { useCaptchaPlugin } from '@/utils/pluginKit';
 
@@ -195,12 +190,7 @@ const Ask = () => {
       return;
     }
     // write
-    if (
-      title.value ||
-      tags.value.length > 0 ||
-      content.value ||
-      answer_content.value
-    ) {
+    if (title.value || tags.value.length > 0 || content.value || answer_content.value) {
       // save draft
       saveDraft.save({
         params: {
@@ -591,11 +581,9 @@ const Ask = () => {
             )}
           </Form>
         </Col>
-        <Col className="page-right-side mt-4 mt-xl-0">
+        {/* <Col className="page-right-side mt-4 mt-xl-0">
           <Card>
-            <Card.Header>
-              {t('title', { keyPrefix: 'how_to_format' })}
-            </Card.Header>
+            <Card.Header>{t('title', { keyPrefix: 'how_to_format' })}</Card.Header>
             <Card.Body
               className="fmt small"
               dangerouslySetInnerHTML={{
@@ -603,7 +591,7 @@ const Ask = () => {
               }}
             />
           </Card>
-        </Col>
+        </Col> */}
       </Row>
     </div>
   );

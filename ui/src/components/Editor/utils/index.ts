@@ -45,11 +45,7 @@ export function htmlRender(el: HTMLElement | null) {
   // change table style
 
   el.querySelectorAll('table').forEach((table) => {
-    if (
-      (table.parentNode as HTMLDivElement)?.classList.contains(
-        'table-responsive',
-      )
-    ) {
+    if ((table.parentNode as HTMLDivElement)?.classList.contains('table-responsive')) {
       return;
     }
 
@@ -130,9 +126,7 @@ export const useEditor = ({
 
     cm.setReadOnly = (readOnly: boolean) => {
       cm.dispatch({
-        effects: editableCompartment.reconfigure(
-          EditorView.editable.of(!readOnly),
-        ),
+        effects: editableCompartment.reconfigure(EditorView.editable.of(!readOnly)),
       });
     };
 

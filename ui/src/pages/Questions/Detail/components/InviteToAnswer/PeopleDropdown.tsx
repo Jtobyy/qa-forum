@@ -38,12 +38,7 @@ interface UserInfoCheck extends Type.UserInfoBase {
   checked?: boolean;
 }
 
-const Index: FC<Props> = ({
-  selectedPeople = [],
-  visible = false,
-  onSelect,
-  saveInviteUsers,
-}) => {
+const Index: FC<Props> = ({ selectedPeople = [], visible = false, onSelect, saveInviteUsers }) => {
   const { user: currentUser } = loggedUserInfoStore();
   const { t } = useTranslation('translation', {
     keyPrefix: 'invite_to_answer',
@@ -54,11 +49,7 @@ const Index: FC<Props> = ({
   const filterAndSetPeople = (source) => {
     const filteredPeople: Type.UserInfoBase[] = [];
     source.forEach((p) => {
-      if (
-        currentUser &&
-        currentUser.role_id === 1 &&
-        currentUser.username === p.username
-      ) {
+      if (currentUser && currentUser.role_id === 1 && currentUser.username === p.username) {
         return;
       }
       if (selectedPeople?.find((_) => _.username === p.username)) {
@@ -141,10 +132,7 @@ const Index: FC<Props> = ({
           saveInviteUsers();
         }
       }}>
-      <Dropdown.Menu
-        renderOnMount
-        show
-        className="w-100 py-0 position-relative">
+      <Dropdown.Menu renderOnMount show className="w-100 py-0 position-relative">
         <div className="p-3">
           <Form.Control
             type="search"
@@ -164,16 +152,11 @@ const Index: FC<Props> = ({
                   setCurrentIndex(idx);
                 }}
                 active={idx === currentIndex}>
-                <Form.Check
-                  type="checkbox"
-                  id={p.username}
-                  className="position-relative">
+                <Form.Check type="checkbox" id={p.username} className="position-relative">
                   <Form.Check.Input
                     type="checkbox"
                     tabIndex={-1}
-                    checked={Boolean(
-                      selectedPeople?.find((v) => v.id === p.id),
-                    )}
+                    checked={Boolean(selectedPeople?.find((v) => v.id === p.id))}
                     onChange={() => {}}
                   />
                   <div className="check-cover" />
@@ -185,12 +168,8 @@ const Index: FC<Props> = ({
                       className="rounded-1"
                     />
                     <div className="d-flex flex-wrap text-truncate">
-                      <span className="ms-2 text-truncate">
-                        {p.display_name}
-                      </span>
-                      <small className="text-secondary text-truncate ms-2">
-                        @{p.username}
-                      </small>
+                      <span className="ms-2 text-truncate">{p.display_name}</span>
+                      <small className="text-secondary text-truncate ms-2">@{p.username}</small>
                     </div>
                   </Form.Check.Label>
                 </Form.Check>

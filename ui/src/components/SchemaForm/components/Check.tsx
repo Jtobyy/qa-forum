@@ -41,10 +41,7 @@ const Index: FC<Props> = ({
   readOnly = false,
 }) => {
   const fieldObject = formData[fieldName];
-  const handleCheck = (
-    evt: React.ChangeEvent<HTMLInputElement>,
-    index: number,
-  ) => {
+  const handleCheck = (evt: React.ChangeEvent<HTMLInputElement>, index: number) => {
     const { name, checked } = evt.currentTarget;
     enumValues[index] = checked;
 

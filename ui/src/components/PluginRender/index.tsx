@@ -38,13 +38,7 @@ interface Props {
   [prop: string]: any;
 }
 
-const Index: FC<Props> = ({
-  slug_name,
-  type,
-  children = null,
-  className,
-  ...props
-}) => {
+const Index: FC<Props> = ({ slug_name, type, children = null, className, ...props }) => {
   const pluginSlice: Plugin[] = [];
   const plugins = PluginKit.getPlugins().filter((plugin) => plugin.activated);
 

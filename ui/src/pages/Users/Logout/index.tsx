@@ -40,8 +40,7 @@ const Index = () => {
     if (loggedUserInfo.username) {
       logout().then(() => {
         clearUserStore();
-        const redirect =
-          Storage.get(REDIRECT_PATH_STORAGE_KEY) || RouteAlias.home;
+        const redirect = Storage.get(REDIRECT_PATH_STORAGE_KEY) || RouteAlias.home;
         Storage.remove(REDIRECT_PATH_STORAGE_KEY);
         window.location.replace(`${BASE_ORIGIN}${redirect}`);
       });

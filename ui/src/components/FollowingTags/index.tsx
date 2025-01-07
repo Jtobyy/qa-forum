@@ -57,10 +57,7 @@ const Index: FC = () => {
     <Card className="mb-4">
       <Card.Header className="text-nowrap d-flex justify-content-between">
         {t('following_tags')}
-        <Button
-          variant="link"
-          className="p-0 m-0 btn-no-border"
-          onClick={handleFollowTags}>
+        <Button variant="link" className="p-0 m-0 btn-no-border" onClick={handleFollowTags}>
           {t('save')}
         </Button>
       </Card.Header>

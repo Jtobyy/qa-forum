@@ -109,9 +109,7 @@ const Index: React.FC<Props> = ({ callback }) => {
       ...formData,
     });
     if (!bol) {
-      const errObj = Object.keys(formData).filter(
-        (key) => formData[key].isInvalid,
-      );
+      const errObj = Object.keys(formData).filter((key) => formData[key].isInvalid);
       const ele = document.getElementById(errObj[0]);
       scrollToElementTop(ele);
     }
@@ -189,9 +187,7 @@ const Index: React.FC<Props> = ({ callback }) => {
               })
             }
           />
-          <Form.Control.Feedback type="invalid">
-            {formData.name.errorMsg}
-          </Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">{formData.name.errorMsg}</Form.Control.Feedback>
         </Form.Group>
         <Form.Group controlId="email" className="mb-3">
           <Form.Label>{t('email.label')}</Form.Label>
@@ -211,9 +207,7 @@ const Index: React.FC<Props> = ({ callback }) => {
               })
             }
           />
-          <Form.Control.Feedback type="invalid">
-            {formData.e_mail.errorMsg}
-          </Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">{formData.e_mail.errorMsg}</Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="password" className="mb-3">
@@ -234,9 +228,7 @@ const Index: React.FC<Props> = ({ callback }) => {
               })
             }
           />
-          <Form.Control.Feedback type="invalid">
-            {formData.pass.errorMsg}
-          </Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">{formData.pass.errorMsg}</Form.Control.Feedback>
         </Form.Group>
 
         <div className="d-grid">

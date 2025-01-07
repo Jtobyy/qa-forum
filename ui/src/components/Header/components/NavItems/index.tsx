@@ -114,40 +114,26 @@ const Index: FC<Props> = ({ redDot, userInfo, logOut }) => {
             {t('header.nav.setting')}
           </NavLink>
           <Dropdown.Divider />
-          <NavLink
-            to="/users/logout"
-            className={() => 'dropdown-item'}
-            onClick={(e) => logOut(e)}>
+          <NavLink to="/users/logout" className={() => 'dropdown-item'} onClick={(e) => logOut(e)}>
             {t('header.nav.logout')}
           </NavLink>
         </Dropdown.Menu>
       </Dropdown>
       {/* Dropdown for user center agent info */}
       {ucAgent?.enabled &&
-      (ucAgent?.agent_info?.url ||
-        ucAgent?.agent_info?.control_center?.length) ? (
+      (ucAgent?.agent_info?.url || ucAgent?.agent_info?.control_center?.length) ? (
         <Dropdown align="end">
-          <Dropdown.Toggle
-            variant="success"
-            id="dropdown-uca"
-            as="span"
-            className="no-toggle">
+          <Dropdown.Toggle variant="success" id="dropdown-uca" as="span" className="no-toggle">
             <Nav>
-              <Icon
-                name="grid-3x3-gap-fill"
-                className="nav-link pointer p-0 fs-4 ms-3"
-              />
+              <Icon name="grid-3x3-gap-fill" className="nav-link pointer p-0 fs-4 ms-3" />
             </Nav>
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
             {ucAgent.agent_info.url ? (
-              <Dropdown.Item href={ucAgent.agent_info.url}>
-                {ucAgent.agent_info.name}
-              </Dropdown.Item>
+              <Dropdown.Item href={ucAgent.agent_info.url}>{ucAgent.agent_info.name}</Dropdown.Item>
             ) : null}
-            {ucAgent.agent_info.url &&
-            ucAgent.agent_info.control_center?.length ? (
+            {ucAgent.agent_info.url && ucAgent.agent_info.control_center?.length ? (
               <Dropdown.Divider />
             ) : null}
             {ucAgent.agent_info.control_center?.map((ctrl) => {

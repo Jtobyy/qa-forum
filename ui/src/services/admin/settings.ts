@@ -58,10 +58,7 @@ export interface AdminSettingsPrivilegeReq {
 
 export const useGeneralSetting = () => {
   const apiUrl = `/answer/admin/api/siteinfo/general`;
-  const { data, error } = useSWR<Type.AdminSettingsGeneral, Error>(
-    [apiUrl],
-    request.instance.get,
-  );
+  const { data, error } = useSWR<Type.AdminSettingsGeneral, Error>([apiUrl], request.instance.get);
 
   return {
     data,
@@ -95,10 +92,7 @@ export const updateInterfaceSetting = (params: Type.AdminSettingsInterface) => {
 
 export const useSmtpSetting = () => {
   const apiUrl = `/answer/admin/api/setting/smtp`;
-  const { data, error } = useSWR<Type.AdminSettingsSmtp, Error>(
-    [apiUrl],
-    request.instance.get,
-  );
+  const { data, error } = useSWR<Type.AdminSettingsSmtp, Error>([apiUrl], request.instance.get);
   return {
     data,
     isLoading: !data && !error,
@@ -133,9 +127,7 @@ export const postRequireAndReservedTag = (params) => {
 };
 
 export const getLegalSetting = () => {
-  return request.get<Type.AdminSettingsLegal>(
-    '/answer/admin/api/siteinfo/legal',
-  );
+  return request.get<Type.AdminSettingsLegal>('/answer/admin/api/siteinfo/legal');
 };
 
 export const putLegalSetting = (params: Type.AdminSettingsLegal) => {
@@ -151,9 +143,7 @@ export const putSeoSetting = (params: Type.AdminSettingsSeo) => {
 };
 
 export const getThemeSetting = () => {
-  return request.get<Type.AdminSettingsTheme>(
-    '/answer/admin/api/siteinfo/theme',
-  );
+  return request.get<Type.AdminSettingsTheme>('/answer/admin/api/siteinfo/theme');
 };
 
 export const putThemeSetting = (params: Type.AdminSettingsTheme) => {
@@ -161,9 +151,7 @@ export const putThemeSetting = (params: Type.AdminSettingsTheme) => {
 };
 
 export const getPageCustom = () => {
-  return request.get<Type.AdminSettingsCustom>(
-    '/answer/admin/api/siteinfo/custom-css-html',
-  );
+  return request.get<Type.AdminSettingsCustom>('/answer/admin/api/siteinfo/custom-css-html');
 };
 
 export const putPageCustom = (params: Type.AdminSettingsCustom) => {
@@ -171,9 +159,7 @@ export const putPageCustom = (params: Type.AdminSettingsCustom) => {
 };
 
 export const getLoginSetting = () => {
-  return request.get<Type.AdminSettingsLogin>(
-    '/answer/admin/api/siteinfo/login',
-  );
+  return request.get<Type.AdminSettingsLogin>('/answer/admin/api/siteinfo/login');
 };
 
 export const putLoginSetting = (params: Type.AdminSettingsLogin) => {
@@ -189,9 +175,7 @@ export const putUsersSetting = (params: AdminSettingsUsers) => {
 };
 
 export const getPrivilegeSetting = () => {
-  return request.get<AdminSettingsPrivilege>(
-    '/answer/admin/api/setting/privileges',
-  );
+  return request.get<AdminSettingsPrivilege>('/answer/admin/api/setting/privileges');
 };
 
 export const putPrivilegeSetting = (params: AdminSettingsPrivilegeReq) => {

@@ -95,17 +95,14 @@ const Index: FC = () => {
     pageTitle = `${t('title_for_tag')} '${timelineData?.object_info.title}'`;
   }
 
-  const revisionList =
-    timelineData?.timeline?.filter((item) => item.revision_id > 0) || [];
+  const revisionList = timelineData?.timeline?.filter((item) => item.revision_id > 0) || [];
   usePageTags({
     title: pageTitle,
   });
   return (
     <div className="py-4 mb-5">
       <h5 className="mb-4">
-        {timelineData?.object_info.object_type === 'tag'
-          ? t('tag_title')
-          : t('title')}{' '}
+        {timelineData?.object_info.object_type === 'tag' ? t('tag_title') : t('title')}{' '}
         <Link to={linkUrl}>{timelineData?.object_info?.title}</Link>
       </h5>
       {timelineData?.object_info.object_type !== 'tag' && (
@@ -141,9 +138,7 @@ const Index: FC = () => {
           })}
         </tbody>
       </Table>
-      {!isLoading && Number(timelineData?.timeline?.length) <= 0 && (
-        <Empty>{t('no_data')}</Empty>
-      )}
+      {!isLoading && Number(timelineData?.timeline?.length) <= 0 && <Empty>{t('no_data')}</Empty>}
     </div>
   );
 };

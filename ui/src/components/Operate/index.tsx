@@ -70,8 +70,7 @@ const Index: FC<IProps> = ({
     callback?.('default');
   };
   const closeModal = useReportModal(refreshQuestion);
-  const editUrl =
-    type === 'answer' ? `/posts/${qid}/${aid}/edit` : `/posts/${qid}/edit`;
+  const editUrl = type === 'answer' ? `/posts/${qid}/${aid}/edit` : `/posts/${qid}/edit`;
 
   const handleReport = () => {
     reportModal.onShow({
@@ -304,12 +303,7 @@ const Index: FC<IProps> = ({
       handleReopen();
     }
 
-    if (
-      action === 'pin' ||
-      action === 'unpin' ||
-      action === 'hide' ||
-      action === 'show'
-    ) {
+    if (action === 'pin' || action === 'unpin' || action === 'hide' || action === 'show') {
       handlOtherActions(action);
     }
   };
@@ -362,18 +356,13 @@ const Index: FC<IProps> = ({
       })}
       {secondAction.length > 0 && (
         <Dropdown className="ms-3 d-flex">
-          <Dropdown.Toggle
-            variant="link"
-            size="sm"
-            className="link-secondary p-0 no-toggle">
+          <Dropdown.Toggle variant="link" size="sm" className="link-secondary p-0 no-toggle">
             {t('action', { keyPrefix: 'question_detail' })}
           </Dropdown.Toggle>
           <Dropdown.Menu>
             {secondAction.map((item) => {
               return (
-                <Dropdown.Item
-                  key={item.action}
-                  onClick={() => handleAction(item.action)}>
+                <Dropdown.Item key={item.action} onClick={() => handleAction(item.action)}>
                   {item.name}
                 </Dropdown.Item>
               );

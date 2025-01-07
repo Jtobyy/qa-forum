@@ -30,14 +30,7 @@ interface IProps {
   title?: string;
   onClick?: () => void;
 }
-const Icon: FC<IProps> = ({
-  type = 'br',
-  name,
-  className,
-  size,
-  onClick,
-  title,
-}) => {
+const Icon: FC<IProps> = ({ type = 'br', name, className, size, onClick, title }) => {
   return (
     <i
       className={classNames(type, `bi-${name}`, className)}

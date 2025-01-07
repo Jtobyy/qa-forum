@@ -34,11 +34,7 @@ export const modifyTag = (params) => {
 
 export const useQuerySynonymsTags = (tagId, status) => {
   const apiUrl =
-    status === 'deleted'
-      ? ''
-      : tagId
-        ? `/answer/api/v1/tag/synonyms?tag_id=${tagId}`
-        : '';
+    status === 'deleted' ? '' : tagId ? `/answer/api/v1/tag/synonyms?tag_id=${tagId}` : '';
   return useSWR<{
     synonyms: Type.SynonymsTag[];
     member_actions?: Type.MemberActionItem[];

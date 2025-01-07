@@ -24,10 +24,7 @@ import { Form, Button } from 'react-bootstrap';
 import { TagSelector } from '@/components';
 import type * as Type from '@/common/interface';
 import { useToast } from '@/hooks';
-import {
-  getRequireAndReservedTag,
-  postRequireAndReservedTag,
-} from '@/services';
+import { getRequireAndReservedTag, postRequireAndReservedTag } from '@/services';
 import { handleFormError, scrollToElementTop } from '@/utils';
 import { writeSettingStore } from '@/stores';
 
@@ -118,9 +115,7 @@ const Index: FC = () => {
           msg: t('update', { keyPrefix: 'toast' }),
           variant: 'success',
         });
-        writeSettingStore
-          .getState()
-          .update({ restrict_answer: reqParams.restrict_answer });
+        writeSettingStore.getState().update({ restrict_answer: reqParams.restrict_answer });
       })
       .catch((err) => {
         if (err.isError) {

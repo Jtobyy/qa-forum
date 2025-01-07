@@ -19,23 +19,14 @@
 
 import { useEffect, useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
-import {
-  useParams,
-  useSearchParams,
-  useNavigate,
-  useLocation,
-} from 'react-router-dom';
+import { useParams, useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { Pagination, CustomSidebar } from '@/components';
 import { loggedUserInfoStore, toastStore } from '@/stores';
 import { scrollToElementTop, scrollToDocTop } from '@/utils';
 import { usePageTags, usePageUsers, useSkeletonControl } from '@/hooks';
-import type {
-  ListResult,
-  QuestionDetailRes,
-  AnswerItem,
-} from '@/common/interface';
+import type { ListResult, QuestionDetailRes, AnswerItem } from '@/common/interface';
 import { questionDetail, getAnswers } from '@/services';
 
 import {
@@ -108,10 +99,7 @@ const Index = () => {
       res.list = res.list?.filter((v) => {
         // delete answers only show to author and admin and has search params aid
         if (v.status === 10) {
-          if (
-            (v?.user_info?.username === userInfo?.username || isAdmin) &&
-            aid === v.id
-          ) {
+          if ((v?.user_info?.username === userInfo?.username || isAdmin) && aid === v.id) {
             return v;
           }
           return null;
@@ -203,9 +191,7 @@ const Index = () => {
       setQuestion({
         ...question,
         answered: true,
-        first_answer_id: question.first_answer_id
-          ? question.first_answer_id
-          : obj.id,
+        first_answer_id: question.first_answer_id ? question.first_answer_id : obj.id,
       });
     }
   };
@@ -283,27 +269,22 @@ const Index = () => {
           </div>
         )}
 
-        {!isLoading &&
-          Number(question?.status) !== 2 &&
-          !question?.operation?.type && (
-            <WriteAnswer
-              data={{
-                qid,
-                answered: question?.answered,
-                loggedUserRank,
-                first_answer_id: question?.first_answer_id,
-              }}
-              callback={writeAnswerCallback}
-            />
-          )}
+        {!isLoading && Number(question?.status) !== 2 && !question?.operation?.type && (
+          <WriteAnswer
+            data={{
+              qid,
+              answered: question?.answered,
+              loggedUserRank,
+              first_answer_id: question?.first_answer_id,
+            }}
+            callback={writeAnswerCallback}
+          />
+        )}
       </Col>
       <Col className="page-right-side mt-4 mt-xl-0">
         <CustomSidebar />
         {showInviteToAnswer ? (
-          <InviteToAnswer
-            questionId={question.id}
-            readOnly={!canInvitePeople}
-          />
+          <InviteToAnswer questionId={question.id} readOnly={!canInvitePeople} />
         ) : null}
         <RelatedQuestions id={question?.id || ''} />
       </Col>

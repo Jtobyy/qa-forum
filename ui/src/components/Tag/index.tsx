@@ -32,12 +32,7 @@ interface IProps {
   textClassName?: string;
 }
 
-const Index: FC<IProps> = ({
-  data,
-  href,
-  className = '',
-  textClassName = '',
-}) => {
+const Index: FC<IProps> = ({ data, href, className = '', textClassName = '' }) => {
   href ||= pathFactory.tagLanding(data.slug_name);
 
   return (
@@ -49,9 +44,7 @@ const Index: FC<IProps> = ({
         data.recommend && 'badge-tag-required',
         className,
       )}>
-      <span className={textClassName}>
-        {data.display_name || data.slug_name}
-      </span>
+      <span className={textClassName}>{data.display_name || data.slug_name}</span>
     </Link>
   );
 };

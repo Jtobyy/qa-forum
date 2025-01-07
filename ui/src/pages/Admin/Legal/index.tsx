@@ -72,9 +72,7 @@ const Legal: FC = () => {
 
     const reqParams: Type.AdminSettingsLegal = {
       terms_of_service_original_text: formData.terms_of_service.value,
-      terms_of_service_parsed_text: marked.parse(
-        formData.terms_of_service.value,
-      ),
+      terms_of_service_parsed_text: marked.parse(formData.terms_of_service.value),
       privacy_policy_original_text: formData.privacy_policy.value,
       privacy_policy_parsed_text: marked.parse(formData.privacy_policy.value),
     };
@@ -100,8 +98,7 @@ const Legal: FC = () => {
     getLegalSetting().then((setting) => {
       if (setting) {
         const formMeta = { ...formData };
-        formMeta.terms_of_service.value =
-          setting.terms_of_service_original_text;
+        formMeta.terms_of_service.value = setting.terms_of_service_original_text;
         formMeta.privacy_policy.value = setting.privacy_policy_original_text;
         setFormData(formMeta);
       }

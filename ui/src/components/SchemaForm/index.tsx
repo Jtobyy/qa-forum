@@ -17,12 +17,7 @@
  * under the License.
  */
 
-import React, {
-  ForwardRefRenderFunction,
-  forwardRef,
-  useImperativeHandle,
-  useEffect,
-} from 'react';
+import React, { ForwardRefRenderFunction, forwardRef, useImperativeHandle, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
@@ -75,15 +70,7 @@ export * from './types';
  * @param onSubmit submit event
  */
 const SchemaForm: ForwardRefRenderFunction<FormRef, FormProps> = (
-  {
-    schema,
-    uiSchema = {},
-    refreshConfig,
-    formData,
-    onChange,
-    onSubmit,
-    hiddenSubmit = false,
-  },
+  { schema, uiSchema = {}, refreshConfig, formData, onChange, onSubmit, hiddenSubmit = false },
   ref,
 ) => {
   const { t } = useTranslation('translation', {
@@ -160,30 +147,28 @@ const SchemaForm: ForwardRefRenderFunction<FormRef, FormProps> = (
         });
       }
     });
-    return Promise.allSettled(promises.map((item) => item.promise)).then(
-      (results) => {
-        results.forEach((result, index) => {
-          const { key } = promises[index];
-          if (result.status === 'rejected') {
+    return Promise.allSettled(promises.map((item) => item.promise)).then((results) => {
+      results.forEach((result, index) => {
+        const { key } = promises[index];
+        if (result.status === 'rejected') {
+          errors.push({
+            key,
+            msg: result.reason.message,
+          });
+        }
+
+        if (result.status === 'fulfilled') {
+          const msg = result.value;
+          if (typeof msg === 'string') {
             errors.push({
               key,
-              msg: result.reason.message,
+              msg,
             });
           }
-
-          if (result.status === 'fulfilled') {
-            const msg = result.value;
-            if (typeof msg === 'string') {
-              errors.push({
-                key,
-                msg,
-              });
-            }
-          }
-        });
-        return errors;
-      },
-    );
+        }
+      });
+      return errors;
+    });
   };
 
   const validator = async (): Promise<boolean> => {
@@ -194,8 +179,7 @@ const SchemaForm: ForwardRefRenderFunction<FormRef, FormProps> = (
           ...formData![cur],
           isInvalid: true,
           errorMsg:
-            uiSchema[cur]?.['ui:options']?.empty ||
-            `${properties[cur]?.title} ${t('empty')}`,
+            uiSchema[cur]?.['ui:options']?.empty || `${properties[cur]?.title} ${t('empty')}`,
         };
         return acc;
       }, formData || {});
@@ -253,14 +237,8 @@ const SchemaForm: ForwardRefRenderFunction<FormRef, FormProps> = (
   return (
     <Form noValidate onSubmit={handleSubmit}>
       {keys.map((key) => {
-        const {
-          title,
-          description,
-          enum: enumValues = [],
-          enumNames = [],
-        } = properties[key];
-        const { 'ui:widget': widget = 'input', 'ui:options': uiOpt } =
-          uiSchema?.[key] || {};
+        const { title, description, enum: enumValues = [], enumNames = [] } = properties[key];
+        const { 'ui:widget': widget = 'input', 'ui:options': uiOpt } = uiSchema?.[key] || {};
         formData ||= {};
         const fieldState = formData[key];
         if (uiOpt?.class_name) {
@@ -268,9 +246,7 @@ const SchemaForm: ForwardRefRenderFunction<FormRef, FormProps> = (
         }
 
         const uiSimplify = widget === 'legend' || uiOpt?.simplify;
-        let groupClassName: BaseUIOptions['field_class_name'] = uiOpt?.simplify
-          ? 'mb-2'
-          : 'mb-3';
+        let groupClassName: BaseUIOptions['field_class_name'] = uiOpt?.simplify ? 'mb-2' : 'mb-3';
         if (widget === 'legend') {
           groupClassName = 'mb-0';
         }
@@ -284,10 +260,7 @@ const SchemaForm: ForwardRefRenderFunction<FormRef, FormProps> = (
           <Form.Group
             key={`${title}-${key}`}
             controlId={key}
-            className={classnames(
-              groupClassName,
-              formData[key].hidden ? 'd-none' : null,
-            )}>
+            className={classnames(groupClassName, formData[key].hidden ? 'd-none' : null)}>
             {/* Uniform processing `label` */}
             {title && !uiSimplify ? <Form.Label>{title}</Form.Label> : null}
             {/* Handling of individual specific controls */}
@@ -335,26 +308,18 @@ const SchemaForm: ForwardRefRenderFunction<FormRef, FormProps> = (
             ) : null}
             {widget === 'upload' ? (
               <Upload
-                type={
-                  uiOpt && 'imageType' in uiOpt ? uiOpt.imageType : undefined
-                }
-                acceptType={
-                  uiOpt && 'acceptType' in uiOpt ? uiOpt.acceptType : ''
-                }
+                type={uiOpt && 'imageType' in uiOpt ? uiOpt.imageType : undefined}
+                acceptType={uiOpt && 'acceptType' in uiOpt ? uiOpt.acceptType : ''}
                 fieldName={key}
                 onChange={onChange}
                 formData={formData}
                 readOnly={readOnly}
-                imgClassNames={
-                  uiOpt && 'className' in uiOpt ? uiOpt.className : ''
-                }
+                imgClassNames={uiOpt && 'className' in uiOpt ? uiOpt.className : ''}
               />
             ) : null}
             {widget === 'textarea' ? (
               <Textarea
-                placeholder={
-                  uiOpt && 'placeholder' in uiOpt ? uiOpt.placeholder : ''
-                }
+                placeholder={uiOpt && 'placeholder' in uiOpt ? uiOpt.placeholder : ''}
                 rows={uiOpt && 'rows' in uiOpt ? uiOpt.rows : 3}
                 className={uiOpt && 'className' in uiOpt ? uiOpt.className : ''}
                 fieldName={key}
@@ -366,9 +331,7 @@ const SchemaForm: ForwardRefRenderFunction<FormRef, FormProps> = (
             {widget === 'input' ? (
               <Input
                 type={uiOpt && 'inputType' in uiOpt ? uiOpt.inputType : 'text'}
-                placeholder={
-                  uiOpt && 'placeholder' in uiOpt ? uiOpt.placeholder : ''
-                }
+                placeholder={uiOpt && 'placeholder' in uiOpt ? uiOpt.placeholder : ''}
                 fieldName={key}
                 onChange={onChange}
                 formData={formData}
@@ -382,9 +345,7 @@ const SchemaForm: ForwardRefRenderFunction<FormRef, FormProps> = (
                 action={uiOpt && 'action' in uiOpt ? uiOpt.action : undefined}
                 formKit={formKitWithContext}
                 readOnly={readOnly}
-                variant={
-                  uiOpt && 'variant' in uiOpt ? uiOpt.variant : undefined
-                }
+                variant={uiOpt && 'variant' in uiOpt ? uiOpt.variant : undefined}
                 size={uiOpt && 'size' in uiOpt ? uiOpt.size : undefined}
                 title={uiOpt && 'title' in uiOpt ? uiOpt?.title : ''}
               />
@@ -393,19 +354,11 @@ const SchemaForm: ForwardRefRenderFunction<FormRef, FormProps> = (
               <InputGroup
                 formKitWithContext={formKitWithContext}
                 uiOpt={uiOpt as InputGroupOptions}
-                prefixText={
-                  (uiOpt && 'prefixText' in uiOpt && uiOpt.prefixText) || ''
-                }
-                suffixText={
-                  (uiOpt && 'suffixText' in uiOpt && uiOpt.suffixText) || ''
-                }>
+                prefixText={(uiOpt && 'prefixText' in uiOpt && uiOpt.prefixText) || ''}
+                suffixText={(uiOpt && 'suffixText' in uiOpt && uiOpt.suffixText) || ''}>
                 <Input
-                  type={
-                    uiOpt && 'inputType' in uiOpt ? uiOpt.inputType : 'text'
-                  }
-                  placeholder={
-                    uiOpt && 'placeholder' in uiOpt ? uiOpt.placeholder : ''
-                  }
+                  type={uiOpt && 'inputType' in uiOpt ? uiOpt.inputType : 'text'}
+                  placeholder={uiOpt && 'placeholder' in uiOpt ? uiOpt.placeholder : ''}
                   fieldName={key}
                   onChange={onChange}
                   formData={formData}
@@ -414,12 +367,8 @@ const SchemaForm: ForwardRefRenderFunction<FormRef, FormProps> = (
               </InputGroup>
             ) : null}
             {/* Unified handling of `Feedback` and `Text` */}
-            <Form.Control.Feedback type="invalid">
-              {fieldState?.errorMsg}
-            </Form.Control.Feedback>
-            {description ? (
-              <Form.Text dangerouslySetInnerHTML={{ __html: description }} />
-            ) : null}
+            <Form.Control.Feedback type="invalid">{fieldState?.errorMsg}</Form.Control.Feedback>
+            {description ? <Form.Text dangerouslySetInnerHTML={{ __html: description }} /> : null}
           </Form.Group>
         );
       })}

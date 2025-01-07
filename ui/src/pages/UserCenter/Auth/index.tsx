@@ -42,9 +42,7 @@ const Index = () => {
   return (
     <Container style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
       <Col md={4} className="mx-auto">
-        {USER_AGENT_NAMES.WeCom.toLowerCase() === agentName.toLowerCase() ? (
-          <WeComAuth />
-        ) : null}
+        {USER_AGENT_NAMES.WeCom.toLowerCase() === agentName.toLowerCase() ? <WeComAuth /> : null}
       </Col>
     </Container>
   );

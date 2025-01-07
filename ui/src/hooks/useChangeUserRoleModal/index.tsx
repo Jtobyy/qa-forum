@@ -106,13 +106,9 @@ const useChangeUserRoleModal = ({ callback }: Props) => {
                       <FormCheck.Label htmlFor={item.name}>
                         <span className="fw-bold">{item.name}</span>
                         <br />
-                        <span className="text-secondary">
-                          {item.description}
-                        </span>
+                        <span className="text-secondary">{item.description}</span>
                       </FormCheck.Label>
-                      <Form.Control.Feedback type="invalid">
-                        {t('msg.empty')}
-                      </Form.Control.Feedback>
+                      <Form.Control.Feedback type="invalid">{t('msg.empty')}</Form.Control.Feedback>
                     </FormCheck>
                   </Form.Group>
                 </div>

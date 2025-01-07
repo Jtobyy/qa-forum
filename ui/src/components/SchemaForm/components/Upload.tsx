@@ -66,11 +66,7 @@ const Index: FC<Props> = ({
         onChange={(value) => handleChange(fieldName, value)}
         imgClassNames={imgClassNames}
       />
-      <Form.Control
-        name={fieldName}
-        className="d-none"
-        isInvalid={fieldObject?.isInvalid}
-      />
+      <Form.Control name={fieldName} className="d-none" isInvalid={fieldObject?.isInvalid} />
     </>
   );
 };

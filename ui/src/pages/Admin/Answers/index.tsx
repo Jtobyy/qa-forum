@@ -24,14 +24,7 @@ import { useTranslation } from 'react-i18next';
 
 import classNames from 'classnames';
 
-import {
-  FormatTime,
-  Icon,
-  Pagination,
-  BaseUserCard,
-  Empty,
-  QueryGroup,
-} from '@/components';
+import { FormatTime, Icon, Pagination, BaseUserCard, Empty, QueryGroup } from '@/components';
 import { ADMIN_LIST_STATUS } from '@/common/constants';
 import * as Type from '@/common/interface';
 import { useAnswerSearch } from '@/services';
@@ -40,11 +33,7 @@ import { pathFactory } from '@/router/pathFactory';
 
 import AnswerAction from './components/Action';
 
-const answerFilterItems: Type.AdminContentsFilterBy[] = [
-  'normal',
-  'pending',
-  'deleted',
-];
+const answerFilterItems: Type.AdminContentsFilterBy[] = ['normal', 'pending', 'deleted'];
 
 const Answers: FC = () => {
   const [urlSearchParams, setUrlSearchParams] = useSearchParams();
@@ -123,10 +112,7 @@ const Answers: FC = () => {
                     {li.question_info.title}
                   </Link>
                   {li.accepted === 2 && (
-                    <Icon
-                      name="check-circle-fill"
-                      className="ms-2 text-success"
-                    />
+                    <Icon name="check-circle-fill" className="ms-2 text-success" />
                   )}
                   <div className="text-truncate-2 small max-w-30">
                     {escapeRemove(li.description)}
@@ -137,18 +123,11 @@ const Answers: FC = () => {
                   <Stack>
                     <BaseUserCard data={li.user_info} nameMaxWidth="200px" />
 
-                    <FormatTime
-                      className="small text-secondary"
-                      time={li.create_time}
-                    />
+                    <FormatTime className="small text-secondary" time={li.create_time} />
                   </Stack>
                 </td>
                 <td>
-                  <span
-                    className={classNames(
-                      'badge',
-                      ADMIN_LIST_STATUS[curFilter]?.variant,
-                    )}>
+                  <span className={classNames('badge', ADMIN_LIST_STATUS[curFilter]?.variant)}>
                     {t(ADMIN_LIST_STATUS[curFilter]?.name, {
                       keyPrefix: 'btns',
                     })}
@@ -168,11 +147,7 @@ const Answers: FC = () => {
       </Table>
       {Number(count) <= 0 && !isLoading && <Empty />}
       <div className="mt-4 mb-2 d-flex justify-content-center">
-        <Pagination
-          currentPage={curPage}
-          totalSize={count}
-          pageSize={PAGE_SIZE}
-        />
+        <Pagination currentPage={curPage} totalSize={count} pageSize={PAGE_SIZE} />
       </div>
     </>
   );

@@ -56,9 +56,7 @@ const Config = () => {
 
       if (item.options instanceof Array) {
         properties[item.name].enum = item.options.map((option) => option.value);
-        properties[item.name].enumNames = item.options.map(
-          (option) => option.label,
-        );
+        properties[item.name].enumNames = item.options.map((option) => option.label);
       }
       uiConf[item.name] = {};
       uiConf[item.name]['ui:widget'] = item.type;

@@ -20,9 +20,7 @@
 import { FC, useRef, useEffect, memo } from 'react';
 import { FormControl, FormControlProps } from 'react-bootstrap';
 
-const TextArea: FC<
-  FormControlProps & { rows?: number; autoFocus?: boolean }
-> = ({
+const TextArea: FC<FormControlProps & { rows?: number; autoFocus?: boolean }> = ({
   value,
   onChange,
   size,

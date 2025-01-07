@@ -75,11 +75,7 @@ const Index = () => {
 
   useEffect(() => {
     const { displayName, slugName, description } = formData;
-    const {
-      displayName: display_name,
-      slugName: slug_name,
-      description: original_text,
-    } = immData;
+    const { displayName: display_name, slugName: slug_name, description: original_text } = immData;
     if (!display_name || !slug_name || !original_text) {
       return;
     }
@@ -93,11 +89,7 @@ const Index = () => {
     } else {
       setContentChanged(false);
     }
-  }, [
-    formData.displayName.value,
-    formData.slugName.value,
-    formData.description.value,
-  ]);
+  }, [formData.displayName.value, formData.slugName.value, formData.description.value]);
 
   const handleDescriptionChange = (value: string) =>
     setFormData({
@@ -270,10 +262,7 @@ const Index = () => {
               <Editor
                 value={formData.description.value}
                 onChange={handleDescriptionChange}
-                className={classNames(
-                  'form-control p-0',
-                  focusType === 'description' && 'focus',
-                )}
+                className={classNames('form-control p-0', focusType === 'description' && 'focus')}
                 onFocus={() => {
                   setForceType('description');
                 }}
@@ -300,9 +289,7 @@ const Index = () => {
         </Col>
         <Col className="page-right-side mt-4 mt-xl-0">
           <Card>
-            <Card.Header>
-              {t('title', { keyPrefix: 'how_to_format' })}
-            </Card.Header>
+            <Card.Header>{t('title', { keyPrefix: 'how_to_format' })}</Card.Header>
             <Card.Body
               className="fmt small"
               dangerouslySetInnerHTML={{

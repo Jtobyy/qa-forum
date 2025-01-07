@@ -29,26 +29,17 @@ const AnswerLinks = () => {
         <h6 className="mb-3">{t('links')}</h6>
         <Row>
           <Col xs={6}>
-            <a
-              href="https://answer.apache.org/docs"
-              target="_blank"
-              rel="noreferrer">
+            <a href="https://answer.apache.org/docs" target="_blank" rel="noreferrer">
               {t('documents')}
             </a>
           </Col>
           <Col xs={6}>
-            <a
-              href="https://answer.apache.org/plugins"
-              target="_blank"
-              rel="noreferrer">
+            <a href="https://answer.apache.org/plugins" target="_blank" rel="noreferrer">
               {t('plugins')}
             </a>
           </Col>
           <Col xs={6}>
-            <a
-              href="https://answer.apache.org/community/support"
-              target="_blank"
-              rel="noreferrer">
+            <a href="https://answer.apache.org/community/support" target="_blank" rel="noreferrer">
               {t('support')}
             </a>
           </Col>
@@ -58,18 +49,12 @@ const AnswerLinks = () => {
             </a>
           </Col>
           <Col xs={6}>
-            <a
-              href="https://answer.apache.org/blog"
-              target="_blank"
-              rel="noreferrer">
+            <a href="https://answer.apache.org/blog" target="_blank" rel="noreferrer">
               {t('blog')}
             </a>
           </Col>
           <Col xs={6}>
-            <a
-              href="https://github.com/apache/incubator-answer"
-              target="_blank"
-              rel="noreferrer">
+            <a href="https://github.com/apache/incubator-answer" target="_blank" rel="noreferrer">
               {t('github')}
             </a>
           </Col>

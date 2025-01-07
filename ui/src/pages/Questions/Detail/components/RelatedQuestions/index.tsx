@@ -58,15 +58,11 @@ const Index: FC<Props> = ({ id }) => {
               {item.answer_count > 0 && (
                 <div
                   className={`mt-1 small me-2 ${
-                    item.accepted_answer_id > 0
-                      ? 'link-success'
-                      : 'link-secondary'
+                    item.accepted_answer_id > 0 ? 'link-success' : 'link-secondary'
                   }`}>
                   <Icon
                     name={
-                      item.accepted_answer_id > 0
-                        ? 'check-circle-fill'
-                        : 'chat-square-text-fill'
+                      item.accepted_answer_id > 0 ? 'check-circle-fill' : 'chat-square-text-fill'
                     }
                     className="me-1"
                   />

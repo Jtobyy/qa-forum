@@ -32,10 +32,7 @@ import {
   writeSettingStore,
 } from '@/stores';
 import { RouteAlias } from '@/router/alias';
-import {
-  LOGGED_TOKEN_STORAGE_KEY,
-  REDIRECT_PATH_STORAGE_KEY,
-} from '@/common/constants';
+import { LOGGED_TOKEN_STORAGE_KEY, REDIRECT_PATH_STORAGE_KEY } from '@/common/constants';
 import Storage from '@/utils/storage';
 
 import { setupAppLanguage, setupAppTimeZone, setupAppTheme } from './localize';
@@ -60,11 +57,7 @@ export type TGuardResult = {
     msg?: string;
   };
 };
-export type TGuardFunc = (args: {
-  loaderData?: any;
-  path?: string;
-  page?: string;
-}) => TGuardResult;
+export type TGuardFunc = (args: { loaderData?: any; path?: string; page?: string }) => TGuardResult;
 
 export const deriveLoginState = (): TLoginState => {
   const ls: TLoginState = {
@@ -355,10 +348,7 @@ export const handleLoginRedirect = (handler?: NavigateConfig['handler']) => {
 /**
  * Unified processing of login logic after getting `access_token`
  */
-export const handleLoginWithToken = (
-  token: string | null,
-  handler?: NavigateConfig['handler'],
-) => {
+export const handleLoginWithToken = (token: string | null, handler?: NavigateConfig['handler']) => {
   if (token) {
     Storage.set(LOGGED_TOKEN_STORAGE_KEY, token);
     setTimeout(() => {
@@ -394,9 +384,7 @@ export const initAppSettingsStore = async () => {
   const appSettings = await getAppSettings();
   if (appSettings) {
     siteInfoStore.getState().update(appSettings.general);
-    siteInfoStore
-      .getState()
-      .updateVersion(appSettings.version, appSettings.revision);
+    siteInfoStore.getState().updateVersion(appSettings.version, appSettings.revision);
     siteInfoStore.getState().updateUsers(appSettings.site_users);
     interfaceStore.getState().update(appSettings.interface);
     pageTagStore.getState().update({

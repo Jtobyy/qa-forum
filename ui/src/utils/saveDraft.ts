@@ -19,10 +19,7 @@
 
 import debounce from 'lodash/debounce';
 
-import {
-  DRAFT_QUESTION_STORAGE_KEY,
-  DRAFT_ANSWER_STORAGE_KEY,
-} from '@/common/constants';
+import { DRAFT_QUESTION_STORAGE_KEY, DRAFT_ANSWER_STORAGE_KEY } from '@/common/constants';
 import { storageExpires as storage } from '@/utils';
 
 export type QuestionDraft = {
@@ -94,10 +91,7 @@ class SaveDraft {
   }
 
   private storeDraft = (params: any, callback) => {
-    const key =
-      this.type === 'question'
-        ? DRAFT_QUESTION_STORAGE_KEY
-        : DRAFT_ANSWER_STORAGE_KEY;
+    const key = this.type === 'question' ? DRAFT_QUESTION_STORAGE_KEY : DRAFT_ANSWER_STORAGE_KEY;
     storage.set(key, params);
     callback?.();
   };

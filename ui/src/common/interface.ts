@@ -295,13 +295,7 @@ export interface LangsType {
 /**
  * @description interface for Question
  */
-export type QuestionOrderBy =
-  | 'recommend'
-  | 'newest'
-  | 'active'
-  | 'hot'
-  | 'score'
-  | 'unanswered';
+export type QuestionOrderBy = 'recommend' | 'newest' | 'active' | 'hot' | 'score' | 'unanswered';
 
 export interface QueryQuestionsReq extends Paging {
   order: QuestionOrderBy;
@@ -309,11 +303,7 @@ export interface QueryQuestionsReq extends Paging {
   in_days?: number;
 }
 
-export type AdminQuestionStatus =
-  | 'available'
-  | 'pending'
-  | 'closed'
-  | 'deleted';
+export type AdminQuestionStatus = 'available' | 'pending' | 'closed' | 'deleted';
 
 export type AdminContentsFilterBy = 'normal' | 'pending' | 'closed' | 'deleted';
 
@@ -330,20 +320,11 @@ export type AdminAnswerStatus = 'available' | 'deleted';
 /**
  * @description interface for Users
  */
-export type UserFilterBy =
-  | 'normal'
-  | 'staff'
-  | 'inactive'
-  | 'suspended'
-  | 'deleted';
+export type UserFilterBy = 'normal' | 'staff' | 'inactive' | 'suspended' | 'deleted';
 
 export type BadgeFilterBy = 'all' | 'active' | 'inactive';
 
-export type InstalledPluginsFilterBy =
-  | 'all'
-  | 'active'
-  | 'inactive'
-  | 'outdated';
+export type InstalledPluginsFilterBy = 'all' | 'active' | 'inactive' | 'outdated';
 /**
  * @description interface for Flags
  */
@@ -714,12 +695,7 @@ export interface ReviewTypeItem {
 }
 
 export interface PutFlagReviewParams {
-  operation_type:
-    | 'edit_post'
-    | 'close_post'
-    | 'delete_post'
-    | 'unlist_post'
-    | 'ignore_report';
+  operation_type: 'edit_post' | 'close_post' | 'delete_post' | 'unlist_post' | 'ignore_report';
   flag_id: string;
   close_msg?: string;
   close_type?: number;

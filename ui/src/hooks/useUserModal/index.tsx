@@ -62,9 +62,7 @@ const useAddUserModal = (props: IProps = {}) => {
       },
     },
   };
-  const [formData, setFormData] = useState<Type.FormDataType>(
-    initFormData(schema),
-  );
+  const [formData, setFormData] = useState<Type.FormDataType>(initFormData(schema));
 
   const formRef = useRef<{
     validator: () => Promise<boolean>;

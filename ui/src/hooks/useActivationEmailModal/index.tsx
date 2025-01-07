@@ -64,9 +64,7 @@ const useChangePasswordModal = (props: IProps = {}) => {
       },
     },
   };
-  const [formData, setFormData] = useState<Type.FormDataType>(
-    initFormData(schema),
-  );
+  const [formData, setFormData] = useState<Type.FormDataType>(initFormData(schema));
 
   const formRef = useRef<{
     validator: () => Promise<boolean>;
@@ -149,10 +147,7 @@ const useChangePasswordModal = (props: IProps = {}) => {
           <Button variant="link" onClick={() => onClose()}>
             {t('cancel', { keyPrefix: 'btns' })}
           </Button>
-          <Button
-            disabled={isLoading.current}
-            variant="primary"
-            onClick={handleSubmit}>
+          <Button disabled={isLoading.current} variant="primary" onClick={handleSubmit}>
             {t('resend', { keyPrefix: 'btns' })}
           </Button>
         </Modal.Footer>

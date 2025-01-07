@@ -41,9 +41,7 @@ const Index: FC<Props> = ({ visible, data }) => {
           <ListGroupItem
             className="d-flex py-3 px-0 bg-transparent border-start-0 border-end-0"
             key={item.object_id}>
-            <div
-              className="me-3 text-end text-secondary flex-shrink-0"
-              style={{ width: '80px' }}>
+            <div className="me-3 text-end text-secondary flex-shrink-0" style={{ width: '80px' }}>
               {item.vote_type}
             </div>
             <div>
@@ -51,10 +49,7 @@ const Index: FC<Props> = ({ visible, data }) => {
                 className="text-break"
                 to={
                   item.object_type === 'question'
-                    ? pathFactory.questionLanding(
-                        item.question_id,
-                        item.url_title,
-                      )
+                    ? pathFactory.questionLanding(item.question_id, item.url_title)
                     : pathFactory.answerLanding({
                         questionId: item.question_id,
                         slugTitle: item.url_title,

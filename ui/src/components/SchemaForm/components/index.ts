@@ -28,15 +28,4 @@ import Input from './Input';
 import Button from './Button';
 import InputGroup from './InputGroup';
 
-export {
-  Legend,
-  Select,
-  Check,
-  Switch,
-  Timezone,
-  Upload,
-  Textarea,
-  Input,
-  Button,
-  InputGroup,
-};
+export { Legend, Select, Check, Switch, Timezone, Upload, Textarea, Input, Button, InputGroup };

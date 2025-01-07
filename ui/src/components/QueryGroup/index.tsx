@@ -88,9 +88,7 @@ const Index: FC<Props> = ({
             active={currentSort === name}
             className={classNames(
               'text-capitalize fit-content',
-              data.length > MAX_BUTTON_COUNT &&
-                index > MAX_BUTTON_COUNT - 2 &&
-                'd-none d-md-block',
+              data.length > MAX_BUTTON_COUNT && index > MAX_BUTTON_COUNT - 2 && 'd-none d-md-block',
               className,
             )}
             style={
@@ -102,9 +100,7 @@ const Index: FC<Props> = ({
                 : {}
             }
             href={
-              pathname
-                ? `${REACT_BASE_PATH}${pathname}${handleParams(key)}`
-                : handleParams(key)
+              pathname ? `${REACT_BASE_PATH}${pathname}${handleParams(key)}` : handleParams(key)
             }
             onClick={(evt) => handleClick(evt, key)}>
             {t(name)}
@@ -126,15 +122,9 @@ const Index: FC<Props> = ({
                 as="a"
                 key={key}
                 active={currentSort === name}
-                className={classNames(
-                  'text-capitalize',
-                  'd-block d-md-none',
-                  className,
-                )}
+                className={classNames('text-capitalize', 'd-block d-md-none', className)}
                 href={
-                  pathname
-                    ? `${REACT_BASE_PATH}${pathname}${handleParams(key)}`
-                    : handleParams(key)
+                  pathname ? `${REACT_BASE_PATH}${pathname}${handleParams(key)}` : handleParams(key)
                 }
                 onClick={(evt) => handleClick(evt, key)}>
                 {t(name)}

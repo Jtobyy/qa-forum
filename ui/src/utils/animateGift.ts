@@ -56,10 +56,8 @@ export default class Confetti {
       timestamp: null,
       delta: 0,
     });
-    this.rotationRange =
-      typeof param.rotationLength === 'number' ? param.rotationRange : 10;
-    this.speedRange =
-      typeof param.speedRange === 'number' ? param.speedRange : 10;
+    this.rotationRange = typeof param.rotationLength === 'number' ? param.rotationRange : 10;
+    this.speedRange = typeof param.speedRange === 'number' ? param.speedRange : 10;
     this.sprites = [];
 
     this.canvas.style.cssText = [
@@ -128,17 +126,13 @@ export default class Confetti {
         initY: -canvas.height - Math.random() * this.yRange,
       };
 
-      canvas.rotation =
-        this.rotationRange / 2 - Math.random() * this.rotationRange;
-      canvas.speed =
-        this.speedRange / 2 + Math.random() * (this.speedRange / 2);
+      canvas.rotation = this.rotationRange / 2 - Math.random() * this.rotationRange;
+      canvas.speed = this.speedRange / 2 + Math.random() * (this.speedRange / 2);
 
       if (ctx) {
         ctx.save();
         ctx.fillStyle =
-          Confetti.CONST.COLORS[
-            Math.floor(Math.random() * Confetti.CONST.COLORS.length)
-          ];
+          Confetti.CONST.COLORS[Math.floor(Math.random() * Confetti.CONST.COLORS.length)];
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.restore();
       }

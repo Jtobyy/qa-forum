@@ -25,13 +25,7 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { getFlagReviewPostList, putFlagReviewAction } from '@/services';
-import {
-  BaseUserCard,
-  Tag,
-  FormatTime,
-  ImgViewer,
-  htmlRender,
-} from '@/components';
+import { BaseUserCard, Tag, FormatTime, ImgViewer, htmlRender } from '@/components';
 import { scrollToDocTop } from '@/utils';
 import type * as Type from '@/common/interface';
 import { ADMIN_LIST_STATUS } from '@/common/constants';
@@ -124,13 +118,7 @@ const Index: FC<IProps> = ({ refreshCount }) => {
     }, 70);
   }, [ref.current]);
 
-  const {
-    object_type,
-    submitter_user,
-    author_user_info,
-    object_status,
-    reason,
-  } = flagItemData || {
+  const { object_type, submitter_user, author_user_info, object_status, reason } = flagItemData || {
     object_type: '',
     submitter_user: null,
     author_user_info: null,
@@ -143,20 +131,11 @@ const Index: FC<IProps> = ({ refreshCount }) => {
   if (noTasks) return null;
   return (
     <Card>
-      <Card.Header>
-        {object_type !== 'user' ? t('flag_post') : t('flag_user')}
-      </Card.Header>
+      <Card.Header>{object_type !== 'user' ? t('flag_post') : t('flag_user')}</Card.Header>
       <Card.Body className="p-0">
         <Alert variant="info" className="border-0 rounded-0 mb-0">
-          <Stack
-            direction="horizontal"
-            gap={1}
-            className="align-items-center mb-2">
-            <BaseUserCard
-              data={submitter_user}
-              avatarSize="24px"
-              avatarClass="me-2"
-            />
+          <Stack direction="horizontal" gap={1} className="align-items-center mb-2">
+            <BaseUserCard data={submitter_user} avatarSize="24px" avatarClass="me-2" />
             {flagItemData?.submit_at && (
               <FormatTime
                 time={flagItemData.submit_at}
@@ -181,10 +160,7 @@ const Index: FC<IProps> = ({ refreshCount }) => {
                     target="_blank"
                     className="alert-exist"
                     rel="noreferrer">
-                    <strong>
-                      {' '}
-                      {t('show_exist', { keyPrefix: 'question_detail' })}
-                    </strong>
+                    <strong> {t('show_exist', { keyPrefix: 'question_detail' })}</strong>
                   </a>
                 ) : (
                   <strong> {flagItemData?.reason_content}</strong>
@@ -204,9 +180,7 @@ const Index: FC<IProps> = ({ refreshCount }) => {
               <h5 className="mb-3">{flagItemData?.title}</h5>
               <div className="mb-4">
                 {flagItemData?.tags?.map((item) => {
-                  return (
-                    <Tag key={item.slug_name} className="me-1" data={item} />
-                  );
+                  return <Tag key={item.slug_name} className="me-1" data={item} />;
                 })}
               </div>
             </>
@@ -222,31 +196,19 @@ const Index: FC<IProps> = ({ refreshCount }) => {
           </div>
           <div className="d-flex flex-wrap align-items-center justify-content-between mt-4">
             <div>
-              <span
-                className={classNames(
-                  'badge',
-                  ADMIN_LIST_STATUS[object_status]?.variant,
-                )}>
+              <span className={classNames('badge', ADMIN_LIST_STATUS[object_status]?.variant)}>
                 {t(ADMIN_LIST_STATUS[object_status]?.name, {
                   keyPrefix: 'btns',
                 })}
               </span>
               {flagItemData?.object_show_status === 2 && (
-                <span
-                  className={classNames(
-                    'ms-1 badge',
-                    ADMIN_LIST_STATUS.unlisted.variant,
-                  )}>
+                <span className={classNames('ms-1 badge', ADMIN_LIST_STATUS.unlisted.variant)}>
                   {t(ADMIN_LIST_STATUS.unlisted.name, { keyPrefix: 'btns' })}
                 </span>
               )}
             </div>
             <div className="d-flex align-items-center small">
-              <BaseUserCard
-                data={author_user_info}
-                avatarSize="24px"
-                avatarClass="me-2"
-              />
+              <BaseUserCard data={author_user_info} avatarSize="24px" avatarClass="me-2" />
               <FormatTime
                 time={Number(flagItemData?.created_at)}
                 className="text-secondary ms-1 flex-shrink-0"
@@ -266,17 +228,11 @@ const Index: FC<IProps> = ({ refreshCount }) => {
             curFilter={ADMIN_LIST_STATUS[object_status]?.name}
             approveCallback={handlingApprove}
           />
-          <Button
-            variant="outline-primary"
-            disabled={isLoading}
-            onClick={handleIgnore}>
+          <Button variant="outline-primary" disabled={isLoading} onClick={handleIgnore}>
             {t('ignore', { keyPrefix: 'btns' })}
           </Button>
 
-          <Button
-            variant="outline-primary"
-            disabled={isLoading}
-            onClick={handlingSkip}>
+          <Button variant="outline-primary" disabled={isLoading} onClick={handlingSkip}>
             {t('skip', { keyPrefix: 'btns' })}
           </Button>
         </Stack>

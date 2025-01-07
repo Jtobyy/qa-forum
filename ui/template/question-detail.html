@@ -26,36 +26,41 @@
         <h1 class="h3 mb-3 text-wrap text-break">
           <a class="link-dark" href="{{$.baseURL}}/questions/{{.detail.ID}}">{{.detail.Title}}</a>
         </h1>
-        <div
-          class="d-flex flex-wrap align-items-center small mb-3 text-secondary">
-          <time class="me-3"
-                datetime="{{timeFormatISO $.timezone .detail.CreateTime}}"
-                title="{{translatorTimeFormatLongDate $.language $.timezone .detail.CreateTime}}">{{translator $.language "ui.question_detail.Asked"}} {{translatorTimeFormat $.language $.timezone .detail.CreateTime}}
+        <div class="d-flex flex-wrap align-items-center small mb-3 text-secondary">
+          <time
+            class="me-3"
+            datetime="{{timeFormatISO $.timezone .detail.CreateTime}}"
+            title="{{translatorTimeFormatLongDate $.language $.timezone .detail.CreateTime}}"
+            >{{translator $.language "ui.question_detail.Asked"}} {{translatorTimeFormat $.language
+            $.timezone .detail.CreateTime}}
           </time>
-          <time class="me-3"
-                datetime="{{timeFormatISO $.timezone .detail.UpdateTime}}"
-                title="{{translatorTimeFormatLongDate $.language $.timezone .detail.UpdateTime}}">{{translator $.language "ui.question_detail.update"}} {{translatorTimeFormat $.language $.timezone .detail.UpdateTime}}
+          <time
+            class="me-3"
+            datetime="{{timeFormatISO $.timezone .detail.UpdateTime}}"
+            title="{{translatorTimeFormatLongDate $.language $.timezone .detail.UpdateTime}}"
+            >{{translator $.language "ui.question_detail.update"}} {{translatorTimeFormat $.language
+            $.timezone .detail.UpdateTime}}
           </time>
-          <div class="me-3">{{translator $.language "ui.question_detail.Views"}} {{.detail.ViewCount}}</div>
-
+          <div class="me-3">
+            {{translator $.language "ui.question_detail.Views"}} {{.detail.ViewCount}}
+          </div>
         </div>
         <div class="m-n1">
           {{range .detail.Tags}}
-          <a href="{{$.baseURL}}/tags/{{.SlugName}}"
-             class="badge-tag rounded-1 {{if .Reserved}}badge-tag-reserved{{end}} {{if .Recommend}}badge-tag-required{{end}} m-1">
+          <a
+            href="{{$.baseURL}}/tags/{{.SlugName}}"
+            class="badge-tag rounded-1 {{if .Reserved}}badge-tag-reserved{{end}} {{if .Recommend}}badge-tag-required{{end}} m-1">
             <span class="">{{.SlugName}}</span>
           </a>
           {{end}}
         </div>
-        <article class="fmt text-break text-wrap mt-4">
-          {{formatLinkNofollow .detail.HTML}}
-        </article>
+        <article class="fmt text-break text-wrap mt-4">{{formatLinkNofollow .detail.HTML}}</article>
         <div class="mt-4">
           <div role="group" class="btn-group">
             <button type="button" class="btn btn-outline-secondary">
-              <i class="br bi-hand-thumbs-up-fill"></i></button>
-            <button type="button"
-                    disabled="" class="btn btn-outline-dark text-body">
+              <i class="br bi-hand-thumbs-up-fill"></i>
+            </button>
+            <button type="button" disabled="" class="btn btn-outline-dark text-body">
               {{.detail.VoteCount}}
             </button>
             <button type="button" class="btn btn-outline-secondary">
@@ -63,44 +68,54 @@
             </button>
           </div>
           <button type="button" class="btn btn-outline-secondary ms-3">
-            <i class="br bi-bookmark-fill"></i><span style="padding-left: 10px">{{.detail.CollectionCount}}</span>
+            <i class="br bi-bookmark-fill"></i
+            ><span style="padding-left: 10px">{{.detail.CollectionCount}}</span>
           </button>
         </div>
         <div class="mt-4 mb-3 row">
-          <div class="mb-3 mb-md-0 col-lg-5">
-
-          </div>
+          <div class="mb-3 mb-md-0 col-lg-5"></div>
           <div class="mb-3 mb-md-0 col-lg-3">
             <a href="{{$.baseURL}}/posts/{{.detail.ID}}/timeline">
-              <time class="link-secondary small"
-                    datetime="{{timeFormatISO $.timezone .detail.UpdateTime}}"
-                    title="{{translatorTimeFormatLongDate $.language $.timezone .detail.UpdateTime}}">
-                {{translator $.language "ui.question_detail.edit"}} {{translatorTimeFormat $.language $.timezone .detail.UpdateTime}}
+              <time
+                class="link-secondary small"
+                datetime="{{timeFormatISO $.timezone .detail.UpdateTime}}"
+                title="{{translatorTimeFormatLongDate $.language $.timezone .detail.UpdateTime}}">
+                {{translator $.language "ui.question_detail.edit"}} {{translatorTimeFormat
+                $.language $.timezone .detail.UpdateTime}}
               </time>
             </a>
           </div>
           <div class="col-lg-3">
             <div class="d-flex">
-              <a href="{{$.baseURL}}/users/{{.detail.UserInfo.Username}}"><img
-                src="{{.detail.UserInfo.Avatar}}"
-                width="40px" height="40px"
-                class="rounded me-2 d-none d-md-block"
-                alt=""/><img
-                src="{{.detail.UserInfo.Avatar}}"
-                width="24px" height="24px"
-                class="rounded me-2 d-block d-md-none"
-                alt=""/></a>
+              <a href="{{$.baseURL}}/users/{{.detail.UserInfo.Username}}"
+                ><img
+                  src="{{.detail.UserInfo.Avatar}}"
+                  width="40px"
+                  height="40px"
+                  class="rounded me-2 d-none d-md-block"
+                  alt="" /><img
+                  src="{{.detail.UserInfo.Avatar}}"
+                  width="24px"
+                  height="24px"
+                  class="rounded me-2 d-block d-md-none"
+                  alt=""
+              /></a>
               <div
                 class="small text-secondary d-flex flex-row flex-md-column align-items-center align-items-md-start">
                 <div class="me-1 me-md-0">
-                  <a class="me-1 text-break"
-                     href="{{$.baseURL}}/users/{{.detail.UserInfo.Username}}">{{.detail.UserInfo.DisplayName}}</a><span
-                  class="fw-bold" title="Reputation">{{.detail.UserInfo.Rank}}</span>
+                  <a
+                    class="me-1 text-break"
+                    href="{{$.baseURL}}/users/{{.detail.UserInfo.Username}}"
+                    >{{.detail.UserInfo.DisplayName}}</a
+                  ><span class="fw-bold" title="Reputation">{{.detail.UserInfo.Rank}}</span>
                 </div>
                 <a href="{{$.baseURL}}/posts/{{.detail.ID}}/timeline">
-                  <time class="link-secondary"
-                        datetime="{{timeFormatISO $.timezone .detail.CreateTime}}"
-                        title="{{translatorTimeFormatLongDate $.language $.timezone .detail.CreateTime}}">{{translator $.language "ui.question_detail.asked"}} {{translatorTimeFormat $.language $.timezone .detail.CreateTime}}
+                  <time
+                    class="link-secondary"
+                    datetime="{{timeFormatISO $.timezone .detail.CreateTime}}"
+                    title="{{translatorTimeFormatLongDate $.language $.timezone .detail.CreateTime}}"
+                    >{{translator $.language "ui.question_detail.asked"}} {{translatorTimeFormat
+                    $.language $.timezone .detail.CreateTime}}
                   </time>
                 </a>
               </div>
@@ -111,22 +126,19 @@
           {{template "comment" (wrapComments (index $.comments $.detail.ID) $.language $.timezone)}}
         </div>
       </div>
-      <div class="d-flex align-items-center justify-content-between mt-5 mb-3"
-           id="answerHeader">
+      <div class="d-flex align-items-center justify-content-between mt-5 mb-3" id="answerHeader">
         <h5 class="mb-0">{{.detail.AnswerCount}} Answers</h5>
       </div>
       {{range .answers}}
       <div id="10020000000000930" class="answer-item py-4">
-        <article class="fmt">
-          {{formatLinkNofollow .HTML}}
-        </article>
+        <article class="fmt">{{formatLinkNofollow .HTML}}</article>
         <div class="d-flex align-items-center mt-4">
           <div class="">
             <div role="group" class="btn-group">
               <button type="button" class="btn btn-outline-secondary">
-                <i class="br bi-hand-thumbs-up-fill"></i></button>
-              <button type="button"
-                      disabled="" class="btn btn-outline-dark text-body">
+                <i class="br bi-hand-thumbs-up-fill"></i>
+              </button>
+              <button type="button" disabled="" class="btn btn-outline-dark text-body">
                 {{.VoteCount}}
               </button>
               <button type="button" class="btn btn-outline-secondary">
@@ -135,17 +147,18 @@
             </div>
           </div>
           {{if eq 2 .Accepted}}
-          <button type="button" disabled=""
-                  class="ms-3 active opacity-100 bg-success text-white btn btn-outline-success">
-            <i class="br bi-check-circle-fill me-2"></i><span>{{translator $.language "ui.question_detail.answers.btn_accepted"}}</span>
+          <button
+            type="button"
+            disabled=""
+            class="ms-3 active opacity-100 bg-success text-white btn btn-outline-success">
+            <i class="br bi-check-circle-fill me-2"></i
+            ><span>{{translator $.language "ui.question_detail.answers.btn_accepted"}}</span>
           </button>
           {{end}}
         </div>
         <div class="mt-4 mb-3 row">
           <div class="mb-3 mb-md-0 col">
-            <div class="d-flex align-items-center">
-
-            </div>
+            <div class="d-flex align-items-center"></div>
           </div>
           <div class="mb-3 mb-md-0 col-lg-3">
             <a href="{{$.baseURL}}/posts/{{$.detail.ID}}/{{.ID}}/timeline">
@@ -153,33 +166,40 @@
                 class="link-secondary small"
                 datetime="{{timeFormatISO $.timezone .UpdateTime}}"
                 title="{{translatorTimeFormatLongDate $.language $.timezone .UpdateTime}}">
-                {{translator $.language "ui.question_detail.edit"}} {{translatorTimeFormat $.language $.timezone .UpdateTime}}
+                {{translator $.language "ui.question_detail.edit"}} {{translatorTimeFormat
+                $.language $.timezone .UpdateTime}}
               </time>
             </a>
           </div>
           <div class="col-lg-4">
             <div class="d-flex">
-              <a href="{{$.baseURL}}/users/{{.UserInfo.Username}}"><img
-                src="{{.UserInfo.Avatar}}"
-                width="40px" height="40px"
-                class="rounded me-2 d-none d-md-block"
-                alt=""/><img
-                src="{{.UserInfo.Avatar}}"
-                width="24px" height="24px"
-                class="rounded me-2 d-block d-md-none"
-                alt=""/></a>
+              <a href="{{$.baseURL}}/users/{{.UserInfo.Username}}"
+                ><img
+                  src="{{.UserInfo.Avatar}}"
+                  width="40px"
+                  height="40px"
+                  class="rounded me-2 d-none d-md-block"
+                  alt="" /><img
+                  src="{{.UserInfo.Avatar}}"
+                  width="24px"
+                  height="24px"
+                  class="rounded me-2 d-block d-md-none"
+                  alt=""
+              /></a>
               <div
                 class="small text-secondary d-flex flex-row flex-md-column align-items-center align-items-md-start">
                 <div class="me-1 me-md-0">
-                  <a class="me-1 text-break"
-                     href="{{$.baseURL}}/users/{{.UserInfo.Username}}">{{.UserInfo.DisplayName}}</a><span
-                  class="fw-bold" title="Reputation">{{.UserInfo.Rank}}</span>
+                  <a class="me-1 text-break" href="{{$.baseURL}}/users/{{.UserInfo.Username}}"
+                    >{{.UserInfo.DisplayName}}</a
+                  ><span class="fw-bold" title="Reputation">{{.UserInfo.Rank}}</span>
                 </div>
                 <a href="{{$.baseURL}}/posts/{{$.detail.ID}}/{{.ID}}/timeline">
                   <time
                     class="link-secondary"
                     datetime="{{timeFormatISO $.timezone .CreateTime}}"
-                    title="{{translatorTimeFormatLongDate $.language $.timezone .CreateTime}}">{{translator $.language "ui.question_detail.answered"}} {{translatorTimeFormat $.language $.timezone .CreateTime}}
+                    title="{{translatorTimeFormatLongDate $.language $.timezone .CreateTime}}"
+                    >{{translator $.language "ui.question_detail.answered"}} {{translatorTimeFormat
+                    $.language $.timezone .CreateTime}}
                   </time>
                 </a>
               </div>
@@ -192,19 +212,10 @@
       </div>
       {{end}}
     </div>
-    <div class="mt-5 mt-lg-0 col-xxl-3 col-lg-4 col-sm-12">
-
-    </div>
+    <div class="mt-5 mt-lg-0 col-xxl-3 col-lg-4 col-sm-12"></div>
   </div>
 </div>
-<div style="
-            position: fixed;
-            top: 90px;
-            left: 0px;
-            right: 0px;
-            margin: auto;
-            z-index: 5;
-          ">
+<div style="position: fixed; top: 90px; left: 0px; right: 0px; margin: auto; z-index: 5">
   <div class="d-flex justify-content-center"></div>
 </div>
 {{template "footer" .}}

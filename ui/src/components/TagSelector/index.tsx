@@ -73,8 +73,7 @@ const TagSelector: FC<IProps> = ({
   const [requiredTags, setRequiredTags] = useState<Type.Tag[] | null>(null);
   const { t } = useTranslation('translation', { keyPrefix: 'tag_selector' });
   const { data: userPermission } = useUserPermission('tag.add');
-  const canAddTag =
-    (maxTagLength > 0 && value?.length < maxTagLength) || maxTagLength === 0;
+  const canAddTag = (maxTagLength > 0 && value?.length < maxTagLength) || maxTagLength === 0;
   const toast = useToast();
   const tagModal = useTagModal({
     onConfirm: (data) => {
@@ -109,9 +108,7 @@ const TagSelector: FC<IProps> = ({
       const findIndex = value.findIndex((v) => {
         const tagName1 = v.slug_name.toLowerCase();
         const tagName2 =
-          typeof item === 'string'
-            ? item.toLowerCase()
-            : item.slug_name.toLowerCase();
+          typeof item === 'string' ? item.toLowerCase() : item.slug_name.toLowerCase();
 
         return tagName1 === tagName2;
       });
@@ -310,11 +307,7 @@ const TagSelector: FC<IProps> = ({
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
-      if (
-        initialized &&
-        containerRef.current &&
-        !containerRef.current?.contains(event.target)
-      ) {
+      if (initialized && containerRef.current && !containerRef.current?.contains(event.target)) {
         handleTagSelectorBlur();
       }
     };
@@ -346,19 +339,11 @@ const TagSelector: FC<IProps> = ({
   useEffect(() => {
     // set width of tag Form.Control
     const ele = document.querySelector('.a-input-width') as HTMLElement;
-    const elePlaceholder = document.querySelector(
-      '.a-placeholder-width',
-    ) as HTMLElement;
+    const elePlaceholder = document.querySelector('.a-placeholder-width') as HTMLElement;
     if (ele.offsetWidth > 60) {
-      inputRef.current?.setAttribute(
-        'style',
-        `width:${ele.offsetWidth + 16}px`,
-      );
+      inputRef.current?.setAttribute('style', `width:${ele.offsetWidth + 16}px`);
     } else {
-      inputRef.current?.setAttribute(
-        'style',
-        `width: ${elePlaceholder.offsetWidth + 7}px`,
-      );
+      inputRef.current?.setAttribute('style', `width: ${elePlaceholder.offsetWidth + 7}px`);
     }
   }, [searchValue]);
 
@@ -374,27 +359,19 @@ const TagSelector: FC<IProps> = ({
         onFocus={handleTagSelectorFocus}
         onKeyDown={handleKeyDown}>
         <div onClick={handleClickToggle}>
-          <div
-            className="d-flex flex-wrap m-n1"
-            style={{ padding: '0.375rem 0.75rem' }}>
+          <div className="d-flex flex-wrap m-n1" style={{ padding: '0.375rem 0.75rem' }}>
             {value?.map((item, index) => {
               return (
                 <span
                   key={item.slug_name}
                   className={classNames(
                     'badge-tag rounded-1 m-1 flex-shrink-0',
-                    tagStyleMode === 'default' &&
-                      item.reserved &&
-                      'badge-tag-reserved',
-                    tagStyleMode === 'default' &&
-                      item.recommend &&
-                      'badge-tag-required',
+                    tagStyleMode === 'default' && item.reserved && 'badge-tag-reserved',
+                    tagStyleMode === 'default' && item.recommend && 'badge-tag-required',
                     index === repeatIndex && 'bg-fade-out',
                   )}>
                   {item.display_name}
-                  <span
-                    className="ms-1 hover-hand"
-                    onMouseUp={() => handleRemove(item)}>
+                  <span className="ms-1 hover-hand" onMouseUp={() => handleRemove(item)}>
                     ×
                   </span>
                 </span>

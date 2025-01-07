@@ -22,22 +22,14 @@ import i18next from 'i18next';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 
-import {
-  interfaceStore,
-  loggedUserInfoStore,
-  themeSettingStore,
-} from '@/stores';
+import { interfaceStore, loggedUserInfoStore, themeSettingStore } from '@/stores';
 import {
   CURRENT_LANG_STORAGE_KEY,
   DEFAULT_LANG,
   LANG_RESOURCE_STORAGE_KEY,
   DEFAULT_THEME,
 } from '@/common/constants';
-import {
-  getAdminLanguageOptions,
-  getLanguageConfig,
-  getLanguageOptions,
-} from '@/services';
+import { getAdminLanguageOptions, getLanguageConfig, getLanguageOptions } from '@/services';
 import { changeTheme } from '@/utils/common';
 
 import Storage from './storage';
@@ -46,9 +38,7 @@ import Storage from './storage';
  * localize kit for i18n
  */
 export const loadLanguageOptions = async (forAdmin = false) => {
-  const languageOptions = forAdmin
-    ? await getAdminLanguageOptions()
-    : await getLanguageOptions();
+  const languageOptions = forAdmin ? await getAdminLanguageOptions() : await getLanguageOptions();
   if (process.env.NODE_ENV === 'development') {
     const { default: optConf } = await import('@i18n/i18n.yaml');
     optConf?.language_options.forEach((opt) => {
@@ -86,13 +76,7 @@ const addI18nResource = async (langName) => {
   }
 
   if (res.resources) {
-    i18next.addResourceBundle(
-      res.lng,
-      'translation',
-      res.resources,
-      true,
-      true,
-    );
+    i18next.addResourceBundle(res.lng, 'translation', res.resources, true, true);
   }
 };
 

@@ -23,17 +23,8 @@ import { useMatch, Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { usePageTags } from '@/hooks';
-import {
-  FollowingTags,
-  QuestionList,
-  HotQuestions,
-  CustomSidebar,
-} from '@/components';
-import {
-  siteInfoStore,
-  loggedUserInfoStore,
-  loginSettingStore,
-} from '@/stores';
+import { FollowingTags, QuestionList, HotQuestions, CustomSidebar } from '@/components';
+import { siteInfoStore, loggedUserInfoStore, loginSettingStore } from '@/stores';
 import { useQuestionList, useQuestionRecommendList } from '@/services';
 import * as Type from '@/common/interface';
 import { userCenter, floppyNavigation } from '@/utils';
@@ -45,17 +36,14 @@ const Questions: FC = () => {
   const { user: loggedUser } = loggedUserInfoStore((_) => _);
   const [urlSearchParams] = useSearchParams();
   const curPage = Number(urlSearchParams.get('page')) || 1;
-  const curOrder = (urlSearchParams.get('order') ||
-    QUESTION_ORDER_KEYS[0]) as Type.QuestionOrderBy;
+  const curOrder = (urlSearchParams.get('order') || QUESTION_ORDER_KEYS[0]) as Type.QuestionOrderBy;
   const reqParams: Type.QueryQuestionsReq = {
     page_size: 20,
     page: curPage,
     order: curOrder as Type.QuestionOrderBy,
   };
   const { data: listData, isLoading: listLoading } =
-    curOrder === 'recommend'
-      ? useQuestionRecommendList(reqParams)
-      : useQuestionList(reqParams);
+    curOrder === 'recommend' ? useQuestionRecommendList(reqParams) : useQuestionList(reqParams);
   const isIndexPage = useMatch('/');
   let pageTitle = t('questions', { keyPrefix: 'page_title' });
   let slogan = '';

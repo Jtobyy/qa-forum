@@ -142,14 +142,11 @@ const Index: FC = () => {
     getLoginSetting().then((setting) => {
       if (setting) {
         const formMeta = { ...formData };
-        formMeta.allow_new_registrations.value =
-          setting.allow_new_registrations;
-        formMeta.allow_email_registrations.value =
-          setting.allow_email_registrations;
+        formMeta.allow_new_registrations.value = setting.allow_new_registrations;
+        formMeta.allow_email_registrations.value = setting.allow_email_registrations;
         formMeta.allow_email_domains.value = '';
         if (Array.isArray(setting.allow_email_domains)) {
-          formMeta.allow_email_domains.value =
-            setting.allow_email_domains.join('\n');
+          formMeta.allow_email_domains.value = setting.allow_email_domains.join('\n');
         }
         formMeta.login_required.value = setting.login_required;
         formMeta.allow_password_login.value = setting.allow_password_login;

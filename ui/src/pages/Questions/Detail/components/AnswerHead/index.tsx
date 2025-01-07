@@ -48,21 +48,13 @@ const Index: FC<Props> = ({ count = 0, order = 'default' }) => {
   });
 
   return (
-    <div
-      className="d-flex align-items-center justify-content-between mt-5 mb-3"
-      id="answerHeader">
+    <div className="d-flex align-items-center justify-content-between mt-5 mb-3" id="answerHeader">
       <h5 className="mb-0">
         {count} {t('title')}
       </h5>
       <QueryGroup
         data={sortBtns}
-        currentSort={
-          order === 'updated'
-            ? 'newest'
-            : order === 'created'
-              ? 'oldest'
-              : 'score'
-        }
+        currentSort={order === 'updated' ? 'newest' : order === 'created' ? 'oldest' : 'score'}
         i18nKeyPrefix="question_detail.answers"
       />
     </div>

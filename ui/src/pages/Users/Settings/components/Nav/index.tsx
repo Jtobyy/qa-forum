@@ -32,9 +32,7 @@ const Index: FC = () => {
   return (
     <Nav variant="pills" className="flex-column">
       <NavLink
-        className={({ isActive }) =>
-          isActive || !settingMatch ? 'nav-link active' : 'nav-link'
-        }
+        className={({ isActive }) => (isActive || !settingMatch ? 'nav-link active' : 'nav-link')}
         to="/users/settings/profile">
         {t('profile')}
       </NavLink>

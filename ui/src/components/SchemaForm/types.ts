@@ -64,10 +64,7 @@ export interface BaseUIOptions {
   // Make a form component render into simplified mode
   readOnly?: boolean;
   simplify?: boolean;
-  validator?: (
-    value,
-    formData?,
-  ) => Promise<string | true | void> | true | string;
+  validator?: (value, formData?) => Promise<string | true | void> | true | string;
 }
 
 export interface InputOptions extends BaseUIOptions {

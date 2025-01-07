@@ -53,11 +53,7 @@ const Index: FC<Props> = ({ visible, data }) => {
               </Link>
             </h6>
             <div className="d-flex align-items-center small text-secondary mb-2">
-              <FormatTime
-                time={item.create_time}
-                className="me-3"
-                preFix={t('answered')}
-              />
+              <FormatTime time={item.create_time} className="me-3" preFix={t('answered')} />
 
               <Counts
                 data={{ votes: item?.vote_count, views: 0, answers: 0 }}

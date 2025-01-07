@@ -25,12 +25,7 @@ import { useToast } from '@/hooks';
 import type * as Types from '@/common/interface';
 import { SchemaForm, JSONSchema, UISchema } from '@/components';
 import { useGetUserPluginConfig, updateUserPluginConfig } from '@/services';
-import {
-  InputOptions,
-  FormKit,
-  initFormData,
-  mergeFormData,
-} from '@/components/SchemaForm';
+import { InputOptions, FormKit, initFormData, mergeFormData } from '@/components/SchemaForm';
 
 const Config = () => {
   const { t } = useTranslation('translation');
@@ -61,9 +56,7 @@ const Config = () => {
 
       if (item.options instanceof Array) {
         properties[item.name].enum = item.options.map((option) => option.value);
-        properties[item.name].enumNames = item.options.map(
-          (option) => option.label,
-        );
+        properties[item.name].enumNames = item.options.map((option) => option.label);
       }
       uiConf[item.name] = {};
       uiConf[item.name]['ui:widget'] = item.type;

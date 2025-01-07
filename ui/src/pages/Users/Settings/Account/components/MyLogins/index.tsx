@@ -43,10 +43,7 @@ const Index = () => {
 
   const deleteLogins = (e, item) => {
     if (!item.binding) {
-      Storage.set(
-        REDIRECT_PATH_STORAGE_KEY,
-        window.location.pathname.replace(REACT_BASE_PATH, ''),
-      );
+      Storage.set(REDIRECT_PATH_STORAGE_KEY, window.location.pathname.replace(REACT_BASE_PATH, ''));
       return;
     }
     e.preventDefault();

@@ -58,29 +58,16 @@ const Index: FC<Props> = ({ data }) => {
     <div className="d-flex flex-column flex-md-row mb-4">
       {data?.status !== 'deleted' ? (
         <Link to={`/users/${data.username}`} reloadDocument>
-          <Avatar
-            avatar={data.avatar}
-            size="160px"
-            searchStr="s=256"
-            alt={data.display_name}
-          />
+          <Avatar avatar={data.avatar} size="160px" searchStr="s=256" alt={data.display_name} />
         </Link>
       ) : (
-        <Avatar
-          avatar={data.avatar}
-          size="160px"
-          searchStr="s=256"
-          alt={data.display_name}
-        />
+        <Avatar avatar={data.avatar} size="160px" searchStr="s=256" alt={data.display_name} />
       )}
 
       <div className="ms-0 ms-md-4 mt-4 mt-md-0">
         <div className="d-flex align-items-center mb-2">
           {data?.status !== 'deleted' ? (
-            <Link
-              to={`/users/${data.username}`}
-              className="link-dark h3 mb-0"
-              reloadDocument>
+            <Link to={`/users/${data.username}`} className="link-dark h3 mb-0" reloadDocument>
               {data.display_name}
             </Link>
           ) : (
@@ -88,9 +75,7 @@ const Index: FC<Props> = ({ data }) => {
           )}
           {data?.role_id === 2 && (
             <div className="ms-2">
-              <OverlayTrigger
-                placement="top"
-                overlay={<Tooltip>{t('mod_long')}</Tooltip>}>
+              <OverlayTrigger placement="top" overlay={<Tooltip>{t('mod_long')}</Tooltip>}>
                 <span className="badge text-bg-light">{t('mod_short')}</span>
               </OverlayTrigger>
             </div>
@@ -128,15 +113,9 @@ const Index: FC<Props> = ({ data }) => {
                   <a
                     className="link-secondary"
                     href={
-                      data.website?.startsWith('http')
-                        ? data.website
-                        : `http://${data.website}`
+                      data.website?.startsWith('http') ? data.website : `http://${data.website}`
                     }>
-                    {
-                      data?.website
-                        .replace(/(http|https):\/\//, '')
-                        .split('/')?.[0]
-                    }
+                    {data?.website.replace(/(http|https):\/\//, '').split('/')?.[0]}
                   </a>
                 </div>
               )}
@@ -152,9 +131,7 @@ const Index: FC<Props> = ({ data }) => {
                 className={classnames('d-flex', 'align-items-center', {
                   'me-3': i < a.length - 1,
                 })}>
-                {b.icon ? (
-                  <SvgIcon base64={b.icon} svgClassName="me-2" />
-                ) : null}
+                {b.icon ? <SvgIcon base64={b.icon} svgClassName="me-2" /> : null}
                 {b.url ? (
                   <a className="link-secondary" href={b.url}>
                     {b.label}

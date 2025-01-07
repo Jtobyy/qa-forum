@@ -17,14 +17,7 @@
  * under the License.
  */
 
-import {
-  forwardRef,
-  useEffect,
-  useRef,
-  useState,
-  memo,
-  useImperativeHandle,
-} from 'react';
+import { forwardRef, useEffect, useRef, useState, memo, useImperativeHandle } from 'react';
 
 import { markdownToHtml } from '@/services';
 import ImgViewer from '@/components/ImgViewer';

@@ -60,16 +60,10 @@ const Index: React.FC<IProps> = ({ visible = false }) => {
           <p>{siteInfo.description}</p>
         </div>
         <div className="d-grid gap-2">
-          <Link
-            to="/users/login"
-            className="btn btn-primary"
-            onClick={linkClick}>
+          <Link to="/users/login" className="btn btn-primary" onClick={linkClick}>
             {t('login', { keyPrefix: 'btns' })}
           </Link>
-          <Link
-            to="/users/register"
-            className="btn btn-link"
-            onClick={linkClick}>
+          <Link to="/users/register" className="btn btn-link" onClick={linkClick}>
             {t('signup', { keyPrefix: 'btns' })}
           </Link>
         </div>

@@ -128,10 +128,7 @@ const Notifications = () => {
               {t('achievement')}
             </Button>
           </ButtonGroup>
-          <Button
-            size="sm"
-            variant="outline-secondary"
-            onClick={handleUnreadNotification}>
+          <Button size="sm" variant="outline-secondary" onClick={handleUnreadNotification}>
             {t('all_read')}
           </Button>
         </div>
@@ -157,24 +154,15 @@ const Notifications = () => {
                 );
               })}
             </Nav>
-            <Inbox
-              data={notificationData}
-              handleReadNotification={handleReadNotification}
-            />
+            <Inbox data={notificationData} handleReadNotification={handleReadNotification} />
           </>
         )}
         {type === 'achievement' && (
-          <Achievements
-            data={notificationData}
-            handleReadNotification={handleReadNotification}
-          />
+          <Achievements data={notificationData} handleReadNotification={handleReadNotification} />
         )}
         {(data?.count || 0) > PAGE_SIZE * page && (
           <div className="d-flex justify-content-center align-items-center py-3">
-            <Button
-              variant="link"
-              className="btn-no-border"
-              onClick={handleLoadMore}>
+            <Button variant="link" className="btn-no-border" onClick={handleLoadMore}>
               {t('show_more')}
             </Button>
           </div>

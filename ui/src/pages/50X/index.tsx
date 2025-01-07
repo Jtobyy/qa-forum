@@ -25,14 +25,7 @@ const Index = () => {
   const [searchParams] = useSearchParams();
   const errMsg = searchParams.get('msg') || '';
   const title = searchParams.get('title') || '';
-  return (
-    <HttpErrorContent
-      httpCode="50X"
-      title={title}
-      errMsg={errMsg}
-      showErrorCode={!errMsg}
-    />
-  );
+  return <HttpErrorContent httpCode="50X" title={title} errMsg={errMsg} showErrorCode={!errMsg} />;
 };
 
 export default Index;

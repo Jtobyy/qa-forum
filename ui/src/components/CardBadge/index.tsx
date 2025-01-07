@@ -51,9 +51,7 @@ const Index: FC<IProps> = ({
       <Card.Body>
         {Number(data?.earned_count) > 0 && badgePillType === 'earned' && (
           <Badge bg="success" className="label">
-            {`${t('earned')}${
-              Number(data?.earned_count) > 1 ? ` ×${data.earned_count}` : ''
-            }`}
+            {`${t('earned')}${Number(data?.earned_count) > 1 ? ` ×${data.earned_count}` : ''}`}
           </Badge>
         )}
 
